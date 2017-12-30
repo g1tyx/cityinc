@@ -2561,7 +2561,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
         var data;
         
         try {
-          data = window.atob(importen);
+          data = decodeURIComponent(window.atob(importen));
         }
         catch(err) {
           $scope.exportstring.error = true;
