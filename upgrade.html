@@ -2,10 +2,10 @@
   
     <div class="col-md-12 text-center">
       
-      <h2 class="white text-center">Upgrades</h2>
+      <h2 class="white text-center">升级</h2>
       <hr/>
       
-      <h4 class="white text-center">{{upgrades.length}}/{{upgradesMeta.length}} upgrades bought</h4>
+      <h4 class="white text-center">已购买 斯德哥尔摩 {{upgrades.length}}/{{upgradesMeta.length}} 个升级</h4>
       <div class="progress">
             <div 
             class="progress-bar progress-bar-info progress-bar-striped"
@@ -14,7 +14,7 @@
       </div>
       
       <br/><br/>
-      <button class="btn" ng-click="getAllUpgrades()" ng-if="curCitizens > 100 && upgrades.length < upgradesMeta.length">Purchase all upgrades you can afford</button>
+      <button class="btn" ng-click="getAllUpgrades()" ng-if="curCitizens > 100 && upgrades.length < upgradesMeta.length">购买你能负担得起的所有升级</button>
       <br/>
       <br/>
     </div>
@@ -41,7 +41,7 @@
                     
                         <div class="btn-group btn-group-justified" role="group" aria-label="...">
                           <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default luckiest tooltips" ng-disabled="curMoney < upgrade.cost" ng-click="getUpgrade(upgrade)">Purchase upgrade
+                            <button type="button" class="btn btn-default luckiest tooltips" ng-disabled="curMoney < upgrade.cost" ng-click="getUpgrade(upgrade)">购买升级
                             
                             <span style="height: 60px; width:450px; left: 28%;" ng-if="upgrade.buildingRef >= 0 && upgrade.buildingRef <= 9 && curMoney > upgrade.cost">
                               <pryl ng-if="build[upgrade.buildingRef].auto">
@@ -76,9 +76,9 @@
             </div>
         </div>
       <div class="col-md-12 text-center" ng-if="upgrades.length < upgradesMeta.length">
-        <h4 class="white" ng-if="upgradesMeta.length - (settings.upgradeQuantity + upgrades.length) > 0">...and {{ upgradesMeta.length - (settings.upgradeQuantity + upgrades.length) }} more</h4>
+        <h4 class="white" ng-if="upgradesMeta.length - (settings.upgradeQuantity + upgrades.length) > 0">...和 {{ upgradesMeta.length - (settings.upgradeQuantity + upgrades.length) }} more</h4>
         <br/>
-        <h4 class="white opensans"><i>Amount of upgrades to show (showing {{settings.upgradeQuantity}})</i></h4>
+        <h4 class="white opensans"><i>显示升级数量 (显示 {{settings.upgradeQuantity}})</i></h4>
         <div class="center-block">
           <div class="btn-group" role="group">
             <button class="btn" ng-click="settings.upgradeQuantity = 1">1</button>
@@ -88,18 +88,18 @@
             <button class="btn" ng-click="settings.upgradeQuantity = 25">25</button>
             <button class="btn" ng-click="settings.upgradeQuantity = 50">50</button>
             <button class="btn" ng-click="settings.upgradeQuantity = 100">100</button>
-            <button class="btn" ng-click="settings.upgradeQuantity = upgradesMeta.length">All</button>
+            <button class="btn" ng-click="settings.upgradeQuantity = upgradesMeta.length">所有</button>
           </div>
         </div>
       </div>
       
       <div class="col-md-12 text-center">
       <br/><br/>
-      <h2 class="white text-center">Purchased upgrades</h2>
+      <h2 class="white text-center">已购买升级</h2>
       <hr/>
-      <h4 class="white opensans">This is all your previously purchased upgrades.</h4>
+      <h4 class="white opensans">这是您以前购买的所有升级。</h4>
 
-      <h4 class="text-center white"><label>Show purchased upgrades: <input type="checkbox" class="md-checkbox" ng-model="settings.showUpgrades"></label></h4>
+      <h4 class="text-center white"><label>显示已购买升级: <input type="checkbox" class="md-checkbox" ng-model="settings.showUpgrades"></label></h4>
       <br/>
       <br/>
     </div>

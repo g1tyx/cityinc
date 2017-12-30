@@ -83,7 +83,7 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">切换导航</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -95,9 +95,9 @@
                     <li class="white luckiest tooltips">
                         <strong class="ng-binding">$2</strong>
                         <span class="smalltext" style="height: 80px; font-size: 16px; width: 350px; margin-top: 15px;">
-                <p class="smalltext" style="line-height: 12px"><strong class="ng-binding">Stockholm</strong></p>
-                <p class="smalltext ng-binding" style="line-height: 12px">0 citizens</p>
-                <p class="smalltext ng-binding" style="line-height: 12px">0 coins</p>
+                <p class="smalltext" style="line-height: 12px"><strong class="ng-binding">斯德哥尔摩</strong></p>
+                <p class="smalltext ng-binding" style="line-height: 12px">0 公民</p>
+                <p class="smalltext ng-binding" style="line-height: 12px">0 硬币</p>
               </span>
                     </li>
                 </ul>
@@ -107,24 +107,24 @@
             <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
 
                 <ul class="nav navbar-nav navbar-right white luckiest masthead-nav">
-                    <li ui-sref-active="active" class="active"><a href="#/" ui-sref="build">Build</a></li>
-                    <li ui-sref-active="active" class=""><a href="#/upgrade" ui-sref="upgrade">Upgrade<!-- ngIf: checkNotice(upgradesMeta, upgrades, 'upgrades') --></a></li>
-                    <li ui-sref-active="active" class=""><a href="#/city" ui-sref="city">City<!-- ngIf: checkNotice(tilesMeta, tiles, 'tiles') && totalBuildings() > 100 --></a></li>
-                    <li ui-sref-active="active" class=""><a href="#/citizens" ui-sref="citizens">Citizens<!-- ngIf: curCitizens == 0 && availableCitizens >= 50 --></a></li>
-                    <li ui-sref-active="active" class=""><a href="#/politicians" ui-sref="politicians">Politics<!-- ngIf: checkPolitician() --></a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="#/goals">Goals</a></li>
+                    <li ui-sref-active="active" class="active"><a href="#/" ui-sref="build">建筑</a></li>
+                    <li ui-sref-active="active" class=""><a href="#/upgrade" ui-sref="upgrade">升级<!-- ngIf: checkNotice(upgradesMeta, upgrades, 'upgrades') --></a></li>
+                    <li ui-sref-active="active" class=""><a href="#/city" ui-sref="city">城市<!-- ngIf: checkNotice(tilesMeta, tiles, 'tiles') && totalBuildings() > 100 --></a></li>
+                    <li ui-sref-active="active" class=""><a href="#/citizens" ui-sref="citizens">公民<!-- ngIf: curCitizens == 0 && availableCitizens >= 50 --></a></li>
+                    <li ui-sref-active="active" class=""><a href="#/politicians" ui-sref="politicians">政治<!-- ngIf: checkPolitician() --></a></li>
+                    <li ui-sref-active="active" class="nav-small"><a href="#/goals">目标</a></li>
                     <li ui-sref-active="active" class="nav-small"><a href="#/stats">统计</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="#/chat" ng-click="toggleChat(true)">Chat</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="#/guide">Game Guide</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="#/numberguide">Number Guide</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="http://reddit.com/r/cityinc/" target="_blank">Visit Subreddit</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="http://cageside.se/" target="_blank">Visit Cageside.se</a></li>
+<!--                    <li ui-sref-active="active" class="nav-small"><a href="#/chat" ng-click="toggleChat(true)">聊天</a></li>-->
+                    <li ui-sref-active="active" class="nav-small"><a href="#/guide">游戏指南</a></li>
+                    <li ui-sref-active="active" class="nav-small"><a href="#/numberguide">数字指南</a></li>
+                    <li ui-sref-active="active" class="nav-small"><a href="http://reddit.com/r/cityinc/" target="_blank">访问 Subreddit</a></li>
+                    <li ui-sref-active="active" class="nav-small"><a href="http://cageside.se/" target="_blank">访问Cageside.se</a></li>
                     <li ui-sref-active="active" class="nav-small"><a href="#/settings">设置</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="#/about">About CityInc</a></li>
+                    <li ui-sref-active="active" class="nav-small"><a href="#/about">关于</a></li>
 
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                Menu <span class="caret"></span>
+                菜单 <span class="caret"></span>
               </a>
                         <ul class="dropdown-menu">
                             <li><a href="#/goals">Goals</a></li>
@@ -191,7 +191,7 @@
                                     <!-- ngIf: calculateBuildSpeed($index, building) > 20 -->
                                     </span>
                                     <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">Next goal: <strong class="ng-binding">25</strong> Roads<span class="ng-binding">Roads Speed Doubled<br>
+                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Roads<span class="ng-binding">Roads Speed Doubled<br>
                               Required: $232.687</span></span>
                                     <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
                                     <!-- ngIf: building.auto -->
@@ -298,7 +298,7 @@
                                     <!-- ngIf: calculateBuildSpeed($index, building) > 20 -->
                                     </span>
                                     <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">Next goal: <strong class="ng-binding">25</strong> Apartments<span class="ng-binding">Apartments Speed Doubled<br>
+                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Apartments<span class="ng-binding">Apartments Speed Doubled<br>
                               Required: $12,767.581</span></span>
                                     <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
                                     <!-- ngIf: building.auto -->
@@ -405,7 +405,7 @@
                                     <!-- ngIf: calculateBuildSpeed($index, building) > 20 -->
                                     </span>
                                     <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">Next goal: <strong class="ng-binding">25</strong> Offices<span class="ng-binding">Offices Speed Doubled<br>
+                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Offices<span class="ng-binding">Offices Speed Doubled<br>
                               Required: $130,946.996</span></span>
                                     <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
                                     <!-- ngIf: building.auto -->
@@ -512,7 +512,7 @@
                                     <!-- ngIf: calculateBuildSpeed($index, building) > 20 -->
                                     </span>
                                     <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">Next goal: <strong class="ng-binding">25</strong> Transport<span class="ng-binding">Local Transport Speed Doubled<br>
+                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Transport<span class="ng-binding">Local Transport Speed Doubled<br>
                               Required: $1.345 Million</span></span>
                                     <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
                                     <!-- ngIf: building.auto -->
@@ -620,7 +620,7 @@
                                     <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
                                     </span>
                                     <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">Next goal: <strong class="ng-binding">25</strong> Education<span class="ng-binding">Education Speed Doubled<br>
+                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Education<span class="ng-binding">Education Speed Doubled<br>
                               Required: $13.824 Million</span></span>
                                     <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
                                     <!-- ngIf: building.auto -->
@@ -728,7 +728,7 @@
                                     <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
                                     </span>
                                     <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">Next goal: <strong class="ng-binding">25</strong> Taxis<span class="ng-binding">Taxi Service Speed Doubled<br>
+                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Taxis<span class="ng-binding">Taxi Service Speed Doubled<br>
                               Required: $142.348 Million</span></span>
                                     <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
                                     <!-- ngIf: building.auto -->
@@ -836,7 +836,7 @@
                                     <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
                                     </span>
                                     <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">Next goal: <strong class="ng-binding">25</strong> Docks<span class="ng-binding">Docks Profit Speed Doubled<br>
+                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Docks<span class="ng-binding">Docks Profit Speed Doubled<br>
                               Required: $1.468 Billion</span></span>
                                     <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
                                     <!-- ngIf: building.auto -->
@@ -944,7 +944,7 @@
                                     <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
                                     </span>
                                     <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">Next goal: <strong class="ng-binding">25</strong> Health<span class="ng-binding">Health Care Speed Doubled<br>
+                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Health<span class="ng-binding">Health Care Speed Doubled<br>
                               Required: $15.175 Billion</span></span>
                                     <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
                                     <!-- ngIf: building.auto -->
@@ -1052,7 +1052,7 @@
                                     <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
                                     </span>
                                     <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">Next goal: <strong class="ng-binding">25</strong> Shopping<span class="ng-binding">Shopping Speed Doubled<br>
+                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Shopping<span class="ng-binding">Shopping Speed Doubled<br>
                               Required: $157.171 Billion</span></span>
                                     <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
                                     <!-- ngIf: building.auto -->
@@ -1160,7 +1160,7 @@
                                     <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
                                     </span>
                                     <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">Next goal: <strong class="ng-binding">25</strong> Banks<span class="ng-binding">Bank Sector Speed Doubled<br>
+                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Banks<span class="ng-binding">Bank Sector Speed Doubled<br>
                               Required: $1.632 Trillion</span></span>
                                     <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
                                     <!-- ngIf: building.auto -->
@@ -1229,7 +1229,7 @@
                     <!-- end ngRepeat: building in build -->
                     <div class="col-sm-12">
                         <!-- ngIf: settings.goalsAll > -1 && settings.goalsAll != undefined && !over3000() -->
-                        <h4 class="text-center white opensans produceText ng-scope" ng-if="settings.goalsAll &gt; -1 &amp;&amp; settings.goalsAll != undefined &amp;&amp; !over3000()"><div class="tooltips ng-binding" style="z-index: 10">Next goal: 25 of all buildings<span class="smalltext ng-binding" style="top: 40px;">All Speed Doubled</span></div></h4>
+                        <h4 class="text-center white opensans produceText ng-scope" ng-if="settings.goalsAll &gt; -1 &amp;&amp; settings.goalsAll != undefined &amp;&amp; !over3000()"><div class="tooltips ng-binding" style="z-index: 10">下一目标: 25 of all buildings<span class="smalltext ng-binding" style="top: 40px;">All Speed Doubled</span></div></h4>
                         <!-- end ngIf: settings.goalsAll > -1 && settings.goalsAll != undefined && !over3000() -->
                         <!-- ngIf: build[0].auto -->
                         <!-- ngIf: stats.newRevenueRecord && curCitizens > 100 -->

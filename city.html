@@ -28,16 +28,16 @@
         <img class="center-block" ng-src="{{cityLayouts[settings.level].image[settings.cityLayout].url}}">
       </div>
       
-      <h2 class="white luckiest text-center">Approval Rating</h2>
+      <h2 class="white luckiest text-center">支持率</h2>
       <hr/>
       <div class="progress">
             <div 
             class="progress-bar progress-bar-success progress-bar-striped active"
-            style="width: {{ happiness.sliderValue }}%"><span class="show">{{ happiness.sliderValue | number:3 }} points Approval Rating <strong ng-if="happiness.sliderValue">| Approx {{ checkTime() | formatTimer }} left to 0%</strong></span></div>
+            style="width: {{ happiness.sliderValue }}%"><span class="show">{{ happiness.sliderValue | number:3 }} 点支持率 <strong ng-if="happiness.sliderValue">| Approx {{ checkTime() | formatTimer }} left to 0%</strong></span></div>
         </div>
       <h4 class="white opensans text-center bold">{{ happiness.text }}</h4>
       <h5 class="white opensans text-center">
-        <i>0-8 Neutral | 9-39 Happy | 40-79 High confidence | 80-100 Amazing confidence</i>
+        <i>0-8 中立 | 9-39 快乐 | 40-79 高度信息 | 80-100 惊人信心</i>
       </h5>
       <div class="col-md-12">
             <div class="card-wrapper">
@@ -48,11 +48,11 @@
                 </div>
                 <div class="content-block">
                     <div class="cardtext">
-                        <h3>Invest in the citizens</h3>
-                        Raise rating by {{ happiness.ratingPercentage }} points. This can be done multiple times.
-                        <h4>Cost: 
+                        <h3>投资于人民</h3>
+                        提高支持率 {{ happiness.ratingPercentage }} 点。这可以做很多次。
+                        <h4>花费: 
                           <span ng-if="totalMoneyPerSecond()">${{ calculateInvestmentCost() | megaNumber:powerNames:settings.scientificNumbers }}</span>
-                          <span ng-if="!totalMoneyPerSecond()">Not yet available</span>
+                          <span ng-if="!totalMoneyPerSecond()">没有可用的</span>
                         </h4>
                     </div>
                     
@@ -60,7 +60,7 @@
                     
                         <div class="btn-group btn-group-justified" role="group" aria-label="...">
                           <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney < calculateInvestmentCost() || build[0].auto == false" ng-click="investConfidence(happiness.ratingPercentage)">Invest with cash</button>
+                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney < calculateInvestmentCost() || build[0].auto == false" ng-click="investConfidence(happiness.ratingPercentage)">用现金投资</button>
                           </div>
                         </div>
                     </div>
@@ -77,11 +77,11 @@
     <div class="col-md-6">
       <div class="col-md-12 col-center-block text-center">
         
-        <h1 class="white">Purchase Improvements</h1>
+        <h1 class="white">购买改进</h1>
         <hr/>
         <!--<h4 class="white">These tiles will have to be purchased. Also, some will give you powerful bonuses.</h4>-->
-        <button class="btn" ng-click="getAllTiles()" ng-if="curCitizens > 100 && tiles.length < tilesMeta.length ">Purchase all improvements you can afford</button>
-        <h4 class="text-center white" ng-if="tiles.length + 3 == tilesMeta.length">All city improvements purchased!</h4>
+        <button class="btn" ng-click="getAllTiles()" ng-if="curCitizens > 100 && tiles.length < tilesMeta.length ">购买你能负担得起的所有改进</button>
+        <h4 class="text-center white" ng-if="tiles.length + 3 == tilesMeta.length">所有的城市改进已购买！</h4>
         
         <br/>
         <br/>
@@ -146,7 +146,7 @@
     <div class="col-md-6">
       <div class="col-md-12 col-center-block text-center">
         
-        <h1 class="white">Coin Upgrades</h1>
+        <h1 class="white">硬币升级</h1>
         <hr/>
         <br/><br/>
         
