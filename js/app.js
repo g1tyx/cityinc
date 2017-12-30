@@ -211,7 +211,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
         coinQuantity: 10,
         goalsAll: 301,
         editCityName: false,
-        cityName: "Stockholm",
+        cityName: "斯德哥尔摩",
         allowEditCityName: false,
         OCDMode: true,
         autoBuyPoliticians: false,
@@ -1860,7 +1860,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
             }
             
             if($scope.settings.cityName == "Your City") {
-                var cityNames = [ 'Stockholm', 'Gothenburg', 'Lund', 'Kiruna', 'Fagerhult', 'Motala', 'Uppsala', 'Skansen', 'Visby', 'Falun', 'New York', 'Paris', 'Venice', 'Barcelona'];
+                var cityNames = [ '斯德哥尔摩', 'Gothenburg', 'Lund', 'Kiruna', 'Fagerhult', 'Motala', 'Uppsala', 'Skansen', 'Visby', 'Falun', 'New York', 'Paris', 'Venice', 'Barcelona'];
                 $scope.settings.cityName = cityNames[Math.floor((Math.random() * cityNames.length) + 1)];
             }
             
@@ -2101,7 +2101,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
               coinQuantity: 10,
               goalsAll: 301,
               editCityName: false,
-              cityName: "Stockholm",
+              cityName: "斯德哥尔摩",
               allowEditCityName: false,
               OCDMode: true,
               autoBuyPoliticians: false,
@@ -2125,7 +2125,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
             $scope.settings.goalsAll = 301;
           }
           if(angular.isUndefined($scope.settings.cityName)) {
-            $scope.settings.cityName = "Stockholm";
+            $scope.settings.cityName = "斯德哥尔摩";
             $scope.settings.editCityName = false;
           }
           if(angular.isUndefined($scope.settings.cityLayout)) {

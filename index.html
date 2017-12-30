@@ -1,48 +1,20 @@
 <!DOCTYPE html>
-<!-- saved from url=(0020)http://cityinc.se/#/ -->
-<html ng-app="gameApp" class="ng-scope">
+<html ng-app="gameApp">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <style type="text/css">
-        @charset "UTF-8";
-        [ng\:cloak],
-        [ng-cloak],
-        [data-ng-cloak],
-        [x-ng-cloak],
-        .ng-cloak,
-        .x-ng-cloak,
-        .ng-hide:not(.ng-hide-animate) {
-            display: none !important;
-        }
-        
-        ng\:form {
-            display: block;
-        }
-        
-        .ng-animate-shim {
-            visibility: hidden;
-        }
-        
-        .ng-anchor {
-            position: absolute;
-        }
-
-    </style>
-
+<head >
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <meta name="description" content="Incremental">
     <meta name="author" content="Martin Johansson">
-    <link rel="icon" href="http://cityinc.se/favicon.ico">
-
+    <link rel="icon" href="favicon.ico">
+    
     <title>城市公司 - CityInc</title>
-
-    <script async="" src="js/analytics.js"></script>
-    <script src="js/HackTimer.silent.min.js"></script>
-    <script src="js/HackTimerWorker.min.js"></script>
-
+    
+    <script src="js/HackTimer.silent.min.js?0504"></script>
+    <script src="js/HackTimerWorker.min.js?0504"></script>
+    
     <script src="js/jquery.min.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/angular-ui-router.min.js"></script>
@@ -50,20 +22,19 @@
     <script src="js/clipboard.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="js/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="js/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
-    <script src="js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="js/style.css">
-    <script src="js/app.js"></script>
-    <script src="js/data.js"></script>
-
-    <!--
+    
+    <link rel="stylesheet" href="js/style.css?hash=1101">
+    <script src="js/app.js?hash=1102"></script>
+    <script src="js/data.js?hash=1101"></script>
+    
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -73,1257 +44,184 @@
       ga('create', 'UA-72714749-1', 'auto');
       //ga('send', 'pageview');
     </script>
--->
-
+    
 </head>
 
-<body ng-controller="gameController as game" ng-init="load(true)" class="ng-scope" cz-shortcut-listen="true">
-    <canvas class="fireworks" width="1474" height="1386" style="width: 717px; height: 693px;"></canvas>
+<body ng-controller="gameController as game" ng-init="load(true)">
+    <canvas class="fireworks"></canvas>
     <nav class="navbar navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">切换导航</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand navbar-brand-map" href="#/city"><img ng-src="images/city/city0.png" src="js/city0.png"></a>
-                <a class="navbar-brand navbar-brand-logo white luckiest" href="#"><img src="js/logo.png"></a>
-
-                <ul class="nav navbar-text">
-                    <li class="white luckiest tooltips">
-                        <strong class="ng-binding">$2</strong>
-                        <span class="smalltext" style="height: 80px; font-size: 16px; width: 350px; margin-top: 15px;">
-                <p class="smalltext" style="line-height: 12px"><strong class="ng-binding">斯德哥尔摩</strong></p>
-                <p class="smalltext ng-binding" style="line-height: 12px">0 公民</p>
-                <p class="smalltext ng-binding" style="line-height: 12px">0 硬币</p>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand navbar-brand-map" href="#/city"><img ng-src="{{cityLayouts[settings.level].image[settings.cityLayout].url}}"></a>
+          <a class="navbar-brand navbar-brand-logo white luckiest" href="#"><img src="http://cityinc.se/images/logo.png"></a>
+          
+          <ul class="nav navbar-text">
+            <li class="white luckiest tooltips">
+              <strong>${{ curMoney | megaNumber:powerNames:settings.scientificNumbers }}</strong>
+              <span class="smalltext" style="height: 80px; font-size: 16px; width: 350px; margin-top: 15px;">
+                <p class="smalltext" style="line-height: 12px"><strong>{{ settings.cityName }}</strong></p>
+                <p class="smalltext" style="line-height: 12px">{{ curCitizens | megaNumber:powerNames:settings.scientificNumbers }} citizens</p>
+                <p class="smalltext" style="line-height: 12px">{{ coins.value | megaNumber:powerNames:settings.scientificNumbers }} coins</p>
               </span>
-                    </li>
-                </ul>
+            </li>
+          </ul>
+          
+        </div>
+    
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
 
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
-
-                <ul class="nav navbar-nav navbar-right white luckiest masthead-nav">
-                    <li ui-sref-active="active" class="active"><a href="#/" ui-sref="build">建筑</a></li>
-                    <li ui-sref-active="active" class=""><a href="#/upgrade" ui-sref="upgrade">升级<!-- ngIf: checkNotice(upgradesMeta, upgrades, 'upgrades') --></a></li>
-                    <li ui-sref-active="active" class=""><a href="#/city" ui-sref="city">城市<!-- ngIf: checkNotice(tilesMeta, tiles, 'tiles') && totalBuildings() > 100 --></a></li>
-                    <li ui-sref-active="active" class=""><a href="#/citizens" ui-sref="citizens">公民<!-- ngIf: curCitizens == 0 && availableCitizens >= 50 --></a></li>
-                    <li ui-sref-active="active" class=""><a href="#/politicians" ui-sref="politicians">政治<!-- ngIf: checkPolitician() --></a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="#/goals">目标</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="#/stats">统计</a></li>
-<!--                    <li ui-sref-active="active" class="nav-small"><a href="#/chat" ng-click="toggleChat(true)">聊天</a></li>-->
-                    <li ui-sref-active="active" class="nav-small"><a href="#/guide">游戏指南</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="#/numberguide">数字指南</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="http://reddit.com/r/cityinc/" target="_blank">访问 Subreddit</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="http://cageside.se/" target="_blank">访问Cageside.se</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="#/settings">设置</a></li>
-                    <li ui-sref-active="active" class="nav-small"><a href="#/about">关于</a></li>
-
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <ul class="nav navbar-nav navbar-right white luckiest masthead-nav">
+            <li ui-sref-active="active"><a href="#/" ui-sref="build">建筑</a></li>
+            <li ui-sref-active="active"><a href="#/upgrade" ui-sref="upgrade">升级<span class="badge badge-notify opensans" ng-if="checkNotice(upgradesMeta, upgrades, 'upgrades')">!</span></a></li>
+            <li ui-sref-active="active"><a href="#/city" ui-sref="city">城市<span class="badge badge-notify opensans" ng-if="checkNotice(tilesMeta, tiles, 'tiles') && totalBuildings() > 100">!</span></a></li>
+            <li ui-sref-active="active"><a href="#/citizens" ui-sref="citizens">公民<span class="badge badge-notify opensans" ng-if="curCitizens == 0 && availableCitizens >= 50">!</span></a></li>
+            <li ui-sref-active="active"><a href="#/politicians" ui-sref="politicians">政治<span class="badge badge-notify opensans" ng-if="checkPolitician()">!</span></a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/goals">目标</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/stats">统计</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/chat" ng-click="toggleChat(true)">聊天</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/guide">游戏指南</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/numberguide">数字指南</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="http://reddit.com/r/cityinc/" target="_blank">访问 Subreddit</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="http://cageside.se" target="_blank">访问 Cageside.se</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/settings">设置</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/about">关于</a></li>
+            
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 菜单 <span class="caret"></span>
               </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#/goals">Goals</a></li>
-                            <li><a href="#/stats">统计</a></li>
-                            <li><a href="#/chat" ng-click="toggleChat(true)">Chat</a></li>
-                            <li><a href="#/guide">Game Guide</a></li>
-                            <li><a href="#/numberguide">Number Guide</a></li>
-                            <li><a href="http://reddit.com/r/cityinc/" target="_blank">Visit Subreddit</a></li>
-                            <li><a href="http://cageside.se/" target="_blank">Visit Cageside.se</a></li>
-                            <li><a href="#/settings">设置</a></li>
-                            <li><a href="#/about">About CityInc</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+              <ul class="dropdown-menu">
+                <li><a href="#/goals">目标</a></li>
+                <li><a href="#/stats">统计</a></li>
+                <li><a href="#/chat" ng-click="toggleChat(true)">Chat</a></li>
+                <li><a href="#/guide">游戏指南</a></li>
+                <li><a href="#/numberguide">数字指南</a></li>
+                <li><a href="http://reddit.com/r/cityinc/" target="_blank">访问 Subreddit</a></li>
+                <li><a href="http://cageside.se" target="_blank">访问 Cageside.se</a></li>
+                <li><a href="#/settings">设置</a></li>
+                <li><a href="#/about">关于</a></li>
+              </ul>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
-
+        
     <div class="site-wrap">
-        <!-- ngIf: inIframe -->
-        <!-- uiView:  -->
-        <div ui-view="" class="ng-scope">
-            <div class="container ng-scope">
-
-                <div class="row">
-                    <!-- ngRepeat: building in build -->
-                    <div ng-repeat="building in build" class="col-md-6 col-xs-12 ng-scope">
-
-                        <div class="card noselect">
-                            <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{&#39;normalcursor&#39; : building.auto}">
-                                <span class="ribbon"><span class="bgcolor-fa-road">Transport</span></span>
-                                <i class="fa faicon fa-road smallicon" ng-class="{&#39;icon-disabled&#39; : building.num == 0, &#39;smallicon&#39; : !settings.maximizeLayout}"></i>
-                                <div class="buildtext ng-binding" ng-class="building.num == 0 ? &#39;icon-disabled&#39; : &#39;&#39;">1</div>
-                                <!-- ngIf: $index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3 -->
-                            </div>
-                            <div class="content-block">
-
-                                <div class="progress2">
-                                    <div class="progress-main2">
-                                        <div class="progress-bar2" ng-click="toggleRevenueText()">
-                                            <span class="progress-value2 progress-bar-reset" style="width: 0%;" ng-class="building.curPercent == 0 ? &#39;progress-bar-reset&#39; : &#39;&#39;"></span>
-                                            <!-- ngIf: !building.auto && building.num == 0 -->
-                                            <!-- ngIf: !building.auto && building.num > 0 --><span class="text-center ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.num &gt; 0">Profit: $1</span>
-                                            <!-- end ngIf: !building.auto && building.num > 0 -->
-                                            <!-- ngIf: building.auto -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cardtext" ng-init="multi=3">
-                                    <!-- Standard layout -->
-                                    <!-- ngIf: !settings.maximizeLayout --><span ng-if="!settings.maximizeLayout" class="ng-scope">
-                        <strong class="luckiest ng-binding" style="font-size: 16px">Roads</strong>
-                        <span class="smalltext ng-binding">
-                            <!-- ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] --><span ng-if="building.num &gt;= stats[&#39;highest&#39; + buildMeta[$index].shortName] " class="goaltooltips ng-scope">
-                                <i class="fa fa-check" style="color: #81c784">
-                                <span style="left: -65%;">
-                                    New building record achieved!
-                                </span>
-                                    </i>
-                                    </span>
-                                    <!-- end ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] -->
-                                    Cycle: 0.6s
-                                    <!-- ngIf: calculateBuildSpeed($index, building) > 20 -->
-                                    </span>
-                                    <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Roads<span class="ng-binding">Roads Speed Doubled<br>
-                              Required: $232.687</span></span>
-                                    <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
-                                    <!-- ngIf: building.auto -->
-                                    <br>
-                                    </span>
-                                    <!-- end ngIf: !settings.maximizeLayout -->
-                                    <!-- Maximised layout -->
-                                    <!-- ngIf: settings.maximizeLayout -->
-                                </div>
-
-                                <div class="cardbuttons">
-                                    <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
-                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
-                        </p>-->
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
-                                        <div class="btn-group tooltips" role="group">
-
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)" disabled="disabled">Buy 1</button>
-                                            <span class="smalltext ng-binding">$4<br>
-                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
-                            </span>
-
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)" disabled="disabled">10</button>
-                                            <span class="smalltext ng-binding">$55.261</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)" disabled="disabled">25</button>
-                                            <span class="smalltext ng-binding">$252.975</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)" disabled="disabled">100</button>
-                                            <span class="smalltext ng-binding">$49,522.437</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <!-- ngIf: settings.OCDMode -->
-                                            <button type="button" class="btn btn-default luckiest ng-scope" ng-if="settings.OCDMode" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)" disabled="disabled">
-                                                <!-- ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <buytext ng-if="calculateMaxAmount(building, $index) &lt; 10" class="ng-binding ng-scope">0</buytext>
-                                                <!-- end ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <!-- ngIf: calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100 -->
-                                                <!-- ngIf: (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100 -->
-                                            </button>
-                                            <!-- end ngIf: settings.OCDMode -->
-                                            <!-- ngIf: !settings.OCDMode -->
-                                            <span class="smalltext ng-binding">You can afford <strong class="ng-binding">0</strong> Roads</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!-- end ngRepeat: building in build -->
-                    <div ng-repeat="building in build" class="col-md-6 col-xs-12 ng-scope">
-
-                        <div class="card noselect">
-                            <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{&#39;normalcursor&#39; : building.auto}">
-                                <span class="ribbon"><span class="bgcolor-fa-home">Civilian</span></span>
-                                <i class="fa faicon fa-home icon-disabled smallicon" ng-class="{&#39;icon-disabled&#39; : building.num == 0, &#39;smallicon&#39; : !settings.maximizeLayout}"></i>
-                                <div class="buildtext ng-binding icon-disabled" ng-class="building.num == 0 ? &#39;icon-disabled&#39; : &#39;&#39;">0</div>
-                                <!-- ngIf: $index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3 -->
-                            </div>
-                            <div class="content-block">
-
-                                <div class="progress2">
-                                    <div class="progress-main2">
-                                        <div class="progress-bar2" ng-click="toggleRevenueText()">
-                                            <span class="progress-value2 progress-bar-reset" style="width: 0%;" ng-class="building.curPercent == 0 ? &#39;progress-bar-reset&#39; : &#39;&#39;"></span>
-                                            <!-- ngIf: !building.auto && building.num == 0 --><span class="text-center ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.num == 0">Profit: $60</span>
-                                            <!-- end ngIf: !building.auto && building.num == 0 -->
-                                            <!-- ngIf: !building.auto && building.num > 0 -->
-                                            <!-- ngIf: building.auto -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cardtext" ng-init="multi=3">
-                                    <!-- Standard layout -->
-                                    <!-- ngIf: !settings.maximizeLayout --><span ng-if="!settings.maximizeLayout" class="ng-scope">
-                        <strong class="luckiest ng-binding" style="font-size: 16px">Apartments</strong>
-                        <span class="smalltext ng-binding">
-                            <!-- ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] --><span ng-if="building.num &gt;= stats[&#39;highest&#39; + buildMeta[$index].shortName] " class="goaltooltips ng-scope">
-                                <i class="fa fa-check" style="color: #81c784">
-                                <span style="left: -65%;">
-                                    New building record achieved!
-                                </span>
-                                    </i>
-                                    </span>
-                                    <!-- end ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] -->
-                                    Cycle: 3s
-                                    <!-- ngIf: calculateBuildSpeed($index, building) > 20 -->
-                                    </span>
-                                    <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Apartments<span class="ng-binding">Apartments Speed Doubled<br>
-                              Required: $12,767.581</span></span>
-                                    <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
-                                    <!-- ngIf: building.auto -->
-                                    <br>
-                                    </span>
-                                    <!-- end ngIf: !settings.maximizeLayout -->
-                                    <!-- Maximised layout -->
-                                    <!-- ngIf: settings.maximizeLayout -->
-                                </div>
-
-                                <div class="cardbuttons">
-                                    <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
-                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
-                        </p>-->
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
-                                        <div class="btn-group tooltips" role="group">
-
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)" disabled="disabled">Buy 1</button>
-                                            <span class="smalltext ng-binding">$60<br>
-                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
-                            </span>
-
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)" disabled="disabled">10</button>
-                                            <span class="smalltext ng-binding">$1,218.223</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)" disabled="disabled">25</button>
-                                            <span class="smalltext ng-binding">$12,767.581</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)" disabled="disabled">100</button>
-                                            <span class="smalltext ng-binding">$469.725 Million</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <!-- ngIf: settings.OCDMode -->
-                                            <button type="button" class="btn btn-default luckiest ng-scope" ng-if="settings.OCDMode" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)" disabled="disabled">
-                                                <!-- ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <buytext ng-if="calculateMaxAmount(building, $index) &lt; 10" class="ng-binding ng-scope">0</buytext>
-                                                <!-- end ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <!-- ngIf: calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100 -->
-                                                <!-- ngIf: (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100 -->
-                                            </button>
-                                            <!-- end ngIf: settings.OCDMode -->
-                                            <!-- ngIf: !settings.OCDMode -->
-                                            <span class="smalltext ng-binding">You can afford <strong class="ng-binding">0</strong> Apartments</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!-- end ngRepeat: building in build -->
-                    <div ng-repeat="building in build" class="col-md-6 col-xs-12 ng-scope">
-
-                        <div class="card noselect">
-                            <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{&#39;normalcursor&#39; : building.auto}">
-                                <span class="ribbon"><span class="bgcolor-fa-briefcase">Business</span></span>
-                                <i class="fa faicon fa-briefcase icon-disabled smallicon" ng-class="{&#39;icon-disabled&#39; : building.num == 0, &#39;smallicon&#39; : !settings.maximizeLayout}"></i>
-                                <div class="buildtext ng-binding icon-disabled" ng-class="building.num == 0 ? &#39;icon-disabled&#39; : &#39;&#39;">0</div>
-                                <!-- ngIf: $index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3 -->
-                            </div>
-                            <div class="content-block">
-
-                                <div class="progress2">
-                                    <div class="progress-main2">
-                                        <div class="progress-bar2" ng-click="toggleRevenueText()">
-                                            <span class="progress-value2 progress-bar-reset" style="width: 0%;" ng-class="building.curPercent == 0 ? &#39;progress-bar-reset&#39; : &#39;&#39;"></span>
-                                            <!-- ngIf: !building.auto && building.num == 0 --><span class="text-center ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.num == 0">Profit: $540</span>
-                                            <!-- end ngIf: !building.auto && building.num == 0 -->
-                                            <!-- ngIf: !building.auto && building.num > 0 -->
-                                            <!-- ngIf: building.auto -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cardtext" ng-init="multi=3">
-                                    <!-- Standard layout -->
-                                    <!-- ngIf: !settings.maximizeLayout --><span ng-if="!settings.maximizeLayout" class="ng-scope">
-                        <strong class="luckiest ng-binding" style="font-size: 16px">Offices</strong>
-                        <span class="smalltext ng-binding">
-                            <!-- ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] --><span ng-if="building.num &gt;= stats[&#39;highest&#39; + buildMeta[$index].shortName] " class="goaltooltips ng-scope">
-                                <i class="fa fa-check" style="color: #81c784">
-                                <span style="left: -65%;">
-                                    New building record achieved!
-                                </span>
-                                    </i>
-                                    </span>
-                                    <!-- end ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] -->
-                                    Cycle: 6s
-                                    <!-- ngIf: calculateBuildSpeed($index, building) > 20 -->
-                                    </span>
-                                    <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Offices<span class="ng-binding">Offices Speed Doubled<br>
-                              Required: $130,946.996</span></span>
-                                    <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
-                                    <!-- ngIf: building.auto -->
-                                    <br>
-                                    </span>
-                                    <!-- end ngIf: !settings.maximizeLayout -->
-                                    <!-- Maximised layout -->
-                                    <!-- ngIf: settings.maximizeLayout -->
-                                </div>
-
-                                <div class="cardbuttons">
-                                    <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
-                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
-                        </p>-->
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
-                                        <div class="btn-group tooltips" role="group">
-
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)" disabled="disabled">Buy 1</button>
-                                            <span class="smalltext ng-binding">$720<br>
-                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
-                            </span>
-
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)" disabled="disabled">10</button>
-                                            <span class="smalltext ng-binding">$13,922.852</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)" disabled="disabled">25</button>
-                                            <span class="smalltext ng-binding">$130,946.996</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)" disabled="disabled">100</button>
-                                            <span class="smalltext ng-binding">$2.522 Billion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <!-- ngIf: settings.OCDMode -->
-                                            <button type="button" class="btn btn-default luckiest ng-scope" ng-if="settings.OCDMode" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)" disabled="disabled">
-                                                <!-- ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <buytext ng-if="calculateMaxAmount(building, $index) &lt; 10" class="ng-binding ng-scope">0</buytext>
-                                                <!-- end ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <!-- ngIf: calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100 -->
-                                                <!-- ngIf: (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100 -->
-                                            </button>
-                                            <!-- end ngIf: settings.OCDMode -->
-                                            <!-- ngIf: !settings.OCDMode -->
-                                            <span class="smalltext ng-binding">You can afford <strong class="ng-binding">0</strong> Offices</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!-- end ngRepeat: building in build -->
-                    <div ng-repeat="building in build" class="col-md-6 col-xs-12 ng-scope">
-
-                        <div class="card noselect">
-                            <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{&#39;normalcursor&#39; : building.auto}">
-                                <span class="ribbon"><span class="bgcolor-fa-bus">Transport</span></span>
-                                <i class="fa faicon fa-bus icon-disabled smallicon" ng-class="{&#39;icon-disabled&#39; : building.num == 0, &#39;smallicon&#39; : !settings.maximizeLayout}"></i>
-                                <div class="buildtext ng-binding icon-disabled" ng-class="building.num == 0 ? &#39;icon-disabled&#39; : &#39;&#39;">0</div>
-                                <!-- ngIf: $index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3 -->
-                            </div>
-                            <div class="content-block">
-
-                                <div class="progress2">
-                                    <div class="progress-main2">
-                                        <div class="progress-bar2" ng-click="toggleRevenueText()">
-                                            <span class="progress-value2 progress-bar-reset" style="width: 0%;" ng-class="building.curPercent == 0 ? &#39;progress-bar-reset&#39; : &#39;&#39;"></span>
-                                            <!-- ngIf: !building.auto && building.num == 0 --><span class="text-center ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.num == 0">Profit: $4,320</span>
-                                            <!-- end ngIf: !building.auto && building.num == 0 -->
-                                            <!-- ngIf: !building.auto && building.num > 0 -->
-                                            <!-- ngIf: building.auto -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cardtext" ng-init="multi=3">
-                                    <!-- Standard layout -->
-                                    <!-- ngIf: !settings.maximizeLayout --><span ng-if="!settings.maximizeLayout" class="ng-scope">
-                        <strong class="luckiest ng-binding" style="font-size: 16px">Local Transport</strong>
-                        <span class="smalltext ng-binding">
-                            <!-- ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] --><span ng-if="building.num &gt;= stats[&#39;highest&#39; + buildMeta[$index].shortName] " class="goaltooltips ng-scope">
-                                <i class="fa fa-check" style="color: #81c784">
-                                <span style="left: -65%;">
-                                    New building record achieved!
-                                </span>
-                                    </i>
-                                    </span>
-                                    <!-- end ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] -->
-                                    Cycle: 12s
-                                    <!-- ngIf: calculateBuildSpeed($index, building) > 20 -->
-                                    </span>
-                                    <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Transport<span class="ng-binding">Local Transport Speed Doubled<br>
-                              Required: $1.345 Million</span></span>
-                                    <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
-                                    <!-- ngIf: building.auto -->
-                                    <br>
-                                    </span>
-                                    <!-- end ngIf: !settings.maximizeLayout -->
-                                    <!-- Maximised layout -->
-                                    <!-- ngIf: settings.maximizeLayout -->
-                                </div>
-
-                                <div class="cardbuttons">
-                                    <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
-                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
-                        </p>-->
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
-                                        <div class="btn-group tooltips" role="group">
-
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)" disabled="disabled">Buy 1</button>
-                                            <span class="smalltext ng-binding">$8,640<br>
-                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
-                            </span>
-
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)" disabled="disabled">10</button>
-                                            <span class="smalltext ng-binding">$159,146.633</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)" disabled="disabled">25</button>
-                                            <span class="smalltext ng-binding">$1.345 Million</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)" disabled="disabled">100</button>
-                                            <span class="smalltext ng-binding">$13.502 Billion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <!-- ngIf: settings.OCDMode -->
-                                            <button type="button" class="btn btn-default luckiest ng-scope" ng-if="settings.OCDMode" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)" disabled="disabled">
-                                                <!-- ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <buytext ng-if="calculateMaxAmount(building, $index) &lt; 10" class="ng-binding ng-scope">0</buytext>
-                                                <!-- end ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <!-- ngIf: calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100 -->
-                                                <!-- ngIf: (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100 -->
-                                            </button>
-                                            <!-- end ngIf: settings.OCDMode -->
-                                            <!-- ngIf: !settings.OCDMode -->
-                                            <span class="smalltext ng-binding">You can afford <strong class="ng-binding">0</strong> Transport</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!-- end ngRepeat: building in build -->
-                    <div ng-repeat="building in build" class="col-md-6 col-xs-12 ng-scope">
-
-                        <div class="card noselect">
-                            <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{&#39;normalcursor&#39; : building.auto}">
-                                <span class="ribbon"><span class="bgcolor-fa-graduation-cap">Civilian</span></span>
-                                <i class="fa faicon fa-graduation-cap icon-disabled smallicon" ng-class="{&#39;icon-disabled&#39; : building.num == 0, &#39;smallicon&#39; : !settings.maximizeLayout}"></i>
-                                <div class="buildtext ng-binding icon-disabled" ng-class="building.num == 0 ? &#39;icon-disabled&#39; : &#39;&#39;">0</div>
-                                <!-- ngIf: $index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3 -->
-                            </div>
-                            <div class="content-block">
-
-                                <div class="progress2">
-                                    <div class="progress-main2">
-                                        <div class="progress-bar2" ng-click="toggleRevenueText()">
-                                            <span class="progress-value2 progress-bar-reset" style="width: 0%;" ng-class="building.curPercent == 0 ? &#39;progress-bar-reset&#39; : &#39;&#39;"></span>
-                                            <!-- ngIf: !building.auto && building.num == 0 --><span class="text-center ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.num == 0">Profit: $51,840</span>
-                                            <!-- end ngIf: !building.auto && building.num == 0 -->
-                                            <!-- ngIf: !building.auto && building.num > 0 -->
-                                            <!-- ngIf: building.auto -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cardtext" ng-init="multi=3">
-                                    <!-- Standard layout -->
-                                    <!-- ngIf: !settings.maximizeLayout --><span ng-if="!settings.maximizeLayout" class="ng-scope">
-                        <strong class="luckiest ng-binding" style="font-size: 16px">Education</strong>
-                        <span class="smalltext ng-binding">
-                            <!-- ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] --><span ng-if="building.num &gt;= stats[&#39;highest&#39; + buildMeta[$index].shortName] " class="goaltooltips ng-scope">
-                                <i class="fa fa-check" style="color: #81c784">
-                                <span style="left: -65%;">
-                                    New building record achieved!
-                                </span>
-                                    </i>
-                                    </span>
-                                    <!-- end ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] -->
-                                    Cycle: 24s
-                                    <!-- ngIf: calculateBuildSpeed($index, building) > 20 --><span ng-if="calculateBuildSpeed($index, building) &gt; 20" class="ng-binding ng-scope">| Left: 24s </span>
-                                    <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
-                                    </span>
-                                    <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Education<span class="ng-binding">Education Speed Doubled<br>
-                              Required: $13.824 Million</span></span>
-                                    <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
-                                    <!-- ngIf: building.auto -->
-                                    <br>
-                                    </span>
-                                    <!-- end ngIf: !settings.maximizeLayout -->
-                                    <!-- Maximised layout -->
-                                    <!-- ngIf: settings.maximizeLayout -->
-                                </div>
-
-                                <div class="cardbuttons">
-                                    <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
-                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
-                        </p>-->
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
-                                        <div class="btn-group tooltips" role="group">
-
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)" disabled="disabled">Buy 1</button>
-                                            <span class="smalltext ng-binding">$103,680<br>
-                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
-                            </span>
-
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)" disabled="disabled">10</button>
-                                            <span class="smalltext ng-binding">$1.819 Million</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)" disabled="disabled">25</button>
-                                            <span class="smalltext ng-binding">$13.824 Million</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)" disabled="disabled">100</button>
-                                            <span class="smalltext ng-binding">$72.162 Billion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <!-- ngIf: settings.OCDMode -->
-                                            <button type="button" class="btn btn-default luckiest ng-scope" ng-if="settings.OCDMode" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)" disabled="disabled">
-                                                <!-- ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <buytext ng-if="calculateMaxAmount(building, $index) &lt; 10" class="ng-binding ng-scope">0</buytext>
-                                                <!-- end ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <!-- ngIf: calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100 -->
-                                                <!-- ngIf: (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100 -->
-                                            </button>
-                                            <!-- end ngIf: settings.OCDMode -->
-                                            <!-- ngIf: !settings.OCDMode -->
-                                            <span class="smalltext ng-binding">You can afford <strong class="ng-binding">0</strong> Education</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!-- end ngRepeat: building in build -->
-                    <div ng-repeat="building in build" class="col-md-6 col-xs-12 ng-scope">
-
-                        <div class="card noselect">
-                            <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{&#39;normalcursor&#39; : building.auto}">
-                                <span class="ribbon"><span class="bgcolor-fa-taxi">Transport</span></span>
-                                <i class="fa faicon fa-taxi icon-disabled smallicon" ng-class="{&#39;icon-disabled&#39; : building.num == 0, &#39;smallicon&#39; : !settings.maximizeLayout}"></i>
-                                <div class="buildtext ng-binding icon-disabled" ng-class="building.num == 0 ? &#39;icon-disabled&#39; : &#39;&#39;">0</div>
-                                <!-- ngIf: $index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3 -->
-                            </div>
-                            <div class="content-block">
-
-                                <div class="progress2">
-                                    <div class="progress-main2">
-                                        <div class="progress-bar2" ng-click="toggleRevenueText()">
-                                            <span class="progress-value2 progress-bar-reset" style="width: 0%;" ng-class="building.curPercent == 0 ? &#39;progress-bar-reset&#39; : &#39;&#39;"></span>
-                                            <!-- ngIf: !building.auto && building.num == 0 --><span class="text-center ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.num == 0">Profit: $622,080</span>
-                                            <!-- end ngIf: !building.auto && building.num == 0 -->
-                                            <!-- ngIf: !building.auto && building.num > 0 -->
-                                            <!-- ngIf: building.auto -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cardtext" ng-init="multi=3">
-                                    <!-- Standard layout -->
-                                    <!-- ngIf: !settings.maximizeLayout --><span ng-if="!settings.maximizeLayout" class="ng-scope">
-                        <strong class="luckiest ng-binding" style="font-size: 16px">Taxi service</strong>
-                        <span class="smalltext ng-binding">
-                            <!-- ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] --><span ng-if="building.num &gt;= stats[&#39;highest&#39; + buildMeta[$index].shortName] " class="goaltooltips ng-scope">
-                                <i class="fa fa-check" style="color: #81c784">
-                                <span style="left: -65%;">
-                                    New building record achieved!
-                                </span>
-                                    </i>
-                                    </span>
-                                    <!-- end ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] -->
-                                    Cycle: 1m 36s
-                                    <!-- ngIf: calculateBuildSpeed($index, building) > 20 --><span ng-if="calculateBuildSpeed($index, building) &gt; 20" class="ng-binding ng-scope">| Left: 1m 36s </span>
-                                    <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
-                                    </span>
-                                    <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Taxis<span class="ng-binding">Taxi Service Speed Doubled<br>
-                              Required: $142.348 Million</span></span>
-                                    <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
-                                    <!-- ngIf: building.auto -->
-                                    <br>
-                                    </span>
-                                    <!-- end ngIf: !settings.maximizeLayout -->
-                                    <!-- Maximised layout -->
-                                    <!-- ngIf: settings.maximizeLayout -->
-                                </div>
-
-                                <div class="cardbuttons">
-                                    <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
-                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
-                        </p>-->
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
-                                        <div class="btn-group tooltips" role="group">
-
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)" disabled="disabled">Buy 1</button>
-                                            <span class="smalltext ng-binding">$1.244 Million<br>
-                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
-                            </span>
-
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)" disabled="disabled">10</button>
-                                            <span class="smalltext ng-binding">$20.805 Million</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)" disabled="disabled">25</button>
-                                            <span class="smalltext ng-binding">$142.348 Million</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)" disabled="disabled">100</button>
-                                            <span class="smalltext ng-binding">$385.273 Billion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <!-- ngIf: settings.OCDMode -->
-                                            <button type="button" class="btn btn-default luckiest ng-scope" ng-if="settings.OCDMode" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)" disabled="disabled">
-                                                <!-- ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <buytext ng-if="calculateMaxAmount(building, $index) &lt; 10" class="ng-binding ng-scope">0</buytext>
-                                                <!-- end ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <!-- ngIf: calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100 -->
-                                                <!-- ngIf: (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100 -->
-                                            </button>
-                                            <!-- end ngIf: settings.OCDMode -->
-                                            <!-- ngIf: !settings.OCDMode -->
-                                            <span class="smalltext ng-binding">You can afford <strong class="ng-binding">0</strong> Taxis</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!-- end ngRepeat: building in build -->
-                    <div ng-repeat="building in build" class="col-md-6 col-xs-12 ng-scope">
-
-                        <div class="card noselect">
-                            <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{&#39;normalcursor&#39; : building.auto}">
-                                <span class="ribbon"><span class="bgcolor-fa-ship">Business</span></span>
-                                <i class="fa faicon fa-ship icon-disabled smallicon" ng-class="{&#39;icon-disabled&#39; : building.num == 0, &#39;smallicon&#39; : !settings.maximizeLayout}"></i>
-                                <div class="buildtext ng-binding icon-disabled" ng-class="building.num == 0 ? &#39;icon-disabled&#39; : &#39;&#39;">0</div>
-                                <!-- ngIf: $index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3 -->
-                            </div>
-                            <div class="content-block">
-
-                                <div class="progress2">
-                                    <div class="progress-main2">
-                                        <div class="progress-bar2" ng-click="toggleRevenueText()">
-                                            <span class="progress-value2 progress-bar-reset" style="width: 0%;" ng-class="building.curPercent == 0 ? &#39;progress-bar-reset&#39; : &#39;&#39;"></span>
-                                            <!-- ngIf: !building.auto && building.num == 0 --><span class="text-center ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.num == 0">Profit: $7.465 Million</span>
-                                            <!-- end ngIf: !building.auto && building.num == 0 -->
-                                            <!-- ngIf: !building.auto && building.num > 0 -->
-                                            <!-- ngIf: building.auto -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cardtext" ng-init="multi=3">
-                                    <!-- Standard layout -->
-                                    <!-- ngIf: !settings.maximizeLayout --><span ng-if="!settings.maximizeLayout" class="ng-scope">
-                        <strong class="luckiest ng-binding" style="font-size: 16px">Docks</strong>
-                        <span class="smalltext ng-binding">
-                            <!-- ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] --><span ng-if="building.num &gt;= stats[&#39;highest&#39; + buildMeta[$index].shortName] " class="goaltooltips ng-scope">
-                                <i class="fa fa-check" style="color: #81c784">
-                                <span style="left: -65%;">
-                                    New building record achieved!
-                                </span>
-                                    </i>
-                                    </span>
-                                    <!-- end ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] -->
-                                    Cycle: 6m 24s
-                                    <!-- ngIf: calculateBuildSpeed($index, building) > 20 --><span ng-if="calculateBuildSpeed($index, building) &gt; 20" class="ng-binding ng-scope">| Left: 6m 24s </span>
-                                    <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
-                                    </span>
-                                    <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Docks<span class="ng-binding">Docks Profit Speed Doubled<br>
-                              Required: $1.468 Billion</span></span>
-                                    <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
-                                    <!-- ngIf: building.auto -->
-                                    <br>
-                                    </span>
-                                    <!-- end ngIf: !settings.maximizeLayout -->
-                                    <!-- Maximised layout -->
-                                    <!-- ngIf: settings.maximizeLayout -->
-                                </div>
-
-                                <div class="cardbuttons">
-                                    <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
-                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
-                        </p>-->
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
-                                        <div class="btn-group tooltips" role="group">
-
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)" disabled="disabled">Buy 1</button>
-                                            <span class="smalltext ng-binding">$14.93 Million<br>
-                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
-                            </span>
-
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)" disabled="disabled">10</button>
-                                            <span class="smalltext ng-binding">$237.944 Million</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)" disabled="disabled">25</button>
-                                            <span class="smalltext ng-binding">$1.468 Billion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)" disabled="disabled">100</button>
-                                            <span class="smalltext ng-binding">$2.057 Trillion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <!-- ngIf: settings.OCDMode -->
-                                            <button type="button" class="btn btn-default luckiest ng-scope" ng-if="settings.OCDMode" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)" disabled="disabled">
-                                                <!-- ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <buytext ng-if="calculateMaxAmount(building, $index) &lt; 10" class="ng-binding ng-scope">0</buytext>
-                                                <!-- end ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <!-- ngIf: calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100 -->
-                                                <!-- ngIf: (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100 -->
-                                            </button>
-                                            <!-- end ngIf: settings.OCDMode -->
-                                            <!-- ngIf: !settings.OCDMode -->
-                                            <span class="smalltext ng-binding">You can afford <strong class="ng-binding">0</strong> Docks</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!-- end ngRepeat: building in build -->
-                    <div ng-repeat="building in build" class="col-md-6 col-xs-12 ng-scope">
-
-                        <div class="card noselect">
-                            <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{&#39;normalcursor&#39; : building.auto}">
-                                <span class="ribbon"><span class="bgcolor-fa-heartbeat">Civilian</span></span>
-                                <i class="fa faicon fa-heartbeat icon-disabled smallicon" ng-class="{&#39;icon-disabled&#39; : building.num == 0, &#39;smallicon&#39; : !settings.maximizeLayout}"></i>
-                                <div class="buildtext ng-binding icon-disabled" ng-class="building.num == 0 ? &#39;icon-disabled&#39; : &#39;&#39;">0</div>
-                                <!-- ngIf: $index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3 -->
-                            </div>
-                            <div class="content-block">
-
-                                <div class="progress2">
-                                    <div class="progress-main2">
-                                        <div class="progress-bar2" ng-click="toggleRevenueText()">
-                                            <span class="progress-value2 progress-bar-reset" style="width: 0%;" ng-class="building.curPercent == 0 ? &#39;progress-bar-reset&#39; : &#39;&#39;"></span>
-                                            <!-- ngIf: !building.auto && building.num == 0 --><span class="text-center ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.num == 0">Profit: $89.58 Million</span>
-                                            <!-- end ngIf: !building.auto && building.num == 0 -->
-                                            <!-- ngIf: !building.auto && building.num > 0 -->
-                                            <!-- ngIf: building.auto -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cardtext" ng-init="multi=3">
-                                    <!-- Standard layout -->
-                                    <!-- ngIf: !settings.maximizeLayout --><span ng-if="!settings.maximizeLayout" class="ng-scope">
-                        <strong class="luckiest ng-binding" style="font-size: 16px">Health care</strong>
-                        <span class="smalltext ng-binding">
-                            <!-- ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] --><span ng-if="building.num &gt;= stats[&#39;highest&#39; + buildMeta[$index].shortName] " class="goaltooltips ng-scope">
-                                <i class="fa fa-check" style="color: #81c784">
-                                <span style="left: -65%;">
-                                    New building record achieved!
-                                </span>
-                                    </i>
-                                    </span>
-                                    <!-- end ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] -->
-                                    Cycle: 25m 36s
-                                    <!-- ngIf: calculateBuildSpeed($index, building) > 20 --><span ng-if="calculateBuildSpeed($index, building) &gt; 20" class="ng-binding ng-scope">| Left: 25m 36s </span>
-                                    <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
-                                    </span>
-                                    <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Health<span class="ng-binding">Health Care Speed Doubled<br>
-                              Required: $15.175 Billion</span></span>
-                                    <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
-                                    <!-- ngIf: building.auto -->
-                                    <br>
-                                    </span>
-                                    <!-- end ngIf: !settings.maximizeLayout -->
-                                    <!-- Maximised layout -->
-                                    <!-- ngIf: settings.maximizeLayout -->
-                                </div>
-
-                                <div class="cardbuttons">
-                                    <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
-                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
-                        </p>-->
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
-                                        <div class="btn-group tooltips" role="group">
-
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)" disabled="disabled">Buy 1</button>
-                                            <span class="smalltext ng-binding">$179.159 Million<br>
-                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
-                            </span>
-
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)" disabled="disabled">10</button>
-                                            <span class="smalltext ng-binding">$2.722 Billion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)" disabled="disabled">25</button>
-                                            <span class="smalltext ng-binding">$15.175 Billion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)" disabled="disabled">100</button>
-                                            <span class="smalltext ng-binding">$11.004 Trillion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <!-- ngIf: settings.OCDMode -->
-                                            <button type="button" class="btn btn-default luckiest ng-scope" ng-if="settings.OCDMode" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)" disabled="disabled">
-                                                <!-- ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <buytext ng-if="calculateMaxAmount(building, $index) &lt; 10" class="ng-binding ng-scope">0</buytext>
-                                                <!-- end ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <!-- ngIf: calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100 -->
-                                                <!-- ngIf: (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100 -->
-                                            </button>
-                                            <!-- end ngIf: settings.OCDMode -->
-                                            <!-- ngIf: !settings.OCDMode -->
-                                            <span class="smalltext ng-binding">You can afford <strong class="ng-binding">0</strong> Health</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!-- end ngRepeat: building in build -->
-                    <div ng-repeat="building in build" class="col-md-6 col-xs-12 ng-scope">
-
-                        <div class="card noselect">
-                            <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{&#39;normalcursor&#39; : building.auto}">
-                                <span class="ribbon"><span class="bgcolor-fa-shopping-basket">Business</span></span>
-                                <i class="fa faicon fa-shopping-basket icon-disabled smallicon" ng-class="{&#39;icon-disabled&#39; : building.num == 0, &#39;smallicon&#39; : !settings.maximizeLayout}"></i>
-                                <div class="buildtext ng-binding icon-disabled" ng-class="building.num == 0 ? &#39;icon-disabled&#39; : &#39;&#39;">0</div>
-                                <!-- ngIf: $index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3 -->
-                            </div>
-                            <div class="content-block">
-
-                                <div class="progress2">
-                                    <div class="progress-main2">
-                                        <div class="progress-bar2" ng-click="toggleRevenueText()">
-                                            <span class="progress-value2 progress-bar-reset" style="width: 0%;" ng-class="building.curPercent == 0 ? &#39;progress-bar-reset&#39; : &#39;&#39;"></span>
-                                            <!-- ngIf: !building.auto && building.num == 0 --><span class="text-center ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.num == 0">Profit: $1.075 Billion</span>
-                                            <!-- end ngIf: !building.auto && building.num == 0 -->
-                                            <!-- ngIf: !building.auto && building.num > 0 -->
-                                            <!-- ngIf: building.auto -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cardtext" ng-init="multi=3">
-                                    <!-- Standard layout -->
-                                    <!-- ngIf: !settings.maximizeLayout --><span ng-if="!settings.maximizeLayout" class="ng-scope">
-                        <strong class="luckiest ng-binding" style="font-size: 16px">Shopping</strong>
-                        <span class="smalltext ng-binding">
-                            <!-- ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] --><span ng-if="building.num &gt;= stats[&#39;highest&#39; + buildMeta[$index].shortName] " class="goaltooltips ng-scope">
-                                <i class="fa fa-check" style="color: #81c784">
-                                <span style="left: -65%;">
-                                    New building record achieved!
-                                </span>
-                                    </i>
-                                    </span>
-                                    <!-- end ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] -->
-                                    Cycle: 1h 42m 24s
-                                    <!-- ngIf: calculateBuildSpeed($index, building) > 20 --><span ng-if="calculateBuildSpeed($index, building) &gt; 20" class="ng-binding ng-scope">| Left: 1h 42m 24s </span>
-                                    <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
-                                    </span>
-                                    <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Shopping<span class="ng-binding">Shopping Speed Doubled<br>
-                              Required: $157.171 Billion</span></span>
-                                    <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
-                                    <!-- ngIf: building.auto -->
-                                    <br>
-                                    </span>
-                                    <!-- end ngIf: !settings.maximizeLayout -->
-                                    <!-- Maximised layout -->
-                                    <!-- ngIf: settings.maximizeLayout -->
-                                </div>
-
-                                <div class="cardbuttons">
-                                    <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
-                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
-                        </p>-->
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
-                                        <div class="btn-group tooltips" role="group">
-
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)" disabled="disabled">Buy 1</button>
-                                            <span class="smalltext ng-binding">$2.15 Billion<br>
-                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
-                            </span>
-
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)" disabled="disabled">10</button>
-                                            <span class="smalltext ng-binding">$31.145 Billion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)" disabled="disabled">25</button>
-                                            <span class="smalltext ng-binding">$157.171 Billion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)" disabled="disabled">100</button>
-                                            <span class="smalltext ng-binding">$59.089 Trillion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <!-- ngIf: settings.OCDMode -->
-                                            <button type="button" class="btn btn-default luckiest ng-scope" ng-if="settings.OCDMode" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)" disabled="disabled">
-                                                <!-- ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <buytext ng-if="calculateMaxAmount(building, $index) &lt; 10" class="ng-binding ng-scope">0</buytext>
-                                                <!-- end ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <!-- ngIf: calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100 -->
-                                                <!-- ngIf: (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100 -->
-                                            </button>
-                                            <!-- end ngIf: settings.OCDMode -->
-                                            <!-- ngIf: !settings.OCDMode -->
-                                            <span class="smalltext ng-binding">You can afford <strong class="ng-binding">0</strong> Shopping</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!-- end ngRepeat: building in build -->
-                    <div ng-repeat="building in build" class="col-md-6 col-xs-12 ng-scope">
-
-                        <div class="card noselect">
-                            <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{&#39;normalcursor&#39; : building.auto}">
-                                <span class="ribbon"><span class="bgcolor-fa-university">Banks</span></span>
-                                <i class="fa faicon fa-university icon-disabled smallicon" ng-class="{&#39;icon-disabled&#39; : building.num == 0, &#39;smallicon&#39; : !settings.maximizeLayout}"></i>
-                                <div class="buildtext ng-binding icon-disabled" ng-class="building.num == 0 ? &#39;icon-disabled&#39; : &#39;&#39;">0</div>
-                                <!-- ngIf: $index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3 -->
-                            </div>
-                            <div class="content-block">
-
-                                <div class="progress2">
-                                    <div class="progress-main2">
-                                        <div class="progress-bar2" ng-click="toggleRevenueText()">
-                                            <span class="progress-value2 progress-bar-reset" style="width: 0%;" ng-class="building.curPercent == 0 ? &#39;progress-bar-reset&#39; : &#39;&#39;"></span>
-                                            <!-- ngIf: !building.auto && building.num == 0 --><span class="text-center ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.num == 0">Profit: $29.669 Billion</span>
-                                            <!-- end ngIf: !building.auto && building.num == 0 -->
-                                            <!-- ngIf: !building.auto && building.num > 0 -->
-                                            <!-- ngIf: building.auto -->
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="cardtext" ng-init="multi=3">
-                                    <!-- Standard layout -->
-                                    <!-- ngIf: !settings.maximizeLayout --><span ng-if="!settings.maximizeLayout" class="ng-scope">
-                        <strong class="luckiest ng-binding" style="font-size: 16px">Bank sector</strong>
-                        <span class="smalltext ng-binding">
-                            <!-- ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] --><span ng-if="building.num &gt;= stats[&#39;highest&#39; + buildMeta[$index].shortName] " class="goaltooltips ng-scope">
-                                <i class="fa fa-check" style="color: #81c784">
-                                <span style="left: -65%;">
-                                    New building record achieved!
-                                </span>
-                                    </i>
-                                    </span>
-                                    <!-- end ngIf: building.num >= stats['highest' + buildMeta[$index].shortName] -->
-                                    Cycle: 10h 14m 24s
-                                    <!-- ngIf: calculateBuildSpeed($index, building) > 20 --><span ng-if="calculateBuildSpeed($index, building) &gt; 20" class="ng-binding ng-scope">| Left: 10h 14m 24s </span>
-                                    <!-- end ngIf: calculateBuildSpeed($index, building) > 20 -->
-                                    </span>
-                                    <br>
-                                    <!-- ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined --><span class="smalltext goaltooltips ng-binding ng-scope" ng-if="!building.auto &amp;&amp; building.nextGoal &gt; -1 &amp;&amp; building.nextGoal != undefined">下一目标: <strong class="ng-binding">25</strong> Banks<span class="ng-binding">Bank Sector Speed Doubled<br>
-                              Required: $1.632 Trillion</span></span>
-                                    <!-- end ngIf: !building.auto && building.nextGoal > -1 && building.nextGoal != undefined -->
-                                    <!-- ngIf: building.auto -->
-                                    <br>
-                                    </span>
-                                    <!-- end ngIf: !settings.maximizeLayout -->
-                                    <!-- Maximised layout -->
-                                    <!-- ngIf: settings.maximizeLayout -->
-                                </div>
-
-                                <div class="cardbuttons">
-                                    <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
-                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
-                        </p>-->
-                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-
-                                        <div class="btn-group tooltips" role="group">
-
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)" disabled="disabled">Buy 1</button>
-                                            <span class="smalltext ng-binding">$25.799 Billion<br>
-                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
-                            </span>
-
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)" disabled="disabled">10</button>
-                                            <span class="smalltext ng-binding">$356.449 Billion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)" disabled="disabled">25</button>
-                                            <span class="smalltext ng-binding">$1.632 Trillion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)" disabled="disabled">100</button>
-                                            <span class="smalltext ng-binding">$319.433 Trillion</span>
-                                            <br>
-                                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
-                                        </div>
-                                        <div class="btn-group tooltips" role="group">
-                                            <!-- ngIf: settings.OCDMode -->
-                                            <button type="button" class="btn btn-default luckiest ng-scope" ng-if="settings.OCDMode" ng-disabled="curMoney &lt; calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)" disabled="disabled">
-                                                <!-- ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <buytext ng-if="calculateMaxAmount(building, $index) &lt; 10" class="ng-binding ng-scope">0</buytext>
-                                                <!-- end ngIf: calculateMaxAmount(building, $index) < 10 -->
-                                                <!-- ngIf: calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100 -->
-                                                <!-- ngIf: (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100 -->
-                                            </button>
-                                            <!-- end ngIf: settings.OCDMode -->
-                                            <!-- ngIf: !settings.OCDMode -->
-                                            <span class="smalltext ng-binding">You can afford <strong class="ng-binding">0</strong> Banks</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!-- end ngRepeat: building in build -->
-                    <div class="col-sm-12">
-                        <!-- ngIf: settings.goalsAll > -1 && settings.goalsAll != undefined && !over3000() -->
-                        <h4 class="text-center white opensans produceText ng-scope" ng-if="settings.goalsAll &gt; -1 &amp;&amp; settings.goalsAll != undefined &amp;&amp; !over3000()"><div class="tooltips ng-binding" style="z-index: 10">下一目标: 25 of all buildings<span class="smalltext ng-binding" style="top: 40px;">All Speed Doubled</span></div></h4>
-                        <!-- end ngIf: settings.goalsAll > -1 && settings.goalsAll != undefined && !over3000() -->
-                        <!-- ngIf: build[0].auto -->
-                        <!-- ngIf: stats.newRevenueRecord && curCitizens > 100 -->
-                    </div>
-                </div>
-            </div>
+        <div ng-if="inIframe" class="container text-center white">
+          <strong>注:如果你玩这个游戏，你的游戏体验会更好 <a href="http://cityinc.se">CityInc.se</a>.</strong>
         </div>
-
+        <div ui-view></div>
+        
         <!-- Ads. Yeah, sorry I had to. You guys are expensive and taking up a lot of bandwidth. :( -->
         <div class="container" style="margin-top: 10px">
-            <div class="col-md-12" style="height: 100px">
-                <!--          <script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-                <!-- CityInc -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5025509781553097" data-ad-slot="2680737359" data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-
-                </script>
-            </div>
-            <!--<div ng-if="adblock" class="container text-center white col-xs-12">
+        <div class="col-md-12" style="height: 100px">
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- CityInc -->
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5025509781553097"
+               data-ad-slot="2680737359"
+               data-ad-format="auto"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+        <!--<div ng-if="adblock" class="container text-center white col-xs-12">
           <strong>If you like CityInc, please consider disabling your adblocker to support further development.<br/>
           We won't force you, but it would be kind of nice of you. Thank you in advance! :)</strong>
         </div>-->
         </div>
-
-        <!-- ngIf: settings.showChat -->
-    </div>
-
-    <!-- ngIf: showNotification -->
-
-    <!-- Modal -->
-    <div class="modal fade in ng-hide" id="welcomemodal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal" style="display:block;" ng-hide="offlineCash == 0">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>×</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Welcome back!</h4>
-                </div>
-                <div class="modal-body">
-                    <strong>Welcome back Mayor!</strong> While you were away, your city has generated <strong class="ng-binding">$0</strong> in revenue! Now go put that cash to good use.
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="offlineCash = 0">Awesome, thanks!</button>
-                </div>
-            </div>
+        
+        <div class="container" ng-if="settings.showChat">
+          <div id="chat" class="text-center">
+            <iframe src="http://webchat.quakenet.org/?channels=CityInc" style="border:0; width:100%; height:500px;"></iframe>
+            <span class="text-center white opensans"><label>Display Chat: <input type="checkbox" class="md-checkbox" ng-model="settings.showChat"></label></span>
+          </div>
         </div>
     </div>
 
-
-    <!-- Modal -->
-    <div class="modal fade in ng-hide" id="winmodal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal" style="display:block;" ng-show="goals.length &gt;= goalsMeta.length &amp;&amp; settings.showFireworks">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>×</span></button>
-                    <h4 class="modal-title" id="myModalLabel">CONGRATULATIONS!</h4>
-                </div>
-                <div class="modal-body ng-binding">
-                    <strong>AMAZING!!</strong> You have completed CityInc in just 52 days! You have now completed CityInc 1 times. To start over, click the "Restart Game"-button under Settings. Check out all your stats under the statistics page, and don't forget to brag about your achievement on <a href="http://reddit.com/r/cityinc" target="_blank">Reddit.com/r/CityInc/</a>. Very well done, <strong>Congratulations!!</strong>
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="completeGame()">Woop woop!</button>
-                </div>
-            </div>
+    <div class="alert alert-success fade in" ng-if="showNotification">
+      <div class="row">
+        <div class="col-sm-4 text-center">
+          <i class="fa faicon {{ notificationIcon }} " ></i>
         </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade in ng-hide" id="errormodal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal" style="display:block;" ng-hide="1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>×</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Oh shit!</h4>
-                </div>
-                <div class="modal-body">
-                    <strong>Something went terrible wrong!</strong> First, try reloading the site with CTRL+F5 (CMD+F5 for MAC-people).
-                    <br>
-                    <br>Then, check out the console with F12, if you got any errors. Also, take a screenshots because those always helps!
-                    <br>
-                    <br> If that does not solve the issue, start a thread on <strong><a href="http://reddit.com/r/cityinc" target="_blank">Reddit.com/r/CityInc/</a></strong> explaining how you got this error, along with any Console Errors and screenshots.
-                </div>
-                <div class="modal-footer">
-
-                </div>
-            </div>
+        <div class="col-sm-8">
+          <a class="close" data-dismiss="alert" aria-label="close" ng-click="resetNotification()">&times;</a>
+          <h4>Goal Completed!</h4>
+          {{ notificationText }}
         </div>
+      </div>
     </div>
-    <script src="js/anime.min.js"></script>
-    <script src="js/fireworks.js"></script>
+    
+<!-- Modal -->
+<div class="modal fade in" id="welcomemodal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal" style="display:block;" ng-hide="offlineCash == 0">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span >&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Welcome back!</h4>
+      </div>
+      <div class="modal-body">
+        <strong>Welcome back Mayor!</strong> While you were away, your city has generated <strong>${{ offlineCash | megaNumber:powerNames:settings.scientificNumbers }}</strong> in revenue! Now go put that cash to good use.
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="offlineCash = 0">Awesome, thanks!</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
+<!-- Modal -->
+<div class="modal fade in" id="winmodal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal" style="display:block;" ng-show="goals.length >= goalsMeta.length && settings.showFireworks">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span >&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">CONGRATULATIONS!</h4>
+      </div>
+      <div class="modal-body">
+        <strong>AMAZING!!</strong> You have completed CityInc in just {{ daysBetween(stats.dateStarted, theDate()) }} days! You have now completed CityInc {{ completedGames + 1 }} times. To start over, click the "Restart Game"-button under Settings.
+        Check out all your stats under the statistics page, and don't forget to brag about your achievement 
+        on <a href="http://reddit.com/r/cityinc" target="_blank">Reddit.com/r/CityInc/</a>. Very well done, <strong>Congratulations!!</strong>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="completeGame()">Woop woop!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade in" id="errormodal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal" style="display:block;" ng-hide="1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span >&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">哦，该死!</h4>
+      </div>
+      <div class="modal-body">
+        <strong>发生了一些可怕的错误!</strong> 首先，尝试用CTRL + F5重新加载网站(MAC用户按 CMD + F5)。
+        <br/><br/>然后，如果您有任何错误，请用F12检查控制台。还有，截图，因为那些总是有用的！<br/><br/>
+        如果这不能解决问题，请前往 <strong><a href="http://reddit.com/r/cityinc" target="_blank">Reddit.com/r/CityInc/</a></strong> 发帖说明您如何获得此错误以及任何控制台错误和屏幕截图。
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/anime.min.js?hash=1101"></script>
+<script src="js/fireworks.js?hash=1101"></script>
 </body>
 
 </html>
