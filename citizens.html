@@ -2,17 +2,14 @@
   
     <div class="col-md-12">
       
-      <h2 class="white text-center">Citizens</h2>
+      <h2 class="white text-center">公民</h2>
       <hr/>
-      <h4 class="white opensans">Every great city needs its citizens. They help out with building the
-cities once they trust you enough. Each citizen grants new cities with a profit bonus. But the catch is that you won't get their help until
-you start a new city, where they will move to. It might seem tedious,
-but is very much worth it.</h4>
+      <h4 class="white opensans">每一个伟大的城市都需要它的公民。他们帮忙建造城市，直到他们足够信任你。每个市民都给新的城市带来了额外的利润。但问题是你不会得到他们的帮助直到你开始一个新的城市，他们会搬到那里。这看起来很乏味，但这是非常值得的。</h4>
       
       <br/>
       <div ng-if="curCitizens == 0 && availableCitizens >= 10">
-        <h3 class="white text-center opensans bold"><i class="fa fa-exclamation-circle" style="color: #FF0000"></i> You should really consider starting a new city</h3>
-        <h4 class="white text-center opensans">With the help from your citizens, a new city will be {{ availableCitizens * 2 }}% faster than your current one.</h4>
+        <h3 class="white text-center opensans bold"><i class="fa fa-exclamation-circle" style="color: #FF0000"></i> 你应该考虑开始一个新的城市</h3>
+        <h4 class="white text-center opensans">在你的公民的帮助下，一个新的城市的发展将会比当前城市快 {{ availableCitizens * 2 }}% </h4>
       </div>
       <br/>
       <div class="col-md-12">
@@ -21,7 +18,7 @@ but is very much worth it.</h4>
             <div class="icon-block text-center normalcursor">
               
                 <i class="fa faicon fa-users"></i>
-                <div class="buildtext" style="margin-top:7px;">{{ citizenHelp + citizenExtraHelp.amount | number : 2 }}% bonus<br/>per citizen</div>
+                <div class="buildtext" style="margin-top:7px;">{{ citizenHelp + citizenExtraHelp.amount | number : 2 }}% 奖励<br/>每个公民</div>
             </div>
             <div class="content-block" >
                
@@ -31,7 +28,7 @@ but is very much worth it.</h4>
                     <h4>{{ curCitizens | megaNumber:powerNames:settings.scientificNumbers }}</h4>
                     
                     <h3>即将伸出援手的公民</h3>
-                    <h4>{{ availableCitizens | megaNumber:powerNames:settings.scientificNumbers }} <span ng-if="curCitizens > 0" class="opensans">({{ Math.round((availableCitizens / curCitizens)*100) | megaNumber:powerNames:settings.scientificNumbers }}% of your current citizens)</span></h4>
+                    <h4>{{ availableCitizens | megaNumber:powerNames:settings.scientificNumbers }} <span ng-if="curCitizens > 0" class="opensans">({{ Math.round((availableCitizens / curCitizens)*100) | megaNumber:powerNames:settings.scientificNumbers }}% 你当前的公民)</span></h4>
                 </div>
                 
                 <div class="cardbuttons">
@@ -39,8 +36,8 @@ but is very much worth it.</h4>
                     <div class="btn-group btn-group-justified" role="group" aria-label="...">
                       <div class="btn-group tooltips" role="group">
                         <button type="button" class="btn btn-default luckiest" data-toggle="modal" data-target="#restartModal" ng-disabled="!citizenExtraHelp.allowRestart">开始新的城市</button>
-                        <span ng-if="!citizenExtraHelp.allowRestart && availableCitizens > 0" style="height: 60px; width:450px; left: 40%;">You'll need another {{ (curCitizens * 0.5) - availableCitizens | megaNumber:powerNames:settings.scientificNumbers }} citizens<br/> to start a new city</span>
-                        <span ng-if="!citizenExtraHelp.allowRestart && availableCitizens == 0" style="height: 60px; width:450px; left: 40%;">You need citizens to be able to start a new city. You'll gain citizens by earning a lot of cash!</span>
+                        <span ng-if="!citizenExtraHelp.allowRestart && availableCitizens > 0" style="height: 60px; width:450px; left: 40%;">你会需要其它{{ (curCitizens * 0.5) - availableCitizens | megaNumber:powerNames:settings.scientificNumbers }} 公民<br/> 去开始一个新城市</span>
+                        <span ng-if="!citizenExtraHelp.allowRestart && availableCitizens == 0" style="height: 60px; width:450px; left: 40%;">你需要市民能够开始一个新的城市。你将通过赚很多钱来获得市民!</span>
                       </div>
                       
                     </div>
@@ -57,20 +54,20 @@ but is very much worth it.</h4>
      
           <div class="text-center">
               <div class="row">
-                <h4 class="white">Choose your specialization for when you restart your city</h4>
+                <h4 class="white">重新启动您的城市时，请选择您的专业化服务</h4>
                 <hr/>
-                <div ng-if="!politicsBoost.allowPoliticsBoost || politicsBoost.allowPoliticsBoost == undefined" class="white"><i>Specialization is currently locked. You need to open it up by obtaining the level 3 strategy under the Politics tab.</i><br/><br/>   </div>
-                <div ng-if="politicsBoost.allowPoliticsBoost" class="white">These values are activated once you start a new city<br/><br/>   </div>
+                <div ng-if="!politicsBoost.allowPoliticsBoost || politicsBoost.allowPoliticsBoost == undefined" class="white"><i>专业化目前处于锁定状态。你需要通过在“政治标签”下获得第3级策略来打开它。</i><br/><br/>   </div>
+                <div ng-if="politicsBoost.allowPoliticsBoost" class="white">一旦开始新的城市，这些值就被激活<br/><br/>   </div>
                 
                 <!--<h2 class="white text-center">Political Ideology</h2>
                 <hr/>
                 <h4 class="white opensans">Your ideology determines how your city will be run and the happiness of your citizens. To the left, you gain more citizens, but your profit will be lower. If your politics is to the right your profits will go up, but you will not gain citizens as fast. However, this option is not available until all your politicians has been hired. Also, you can only use this setting once per new city.</h4><br/>-->
                 <div>
                   <div class='sliderText'>
-                      <p id="slidertext1" class="white luckiest">More Citizens<br/> less profits</p>
-                      <p id="slidertext2" ng-hide="checkIdeology()" class="red luckiest"><br/>LOCKED</p>
-                      <p id="slidertext2" ng-hide="!checkIdeology()" class="white luckiest"><br/>Current active bonus: {{ (politicsIdeology.value) * 100 | number: 1 }}% profits, {{ ((politicsIdeology.value * -1) * 100) | number: 1 }}% citizens</p>
-                      <p id="slidertext3" class="white luckiest">More Profits<br/> fewer citizens</p>
+                      <p id="slidertext1" class="white luckiest">更多公民<br/> 减少利润</p>
+                      <p id="slidertext2" ng-hide="checkIdeology()" class="red luckiest"><br/>锁定</p>
+                      <p id="slidertext2" ng-hide="!checkIdeology()" class="white luckiest"><br/>当前激活奖励: {{ (politicsIdeology.value) * 100 | number: 1 }}% 利润, {{ ((politicsIdeology.value * -1) * 100) | number: 1 }}% 公民</p>
+                      <p id="slidertext3" class="white luckiest">更多利润<br/> 更少公民</p>
                   </div>
                   <input type="range" max="0.10" min="-0.10" step="0.001" class="slider" ng-model="politicsIdeology.sliderValue" name="politicsSlider" ng-change="changePoliticsIdeology(politicsIdeology.sliderValue)" ng-disabled="!checkIdeology()"/>
                   <div class='sliderText'>
@@ -89,43 +86,43 @@ but is very much worth it.</h4>
                   <div ng-class="{transparent: politicsBoost.upcomingTransportMultiplier <= 1}">
                   <p class="boostButton white pull-right" ng-click="changePoliticsBoost('transport')" ng-class="politicsBoost.allowPoliticsBoost && politicsBoost.allowPoliticsBoost != undefined ? '' : 'disabled'">
                     <strong>
-                      <span>+20% Transport<br/><br/>
-                      -10% Civilian<br/>
-                      -10% Business</span>
+                      <span>+20% 运输<br/><br/>
+                      -10% 平民<br/>
+                      -10% 商业</span>
                     </strong>
                   </p>
                   </div>
-                  <h4 class="white opensans bold pull-right" ng-if="politicsBoost.transportMultiplier > 1">CURRENTLY ACTIVE</h4>
+                  <h4 class="white opensans bold pull-right" ng-if="politicsBoost.transportMultiplier > 1">当前激活</h4>
                 </div>
                 <div class="col-xs-4 col-sm-4">
                   <div ng-class="{transparent: politicsBoost.upcomingCivilianMultiplier <= 1}">
                     <p class="boostButton text-center white center-block" ng-click="changePoliticsBoost('civilian')" ng-class="!politicsBoost.allowPoliticsBoost || politicsBoost.allowPoliticsBoost == undefined ? 'disabled' : ''">
                       <strong>
-                        <span>+20% Civilian<br/><br/>
-                        -10% Transport<br/>
-                        -10% Business</span>
+                        <span>+20% 平民<br/><br/>
+                        -10% 运输<br/>
+                        -10% 商业</span>
                       </strong>
                     </p>
                   </div>
-                  <h4 class="white opensans bold" ng-if="politicsBoost.civilianMultiplier > 1">CURRENTLY ACTIVE</h4>
+                  <h4 class="white opensans bold" ng-if="politicsBoost.civilianMultiplier > 1">当前激活</h4>
                 </div>
                 <div class="col-xs-4 col-sm-4">
                   <div ng-class="{transparent: politicsBoost.upcomingBusinessMultiplier <= 1}">
                   <p class="boostButton text-center white pull-left" ng-click="changePoliticsBoost('business')" ng-class="!politicsBoost.allowPoliticsBoost || politicsBoost.allowPoliticsBoost == undefined ? 'disabled' : ''">
                     <strong>
-                      <span>+20% Business<br/><br/>
-                      -15% Transport<br/>
-                      -15% Civilian</span>
+                      <span>+20% 商业<br/><br/>
+                      -15% 运输<br/>
+                      -15% 平民</span>
                     </strong>
                   </p>
                   </div>
-                  <h4 class="white opensans bold pull-left" ng-if="politicsBoost.businessMultiplier > 1">CURRENTLY ACTIVE</h4>
+                  <h4 class="white opensans bold pull-left" ng-if="politicsBoost.businessMultiplier > 1">当前激活</h4>
                 </div>
               </div>
             
-              <h4 class="white">or...</h4>
-              <button class="btn" ng-click="changePoliticsBoost()" ng-class="!politicsBoost.allowPoliticsBoost || politicsBoost.allowPoliticsBoost == undefined ? 'disabled' : ''">None of the above</button>
-              <h4 class="white opensans bold" ng-if="politicsBoost.transportMultiplier == 1 && politicsBoost.civilianMultiplier == 1 && politicsBoost.businessMultiplier == 1">CURRENTLY ACTIVE</h4>
+              <h4 class="white">或者...</h4>
+              <button class="btn" ng-click="changePoliticsBoost()" ng-class="!politicsBoost.allowPoliticsBoost || politicsBoost.allowPoliticsBoost == undefined ? 'disabled' : ''">以上都不是</button>
+              <h4 class="white opensans bold" ng-if="politicsBoost.transportMultiplier == 1 && politicsBoost.civilianMultiplier == 1 && politicsBoost.businessMultiplier == 1">当前激活</h4>
           </div>
         </div>
       
@@ -137,14 +134,14 @@ but is very much worth it.</h4>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Start New City</h4>
+        <h4 class="modal-title" id="myModalLabel">开始新的城市</h4>
       </div>
       <div class="modal-body">
-        <strong>WARNING!</strong> You will leave your current city behind, but you will get to keep the citizens to help you out and the coins you earned. After the restart you'll have additional {{ availableCitizens | megaNumber:powerNames:settings.scientificNumbers }} citizens to help you out, giving 2% in bonus each, at the start.
+        <strong>警告!</strong> 你将离开你现在的城市，但你将会让市民帮助你和你赚的硬币。在重新启动之后，您将获得额外的 {{ availableCitizens | megaNumber:powerNames:settings.scientificNumbers }} 公民们可以帮助你，在开始的时候给予2%的奖金。
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="softReset()">Restart City</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="softReset()">开始新的城市</button>
       </div>
     </div>
   </div>
@@ -153,9 +150,9 @@ but is very much worth it.</h4>
     
     <div class="col-md-12">
       <br/><br/>
-      <h2 class="white text-center">Citizen upgrades</h2>
+      <h2 class="white text-center">公民升级</h2>
       <hr/>
-      <h4 class="white opensans text-center">Sacrifice some of your citizens for the greater good. But remember: You will lose those citizens you sacrifice.</h4>
+      <h4 class="white opensans text-center">为了更大的利益牺牲一些公民。但请记住:你将失去那些你牺牲的公民。</h4>
       <br/><br/>
       
       <div class="col-md-12" ng-repeat="citizenUpgrade in citizensUpgradesMeta">
@@ -174,7 +171,7 @@ but is very much worth it.</h4>
                   <div class="cardtext">
                       <h2>{{ citizenUpgrade.name }}</h2>
                       {{ citizenUpgrade.desc }}
-                      <h4>花费: {{ citizenUpgrade.cost | megaNumber:powerNames:settings.scientificNumbers }} citizens</h4>
+                      <h4>花费: {{ citizenUpgrade.cost | megaNumber:powerNames:settings.scientificNumbers }} 公民</h4>
 
                   </div>
                   
