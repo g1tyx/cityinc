@@ -2,27 +2,27 @@
   
     <div class="col-md-12 text-center">
       
-      <h1 class="white text-center">Settings</h1>
+      <h1 class="white text-center">设置</h1>
       
-      <div ng-if="isDev()">
-      <h3 class="white">Development Settings</h3>
+      <div ng-if="isDev()" style="display: none;">
+      <h3 class="white">开发设置</h3>
       <hr/>
-      <h4 class="white opensans">This is some awesome development settings. You should NOT see this if you are not the developers, or part of the test team.</h4>
+      <h4 class="white opensans">这是一些很棒的开发设置。如果您不是开发人员，或者测试团队的一部分，您就不应该看到这种情况。</h4>
       
       <br/>
-      <input type="text" name="devCash" ng-model="devCash" style="width:50%"> <button class="btn" ng-click="devChange(devCash, 'cash')">Change cash</button>
+      <input type="text" name="devCash" ng-model="devCash" style="width:50%"> <button class="btn" ng-click="devChange(devCash, 'cash')">修改现金</button>
       
       <br/><br/>
       
-      <input type="text" name="devCitizens" ng-model="devCitizens" style="width:50%"> <button class="btn" ng-click="devChange(devCitizens, 'citizens')">Change citizens</button>
+      <input type="text" name="devCitizens" ng-model="devCitizens" style="width:50%"> <button class="btn" ng-click="devChange(devCitizens, 'citizens')">修改公民</button>
       
       <br/><br/>
       
-      <input type="text" name="devCoins" ng-model="devCoins" style="width:50%"> <button class="btn" ng-click="devChange(devCoins, 'coins')">Change coins</button>
+      <input type="text" name="devCoins" ng-model="devCoins" style="width:50%"> <button class="btn" ng-click="devChange(devCoins, 'coins')">修改硬币</button>
       </div>
       
       <br/><br/>
-      <h3 class="white">Layout</h3>
+      <h3 class="white">布局</h3>
       <hr/>
       <div class="row">
         <div class="col-sm-6">
