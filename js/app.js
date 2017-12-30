@@ -1221,22 +1221,22 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
         if($scope.happiness.sliderValue >= 80) {
           $scope.happiness.value = 1.10;
           $scope.happiness.smile = "amazed.png";
-          $scope.happiness.text = "Your citizens currently have amazing confidence in you! Giving you an extra "+ $filter('number')(($scope.happiness.value + $scope.happiness.multiplier - 1) * 100, 1) +"% in profits!";
+          $scope.happiness.text = "你的市民现在对你有了惊人的信心！给你一个额外 "+ $filter('number')(($scope.happiness.value + $scope.happiness.multiplier - 1) * 100, 1) +"% 的利润!";
         }
         else if ($scope.happiness.sliderValue >= 40 && $scope.happiness.sliderValue < 80) {
           $scope.happiness.value = 1.07;
           $scope.happiness.smile = "happy.png";
-          $scope.happiness.text = "Your citizens currently have high confidence in you as a leader, giving you an extra "+ $filter('number')(($scope.happiness.value + $scope.happiness.multiplier - 1) * 100, 1) +"% in profits.";
+          $scope.happiness.text = "你的公民现在对你作为领导者有很高的信心，给你额外的 "+ $filter('number')(($scope.happiness.value + $scope.happiness.multiplier - 1) * 100, 1) +"% 的利润。";
         }
         else if ($scope.happiness.sliderValue >= 9 && $scope.happiness.sliderValue < 40) {
           $scope.happiness.value = 1.03;
           $scope.happiness.smile = "neutral.png";
-          $scope.happiness.text = "Your citizens are currently happy with you, giving you an extra "+ $filter('number')(($scope.happiness.value + $scope.happiness.multiplier - 1) * 100, 1) +"% in profits.";
+          $scope.happiness.text = "你的公民现在对你很满意，给你额外 "+ $filter('number')(($scope.happiness.value + $scope.happiness.multiplier - 1) * 100, 1) +"% 的利润。";
         }
         else if ($scope.happiness.sliderValue < 9) {
           $scope.happiness.value = 1;
           $scope.happiness.smile = "worried.png";
-          $scope.happiness.text = "Your citizens are currently neutral towards you, giving you no extra bonus";
+          $scope.happiness.text = "你的公民对你持中立态度，不会给你额外的奖励。";
         }
         
     };
