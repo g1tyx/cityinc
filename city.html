@@ -108,11 +108,10 @@
                 
                   <div class="btn-group btn-group-justified" role="group" >
                     <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default luckiest tooltips" ng-disabled="curMoney < tileUpgrade.cost"  ng-click="getTile(tileUpgrade)">Purchase improvement
-                      
+                      <button type="button" class="btn btn-default luckiest tooltips" ng-disabled="curMoney < tileUpgrade.cost"  ng-click="getTile(tileUpgrade)">购买改进
                         <span style="height: 60px; width:450px; left: 28%;" ng-if="tileUpgrade.upgradeRef == 2 && curMoney > tileUpgrade.cost">
-                          <strong>Now:</strong> ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }}/秒<br/>
-                          <strong>After:</strong> ${{ totalMoneyPerSecond() * tileUpgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers }}/秒
+                          <strong>购买前:</strong> ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }}/秒<br/>
+                          <strong>购买后:</strong> ${{ totalMoneyPerSecond() * tileUpgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers }}/秒
                         </span>
                       </button>
                     </div>
@@ -178,7 +177,7 @@
                 <div class="cardtext">
                     <h2>{{ coinUpgrade.name }}</h2>
                     {{ coinUpgrade.description }}<br/>
-                    <h4>花费: {{ coinUpgrade.cost | megaNumber:powerNames:settings.scientificNumbers }} coins</h4>
+                    <h4>花费: {{ coinUpgrade.cost | megaNumber:powerNames:settings.scientificNumbers }} 硬币</h4>
                 </div>
                 
                 <div class="cardbuttons">
@@ -187,11 +186,11 @@
                     <div class="btn-group" role="group">
                       <button type="button" class="btn btn-default luckiest tooltips" ng-disabled="coins.value < coinUpgrade.cost || (coinUpgrade.id == 17 && completedGames > 0)"  ng-click="getCoinUpgrade(coinUpgrade)">Purchase Coin Upgrade
                         <span style="height: 60px; width:450px; left: 28%;" ng-if="coinUpgrade.type == 2 && coins.value > coinUpgrade.cost">
-                          <strong>Now:</strong> ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }}/秒<br/>
-                          <strong>After:</strong> ${{ totalMoneyPerSecond() * coinUpgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers }}/秒
+                          <strong>购买前:</strong> ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }}/秒<br/>
+                          <strong>购买后:</strong> ${{ totalMoneyPerSecond() * coinUpgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers }}/秒
                         </span>
                         <span style="height: 60px; width:450px; left: 28%;" ng-if="coinUpgrade.id == 17 && completedGames > 0">
-                          This upgrade is not available if you<br/>have completed CityInc once before.
+                          如果你曾经在城市里完成过一次升级，那么这次升级是不可用的。
                         </span>
                       </button>
                     </div>

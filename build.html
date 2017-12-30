@@ -8,7 +8,7 @@
                     <span class="ribbon"><span class="bgcolor-{{buildMeta[$index].icon}}">{{ ::checkCategory(buildMeta[$index].happyCategory) }}</span></span>
                     <i class="fa faicon {{ ::buildMeta[$index].icon }}" ng-class="{'icon-disabled' : building.num == 0, 'smallicon' : !settings.maximizeLayout}"></i>
                     <div class="buildtext" ng-class="building.num == 0 ? 'icon-disabled' : ''">{{ building.num }}</div>
-                    <p class="tutorialtip" ng-if="$index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3"><span>Click here to <br/>earn your first buck</span></p>
+                    <p class="tutorialtip" ng-if="$index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3"><span>点击这里 <br/>赚取你的第一笔钱</span></p>
                 </div>
                 <div class="content-block">
                   
@@ -16,8 +16,8 @@
                           <div class="progress-main2">
                             <div class="progress-bar2" ng-click="toggleRevenueText()">
                               <span class="progress-value2" style="width: {{ building.curPercent }}%;" ng-class="building.curPercent == 0 ? 'progress-bar-reset' : ''"></span>
-                              <span class="text-center" ng-if="!building.auto && building.num == 0">Profit: ${{ calculateRevenue($index, building, false, false, true) | megaNumber:powerNames:settings.scientificNumbers }}</span>
-                              <span class="text-center" ng-if="!building.auto && building.num > 0">Profit: ${{ calculateRevenue($index, building) | megaNumber:powerNames:settings.scientificNumbers }}</span>
+                              <span class="text-center" ng-if="!building.auto && building.num == 0">利润: ${{ calculateRevenue($index, building, false, false, true) | megaNumber:powerNames:settings.scientificNumbers }}</span>
+                              <span class="text-center" ng-if="!building.auto && building.num > 0">利润: ${{ calculateRevenue($index, building) | megaNumber:powerNames:settings.scientificNumbers }}</span>
                               <span class="text-center profittext" ng-if="building.auto">
                                 <span ng-if="!settings.showRevenueCycle">${{ calculateRevenue($index, building, true) | megaNumber:powerNames:settings.scientificNumbers:1 }}/秒</span>
                                 <span ng-if="settings.showRevenueCycle"><strong ng-if="calculateBuildSpeed($index, building) < 0.25">${{ calculateRevenue($index, building) / (0.25 / calculateBuildSpeed($index, building)) | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</strong><strong ng-if="calculateBuildSpeed($index, building) >= 0.25">${{ calculateRevenue($index, building) | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</strong></span>
