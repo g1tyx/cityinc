@@ -29,7 +29,7 @@ var buildMeta = [
         },
         {
           id: 2,
-          name: '办公室',
+          name: 'Offices',
           shortName: 'Offices',
           icon: 'fa-briefcase',
           description: 'Business business business.',
