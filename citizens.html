@@ -27,10 +27,10 @@ but is very much worth it.</h4>
                
                 
                 <div class="cardtext">
-                    <h3>Current Citizens helping out</h3>
+                    <h3>当前公民伸出援手</h3>
                     <h4>{{ curCitizens | megaNumber:powerNames:settings.scientificNumbers }}</h4>
                     
-                    <h3>Upcoming helping Citizens</h3>
+                    <h3>即将伸出援手的公民</h3>
                     <h4>{{ availableCitizens | megaNumber:powerNames:settings.scientificNumbers }} <span ng-if="curCitizens > 0" class="opensans">({{ Math.round((availableCitizens / curCitizens)*100) | megaNumber:powerNames:settings.scientificNumbers }}% of your current citizens)</span></h4>
                 </div>
                 
@@ -38,7 +38,7 @@ but is very much worth it.</h4>
                 
                     <div class="btn-group btn-group-justified" role="group" aria-label="...">
                       <div class="btn-group tooltips" role="group">
-                        <button type="button" class="btn btn-default luckiest" data-toggle="modal" data-target="#restartModal" ng-disabled="!citizenExtraHelp.allowRestart">Start new city</button>
+                        <button type="button" class="btn btn-default luckiest" data-toggle="modal" data-target="#restartModal" ng-disabled="!citizenExtraHelp.allowRestart">开始新的城市</button>
                         <span ng-if="!citizenExtraHelp.allowRestart && availableCitizens > 0" style="height: 60px; width:450px; left: 40%;">You'll need another {{ (curCitizens * 0.5) - availableCitizens | megaNumber:powerNames:settings.scientificNumbers }} citizens<br/> to start a new city</span>
                         <span ng-if="!citizenExtraHelp.allowRestart && availableCitizens == 0" style="height: 60px; width:450px; left: 40%;">You need citizens to be able to start a new city. You'll gain citizens by earning a lot of cash!</span>
                       </div>

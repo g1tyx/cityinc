@@ -19,8 +19,8 @@
                               <span class="text-center" ng-if="!building.auto && building.num == 0">Profit: ${{ calculateRevenue($index, building, false, false, true) | megaNumber:powerNames:settings.scientificNumbers }}</span>
                               <span class="text-center" ng-if="!building.auto && building.num > 0">Profit: ${{ calculateRevenue($index, building) | megaNumber:powerNames:settings.scientificNumbers }}</span>
                               <span class="text-center profittext" ng-if="building.auto">
-                                <span ng-if="!settings.showRevenueCycle">${{ calculateRevenue($index, building, true) | megaNumber:powerNames:settings.scientificNumbers:1 }}/sec</span>
-                                <span ng-if="settings.showRevenueCycle"><strong ng-if="calculateBuildSpeed($index, building) < 0.25">${{ calculateRevenue($index, building) / (0.25 / calculateBuildSpeed($index, building)) | megaNumber:powerNames:settings.scientificNumbers:1 }}/cycle</strong><strong ng-if="calculateBuildSpeed($index, building) >= 0.25">${{ calculateRevenue($index, building) | megaNumber:powerNames:settings.scientificNumbers:1 }}/cycle</strong></span>
+                                <span ng-if="!settings.showRevenueCycle">${{ calculateRevenue($index, building, true) | megaNumber:powerNames:settings.scientificNumbers:1 }}/秒</span>
+                                <span ng-if="settings.showRevenueCycle"><strong ng-if="calculateBuildSpeed($index, building) < 0.25">${{ calculateRevenue($index, building) / (0.25 / calculateBuildSpeed($index, building)) | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</strong><strong ng-if="calculateBuildSpeed($index, building) >= 0.25">${{ calculateRevenue($index, building) | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</strong></span>
                               </span>
                             </div>
                         </div>
@@ -34,14 +34,14 @@
                             <span ng-if="building.num >= stats['highest' + buildMeta[$index].shortName] " class="goaltooltips">
                                 <i class="fa fa-check" style="color: #81c784">
                                 <span style="left: -65%;">
-                                    New building record achieved!
+                                    新建筑纪录达成！
                                 </span>
                                 </i>
                             </span> 
-                            Cycle: {{ calculateBuildSpeed($index, building) | formatTimer }} <span ng-if="calculateBuildSpeed($index, building) > 20">| Left: {{ ((100 - building.curPercent) / 100) * calculateBuildSpeed($index, building) | formatTimer }} </span></span>
+                            每轮时间: {{ calculateBuildSpeed($index, building) | formatTimer }} <span ng-if="calculateBuildSpeed($index, building) > 20">| 剩余: {{ ((100 - building.curPercent) / 100) * calculateBuildSpeed($index, building) | formatTimer }} </span></span>
                         <br/>
                         <span class="smalltext goaltooltips" ng-if="!building.auto && building.nextGoal > -1 && building.nextGoal != undefined">下一目标: <strong>{{goalsMeta[building.nextGoal].goal}}</strong> {{ ::buildMeta[$index].shortName }}<span>{{goalsMeta[building.nextGoal].desc}}<br/>
-                              Required: ${{ calculateBuildingCost(building, $index, goalsMeta[building.nextGoal].goal - building.num) | megaNumber:powerNames:settings.scientificNumbers }}</span></span>
+                              需要: ${{ calculateBuildingCost(building, $index, goalsMeta[building.nextGoal].goal - building.num) | megaNumber:powerNames:settings.scientificNumbers }}</span></span>
                         <span class="smalltext" ng-if="building.auto">
                           <span ng-if="building.nextGoal > -1 && building.nextGoal != undefined" class="goaltooltips">
                             下一目标: 
@@ -54,7 +54,7 @@
                               Required: ${{ calculateBuildingCost(building, $index, goalsMeta[building.nextGoal].goal - building.num) | megaNumber:powerNames:settings.scientificNumbers }}
                             </span>
                           </span>
-                          {{ building.curRevenue | number:2 }}% of revenue 
+                          {{ building.curRevenue | number:2 }}% 的收入
                         </span>
                         <br/>
                       </span>
@@ -64,19 +64,19 @@
                             <span class="smalltext"><span ng-if="building.num >= stats['highest' + buildMeta[$index].shortName] && curCitizens > 100" class="goaltooltips">
                                 <i class="fa fa-check" style="color: #81c784">
                                   <span>
-                                    New building record achieved!
+                                    新建筑纪录达成！
                                   </span>
                                 </i>
                               </span>
                             </span>
                         </h2>
                             
-                        <strong>Cycle Time:</strong> {{ calculateBuildSpeed($index, building) | formatTimer }} <span ng-if="calculateBuildSpeed($index, building) > 20">| <strong>Left</strong>: {{ ((100 - building.curPercent) / 100) * calculateBuildSpeed($index, building) | formatTimer }} </span><br/>
+                        <strong>每轮时间:</strong> {{ calculateBuildSpeed($index, building) | formatTimer }} <span ng-if="calculateBuildSpeed($index, building) > 20">| <strong>剩余</strong>: {{ ((100 - building.curPercent) / 100) * calculateBuildSpeed($index, building) | formatTimer }} </span><br/>
                         <span ng-if="!building.auto && building.nextGoal > -1 && building.nextGoal != undefined" class="goaltooltips">下一目标: <strong>{{goalsMeta[building.nextGoal].goal}}</strong> {{ ::buildMeta[$index].shortName }}<span>{{goalsMeta[building.nextGoal].desc}}</span></span>
                         <span ng-if="building.auto"><span ng-if="building.nextGoal > -1 && building.nextGoal != undefined" class="goaltooltips">下一目标: <strong>{{goalsMeta[building.nextGoal].goal}}</strong> {{ ::buildMeta[$index].shortName }}<span>{{goalsMeta[building.nextGoal].desc}}<br/>
-                              Required: ${{ calculateBuildingCost(building, $index, goalsMeta[building.nextGoal].goal - building.num) | megaNumber:powerNames:settings.scientificNumbers }}</span> | </span>{{ building.curRevenue | number:0 }}% of revenue</span>
+                              需要: ${{ calculateBuildingCost(building, $index, goalsMeta[building.nextGoal].goal - building.num) | megaNumber:powerNames:settings.scientificNumbers }}</span> | </span>{{ building.curRevenue | number:0 }}% of revenue</span>
                         <br/>
-                        <strong>Cost: ${{ calculateBuildingCost(building, $index, 1) | megaNumber:powerNames:settings.scientificNumbers }}</strong> <br/>
+                        <strong>花费: ${{ calculateBuildingCost(building, $index, 1) | megaNumber:powerNames:settings.scientificNumbers }}</strong> <br/>
                       </span>
                     </div>
                     
@@ -88,7 +88,7 @@
                           
                           <div class="btn-group tooltips" role="group">
                           
-                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney < calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)">Buy 1</button>
+                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney < calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)">购买 1</button>
                             <span class="smalltext">${{ calculateBuildingCost(building, $index, 1) | megaNumber:powerNames:settings.scientificNumbers }}<br/>
                             <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
                             </span>
@@ -118,7 +118,7 @@
                             <button type="button" class="btn btn-default luckiest" ng-if="!settings.OCDMode" ng-disabled="curMoney < calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)">
                               {{ calculateMaxAmount(building, $index) }}
                             </button>
-                            <span class="smalltext">You can afford <strong>{{ calculateMaxAmount(building, $index) }}</strong> {{ ::buildMeta[$index].shortName }}</span>
+                            <span class="smalltext">你能负担得起 <strong>{{ calculateMaxAmount(building, $index) }}</strong> {{ ::buildMeta[$index].shortName }}</span>
                           </div>
                         </div>
                         
@@ -131,9 +131,9 @@
             
         </div>
         <div class="col-sm-12">
-        <h4 class="text-center white opensans produceText" ng-if="settings.goalsAll > -1 && settings.goalsAll != undefined && !over3000()"><div class="tooltips" style="z-index: 10">下一目标: {{goalsMeta[settings.goalsAll].goal}} of all buildings<span class="smalltext" style="top: 40px;">{{goalsMeta[settings.goalsAll].desc}}</span></div></h4>
-        <h4 class="text-center white opensans produceText" ng-if="build[0].auto">Producing ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }} per second</h4>
-        <h4 class="text-center green opensans produceText" ng-if="stats.newRevenueRecord && curCitizens > 100"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <i>New revenue record!</i></h4>
+        <h4 class="text-center white opensans produceText" ng-if="settings.goalsAll > -1 && settings.goalsAll != undefined && !over3000()"><div class="tooltips" style="z-index: 10">下一目标: {{goalsMeta[settings.goalsAll].goal}} 全部建筑<span class="smalltext" style="top: 40px;">{{goalsMeta[settings.goalsAll].desc}}</span></div></h4>
+        <h4 class="text-center white opensans produceText" ng-if="build[0].auto">产生 ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }} 每秒</h4>
+        <h4 class="text-center green opensans produceText" ng-if="stats.newRevenueRecord && curCitizens > 100"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <i>新收入记录!</i></h4>
         </div>
     </div>
 </div>
