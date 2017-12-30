@@ -706,19 +706,19 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
     $scope.checkCategory = function(category) {
         var string = "";
         if(category == 1) {
-          string = "Transport";
+          string = "运输局";
         }
         else if(category == 2) {
-          string = "Civilian";
+          string = "平民";
         }
         else if(category == 3) {
-          string = "Business";
+          string = "商业";
         }
         else if(category == 4) {
-            string = "Banks";
+            string = "银行";
           }
         else {
-          string = "None";
+          string = "无";
         }
         
         return string;

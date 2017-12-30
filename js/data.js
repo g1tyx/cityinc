@@ -1,24 +1,24 @@
 var buildMeta = [
         {
           id: 0,
-          name: 'Roads',
-          shortName: 'Roads',
+          name: '道路',
+          shortName: '道路',
           icon: 'fa-road',
-          description: 'Every town need roads.',
+          description: '每个城镇都需要道路。',
           revenue: 1,
           cost: 3.738,
           increment: 1.07,
           timeToBuild: 0.6,
           politicianCost: 1000,
-          politicianDesc: 'Transport Agency',
+          politicianDesc: '运输局',
           happyCategory: 1
         },
         {
           id: 1,
-          name: 'Apartments',
-          shortName: 'Apartments',
+          name: '公寓',
+          shortName: '公寓',
           icon: 'fa-home',
-          description: 'Who needs an overpriced apartment?',
+          description: '谁需要一个超贵的公寓?',
           revenue: 60,
           cost: 60,
           increment: 1.15,
@@ -30,7 +30,7 @@ var buildMeta = [
         {
           id: 2,
           name: '办公室',
-          shortName: 'Offices',
+          shortName: '办公室',
           icon: 'fa-briefcase',
           description: 'Business business business.',
           revenue: 540,
@@ -43,8 +43,8 @@ var buildMeta = [
         },
         {
           id: 3,
-          name: 'Local Transport',
-          shortName: 'Transport',
+          name: '本地运输',
+          shortName: '运输',
           icon: 'fa-bus',
           description: 'This is how you get anywhere.',
           revenue: 4320,
@@ -57,8 +57,8 @@ var buildMeta = [
         },
         {
           id: 4,
-          name: 'Education',
-          shortName: 'Education',
+          name: '教育',
+          shortName: '教育',
           icon: 'fa-graduation-cap',
           description: 'You will need some educated citizens.',
           revenue: 51840,
@@ -71,8 +71,8 @@ var buildMeta = [
         },
         {
           id: 5,
-          name: 'Taxi service',
-          shortName: 'Taxis',
+          name: '出租车服务',
+          shortName: '出租车',
           icon: 'fa-taxi',
           description: 'Gets everyone, everywhere!',
           revenue: 622080,
@@ -85,8 +85,8 @@ var buildMeta = [
         },
         {
           id: 6,
-          name: 'Docks',
-          shortName: 'Docks',
+          name: '码头',
+          shortName: '码头',
           icon: 'fa-ship',
           description: 'Shipping business.',
           revenue: 7464960,
@@ -99,8 +99,8 @@ var buildMeta = [
         },
         {
           id: 7,
-          name: 'Health care',
-          shortName: 'Health',
+          name: '卫生保健',
+          shortName: '健康',
           icon: 'fa-heartbeat',
           description: 'Everyone gets sick. Why not profit from it?',
           revenue: 89579520,
@@ -113,8 +113,8 @@ var buildMeta = [
         },
         {
           id: 8,
-          name: 'Shopping',
-          shortName: 'Shopping',
+          name: '购物',
+          shortName: '购物',
           icon: 'fa-shopping-basket',
           description: "Let's go to the mall!",
           revenue: 1074954240,
@@ -127,7 +127,7 @@ var buildMeta = [
         },
         {
           id: 9,
-          name: 'Bank sector',
+          name: '银行部门',
           shortName: 'Banks',
           icon: 'fa-university',
           description: 'Someone has to keep track of the cash flow.',
@@ -136,7 +136,7 @@ var buildMeta = [
           increment: 1.07,
           timeToBuild: 36864,
           politicianCost: 100000000000,
-          politicianDesc: 'Internal Revenue Service',
+          politicianDesc: '国税局',
           happyCategory: 4
         }
       ];
