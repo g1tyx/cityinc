@@ -99,7 +99,7 @@
               <ul class="dropdown-menu">
                 <li><a href="#/goals">目标</a></li>
                 <li><a href="#/stats">统计</a></li>
-                <li><a href="#/chat" ng-click="toggleChat(true)">Chat</a></li>
+                <li><a href="#/chat" ng-click="toggleChat(true)">聊天</a></li>
                 <li><a href="#/guide">游戏指南</a></li>
                 <li><a href="#/numberguide">数字指南</a></li>
                 <li><a href="http://reddit.com/r/cityinc/" target="_blank">访问 Subreddit</a></li>
@@ -166,14 +166,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span >&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Welcome back!</h4>
+        <h4 class="modal-title" id="myModalLabel">欢迎回来!</h4>
       </div>
       <div class="modal-body">
-        <strong>Welcome back Mayor!</strong> While you were away, your city has generated <strong>${{ offlineCash | megaNumber:powerNames:settings.scientificNumbers }}</strong> in revenue! Now go put that cash to good use.
+        <strong>欢迎回来，市长!</strong> 在你离开的时候，你的城市产生了 <strong>${{ offlineCash | megaNumber:powerNames:settings.scientificNumbers }}</strong> 的收入!现在去好好利用这笔钱吧。
       </div>
       <div class="modal-footer">
         
-        <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="offlineCash = 0">Awesome, thanks!</button>
+        <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="offlineCash = 0">太棒了,谢谢!</button>
       </div>
     </div>
   </div>
@@ -186,16 +186,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span >&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">CONGRATULATIONS!</h4>
+        <h4 class="modal-title" id="myModalLabel">祝贺你!</h4>
       </div>
       <div class="modal-body">
-        <strong>AMAZING!!</strong> You have completed CityInc in just {{ daysBetween(stats.dateStarted, theDate()) }} days! You have now completed CityInc {{ completedGames + 1 }} times. To start over, click the "Restart Game"-button under Settings.
-        Check out all your stats under the statistics page, and don't forget to brag about your achievement 
-        on <a href="http://reddit.com/r/cityinc" target="_blank">Reddit.com/r/CityInc/</a>. Very well done, <strong>Congratulations!!</strong>
+        <strong>太棒了!!</strong> 你已经通关了城市公司，用了 {{ daysBetween(stats.dateStarted, theDate()) }} 天时间! 你通关了城市公司 {{ completedGames + 1 }} 次。要重新开始的话，请单击设置下的 “重新启动游戏” 按钮。
+        查看统计页面下的所有统计数据，不要忘记在 <a href="http://reddit.com/r/cityinc" target="_blank">Reddit.com/r/CityInc/</a>吹嘘自己的成就。做得很好，<strong>祝贺你!!</strong>
       </div>
       <div class="modal-footer">
         
-        <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="completeGame()">Woop woop!</button>
+        <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="completeGame()">吼吼!</button>
       </div>
     </div>
   </div>
