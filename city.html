@@ -1,0 +1,225 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" >
+      
+      <h1 class="white text-center" ng-show="!settings.editCityName">{{ settings.cityName }} <i class="fa fa-pencil" style="font-size: 14px; cursor: pointer" ng-click="settings.editCityName = true" ng-if="settings.allowEditCityName"></i></h1>
+      <h1 class="text-center" ng-show="settings.editCityName"><input type="text" name="importText" ng-model="settings.cityName" style="width:40%" maxlength="20"> <i class="fa fa-check-square green produceText" style="cursor: pointer;" ng-click="settings.editCityName = false"></i></h1>
+      <hr/>
+      
+      <div class="progress" ng-if="settings.level < 16">
+            <div 
+            class="progress-bar progress-bar-info progress-bar-striped"
+            style="width: {{ 100 - (((20 *(settings.level + 1)) - stats.goalHighest)/20)*100 }}%"><span class="show">{{ (20 * (settings.level + 1)) - stats.goalHighest }} goals left until level {{ settings.level + 1 }}</span></div>
+      </div>
+      <div class="progress" ng-if="settings.level == 16">
+            <div 
+            class="progress-bar progress-bar-info progress-bar-striped"
+            style="width: {{ 100 - ((goalsMeta.length - goals.length)/13)*100 }}%"><span class="show">Only {{ goalsMeta.length - goals.length }} goals left until you win the game!</span></div>
+      </div>
+      <h4 class="white text-center">City Level {{ settings.level }}</h4>
+      <h5 class="white opensans text-center">
+        The City level is based on your highest goal achieved in the game.<br/>
+        Highest goal: {{ stats.goalHighest }}/{{ goalsMeta.length }} | Current goal: {{goals.length}}/{{goalsMeta.length}}
+      </h5>
+      
+      
+      
+      <div>
+        <img class="center-block" ng-src="{{cityLayouts[settings.level].image[settings.cityLayout].url}}">
+      </div>
+      
+      <h2 class="white luckiest text-center">Approval Rating</h2>
+      <hr/>
+      <div class="progress">
+            <div 
+            class="progress-bar progress-bar-success progress-bar-striped active"
+            style="width: {{ happiness.sliderValue }}%"><span class="show">{{ happiness.sliderValue | number:3 }} points Approval Rating <strong ng-if="happiness.sliderValue">| Approx {{ checkTime() | formatTimer }} left to 0%</strong></span></div>
+        </div>
+      <h4 class="white opensans text-center bold">{{ happiness.text }}</h4>
+      <h5 class="white opensans text-center">
+        <i>0-8 Neutral | 9-39 Happy | 40-79 High confidence | 80-100 Amazing confidence</i>
+      </h5>
+      <div class="col-md-12">
+            <div class="card-wrapper">
+              <!--<div class="card-wrapper" ng-if="upgrades[$index].owned == false">-->
+              <div class="card">
+                <div class="icon-block text-center normalcursor">
+                    <i class="fa faicon fa-users" style="margin-top: 10px"></i>
+                </div>
+                <div class="content-block">
+                    <div class="cardtext">
+                        <h3>Invest in the citizens</h3>
+                        Raise rating by {{ happiness.ratingPercentage }} points. This can be done multiple times.
+                        <h4>Cost: 
+                          <span ng-if="totalMoneyPerSecond()">${{ calculateInvestmentCost() | megaNumber:powerNames:settings.scientificNumbers }}</span>
+                          <span ng-if="!totalMoneyPerSecond()">Not yet available</span>
+                        </h4>
+                    </div>
+                    
+                    <div class="cardbuttons">
+                    
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                          <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney < calculateInvestmentCost() || build[0].auto == false" ng-click="investConfidence(happiness.ratingPercentage)">Invest with cash</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+      <br/>
+      <br/>
+      
+    
+    <br/><br/>
+    <div class="col-md-6">
+      <div class="col-md-12 col-center-block text-center">
+        
+        <h1 class="white">Purchase Improvements</h1>
+        <hr/>
+        <!--<h4 class="white">These tiles will have to be purchased. Also, some will give you powerful bonuses.</h4>-->
+        <button class="btn" ng-click="getAllTiles()" ng-if="curCitizens > 100 && tiles.length < tilesMeta.length ">Purchase all improvements you can afford</button>
+        <h4 class="text-center white" ng-if="tiles.length + 3 == tilesMeta.length">All city improvements purchased!</h4>
+        
+        <br/>
+        <br/>
+      </div>
+      
+      <!-- Improvements -->
+      <div class="col-md-12" ng-repeat="tileUpgrade in tilesMeta | orderBy:'cost'" ng-if="!isInArray(tiles, tileUpgrade.id)">
+        <div class="card-wrapper" >
+          <div class="card">
+            <div class="icon-block text-center icon-block-pol normalcursor">
+              
+              <i class="fa faicon"><img ng-src="{{ tileUpgrade.tile }}"></i>
+  
+            </div>
+            <div class="content-block">
+               
+                <div class="cardtext">
+                    <h2>{{ tileUpgrade.name }}</h2>
+                    {{ tileUpgrade.description }}<br/>
+                    <h4>Cost: ${{ tileUpgrade.cost | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                </div>
+                
+                <div class="cardbuttons">
+                
+                  <div class="btn-group btn-group-justified" role="group" >
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-default luckiest tooltips" ng-disabled="curMoney < tileUpgrade.cost"  ng-click="getTile(tileUpgrade)">Purchase improvement
+                      
+                        <span style="height: 60px; width:450px; left: 28%;" ng-if="tileUpgrade.upgradeRef == 2 && curMoney > tileUpgrade.cost">
+                          <strong>Now:</strong> ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }}/sec<br/>
+                          <strong>After:</strong> ${{ totalMoneyPerSecond() * tileUpgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers }}/sec
+                        </span>
+                      </button>
+                    </div>
+                    
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!--<h4 class="white text-center" ng-if="tilesMeta.length - (settings.improvementQuantity + tiles.length) > 0">...and {{ tilesMeta.length - (settings.improvementQuantity + tiles.length) }} more</h4>
+      
+      <div class="text-center col-md-12">
+        <h4 class="white opensans" ng-if="curCitizens > 100"><i>Amount of upgrades to show ({{settings.improvementQuantity}})</i></h4>
+        <div class="center-block" ng-if="curCitizens > 100">
+          <div class="btn-group" role="group">
+            <button class="btn" ng-click="settings.improvementQuantity = 1">1</button>
+            <button class="btn" ng-click="settings.improvementQuantity = 2">2</button>
+            <button class="btn" ng-click="settings.improvementQuantity = 5">5</button>
+            <button class="btn" ng-click="settings.improvementQuantity = 10">10</button>
+            <button class="btn" ng-click="settings.improvementQuantity = 25">25</button>
+            <button class="btn" ng-click="settings.improvementQuantity = 50">50</button>
+            <button class="btn" ng-click="settings.improvementQuantity = tilesMeta.length - tiles.length">All</button>
+          </div>
+        </div>
+      </div>-->
+      
+    </div>
+    
+    <div class="col-md-6">
+      <div class="col-md-12 col-center-block text-center">
+        
+        <h1 class="white">Coin Upgrades</h1>
+        <hr/>
+        <br/><br/>
+        
+        <!--<h4 class="white">These tiles will have to be purchased. Also, some will give you powerful bonuses.</h4>-->
+        <div class="card-wrapper">
+        <div class="card">
+          <div class="content-block">
+            <div class="cardtext">
+              <h2 class="text-center">Current Coins: {{ coins.value | megaNumber:powerNames:settings.scientificNumbers }}</h2>
+                <span>You'll earn coins by purchasing buildings. One building is equal to one coin. Oh, and you keep all your current coins when starting a new city. Bought upgrades do not follow you.</span><br/><br/>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+      </div>
+      
+      <!-- Coin Upgrades -->
+      <div class="col-md-12" ng-repeat="coinUpgrade in coinUpgradesMeta | orderBy:'cost'" ng-if="!isInArray(coinUpgrades, coinUpgrade.id)" ng-hide="(coinUpgrade.id == 18 && settings.allowEditCityName)">
+        <div class="card-wrapper" >
+          <div class="card">
+            <div class="icon-block text-center icon-block-pol normalcursor">
+              
+              <i class="fa faicon fa-universal-access" ng-class="coins.value < coinUpgrade.cost ? 'icon-disabled' : ''"></i>
+  
+            </div>
+            <div class="content-block">
+               
+                <div class="cardtext">
+                    <h2>{{ coinUpgrade.name }}</h2>
+                    {{ coinUpgrade.description }}<br/>
+                    <h4>Cost: {{ coinUpgrade.cost | megaNumber:powerNames:settings.scientificNumbers }} coins</h4>
+                </div>
+                
+                <div class="cardbuttons">
+                
+                  <div class="btn-group btn-group-justified" role="group" >
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-default luckiest tooltips" ng-disabled="coins.value < coinUpgrade.cost || (coinUpgrade.id == 17 && completedGames > 0)"  ng-click="getCoinUpgrade(coinUpgrade)">Purchase Coin Upgrade
+                        <span style="height: 60px; width:450px; left: 28%;" ng-if="coinUpgrade.type == 2 && coins.value > coinUpgrade.cost">
+                          <strong>Now:</strong> ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }}/sec<br/>
+                          <strong>After:</strong> ${{ totalMoneyPerSecond() * coinUpgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers }}/sec
+                        </span>
+                        <span style="height: 60px; width:450px; left: 28%;" ng-if="coinUpgrade.id == 17 && completedGames > 0">
+                          This upgrade is not available if you<br/>have completed CityInc once before.
+                        </span>
+                      </button>
+                    </div>
+                    
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!--<h4 class="white text-center" ng-if="coinUpgradesMeta.length - (settings.coinQuantity + coinUpgrades.length) > 0">...and {{ coinUpgradesMeta.length - (settings.coinQuantity + coinUpgrades.length) }} more</h4>
+      
+      <div class="text-center col-md-12">
+        <h4 class="white opensans" ng-if="curCitizens > 100"><i>Amount of upgrades to show ({{settings.coinQuantity}})</i></h4>
+        <div class="center-block" ng-if="curCitizens > 100">
+          <div class="btn-group" role="group">
+            <button class="btn" ng-click="settings.coinQuantity = 1">1</button>
+            <button class="btn" ng-click="settings.coinQuantity = 2">2</button>
+            <button class="btn" ng-click="settings.coinQuantity = 5">5</button>
+            <button class="btn" ng-click="settings.coinQuantity = 10">10</button>
+            <button class="btn" ng-click="settings.coinQuantity = 15">15</button>
+            <button class="btn" ng-click="settings.coinQuantity = coinUpgradesMeta.length">All</button>
+          </div>
+        </div>
+      </div>-->
+      
+    </div>
+    
+  </div>
+</div>

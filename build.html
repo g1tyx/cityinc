@@ -1,0 +1,139 @@
+<div class="container">
+    
+    <div class="row">
+        <div ng-repeat="building in build" class="col-md-6 col-xs-12">
+            
+              <div class="card noselect">
+                <div class="icon-block text-center" ng-click="startBuild(building)" ng-class="{'normalcursor' : building.auto}">
+                    <span class="ribbon"><span class="bgcolor-{{buildMeta[$index].icon}}">{{ ::checkCategory(buildMeta[$index].happyCategory) }}</span></span>
+                    <i class="fa faicon {{ ::buildMeta[$index].icon }}" ng-class="{'icon-disabled' : building.num == 0, 'smallicon' : !settings.maximizeLayout}"></i>
+                    <div class="buildtext" ng-class="building.num == 0 ? 'icon-disabled' : ''">{{ building.num }}</div>
+                    <p class="tutorialtip" ng-if="$index == 0 && curMoney == 0 && building.num == 1 && stats.resets < 3"><span>Click here to <br/>earn your first buck</span></p>
+                </div>
+                <div class="content-block">
+                  
+                    <div class="progress2">
+                          <div class="progress-main2">
+                            <div class="progress-bar2" ng-click="toggleRevenueText()">
+                              <span class="progress-value2" style="width: {{ building.curPercent }}%;" ng-class="building.curPercent == 0 ? 'progress-bar-reset' : ''"></span>
+                              <span class="text-center" ng-if="!building.auto && building.num == 0">Profit: ${{ calculateRevenue($index, building, false, false, true) | megaNumber:powerNames:settings.scientificNumbers }}</span>
+                              <span class="text-center" ng-if="!building.auto && building.num > 0">Profit: ${{ calculateRevenue($index, building) | megaNumber:powerNames:settings.scientificNumbers }}</span>
+                              <span class="text-center profittext" ng-if="building.auto">
+                                <span ng-if="!settings.showRevenueCycle">${{ calculateRevenue($index, building, true) | megaNumber:powerNames:settings.scientificNumbers:1 }}/sec</span>
+                                <span ng-if="settings.showRevenueCycle"><strong ng-if="calculateBuildSpeed($index, building) < 0.25">${{ calculateRevenue($index, building) / (0.25 / calculateBuildSpeed($index, building)) | megaNumber:powerNames:settings.scientificNumbers:1 }}/cycle</strong><strong ng-if="calculateBuildSpeed($index, building) >= 0.25">${{ calculateRevenue($index, building) | megaNumber:powerNames:settings.scientificNumbers:1 }}/cycle</strong></span>
+                              </span>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="cardtext" ng-init="multi=3">
+                      <!-- Standard layout -->
+                      <span ng-if="!settings.maximizeLayout">
+                        <strong class="luckiest" style="font-size: 16px">{{ ::buildMeta[$index].name }}</strong>
+                        <span class="smalltext">
+                            <span ng-if="building.num >= stats['highest' + buildMeta[$index].shortName] " class="goaltooltips">
+                                <i class="fa fa-check" style="color: #81c784">
+                                <span style="left: -65%;">
+                                    New building record achieved!
+                                </span>
+                                </i>
+                            </span> 
+                            Cycle: {{ calculateBuildSpeed($index, building) | formatTimer }} <span ng-if="calculateBuildSpeed($index, building) > 20">| Left: {{ ((100 - building.curPercent) / 100) * calculateBuildSpeed($index, building) | formatTimer }} </span></span>
+                        <br/>
+                        <span class="smalltext goaltooltips" ng-if="!building.auto && building.nextGoal > -1 && building.nextGoal != undefined">Next goal: <strong>{{goalsMeta[building.nextGoal].goal}}</strong> {{ ::buildMeta[$index].shortName }}<span>{{goalsMeta[building.nextGoal].desc}}<br/>
+                              Required: ${{ calculateBuildingCost(building, $index, goalsMeta[building.nextGoal].goal - building.num) | megaNumber:powerNames:settings.scientificNumbers }}</span></span>
+                        <span class="smalltext" ng-if="building.auto">
+                          <span ng-if="building.nextGoal > -1 && building.nextGoal != undefined" class="goaltooltips">
+                            Next goal: 
+                            <strong>
+                              {{goalsMeta[building.nextGoal].goal}}
+                            </strong> 
+                            {{ ::buildMeta[$index].shortName }} |
+                            <span>
+                              {{goalsMeta[building.nextGoal].desc}}<br/>
+                              Required: ${{ calculateBuildingCost(building, $index, goalsMeta[building.nextGoal].goal - building.num) | megaNumber:powerNames:settings.scientificNumbers }}
+                            </span>
+                          </span>
+                          {{ building.curRevenue | number:2 }}% of revenue 
+                        </span>
+                        <br/>
+                      </span>
+                      <!-- Maximised layout -->
+                      <span ng-if="settings.maximizeLayout">
+                        <h2>{{ ::buildMeta[$index].name }}
+                            <span class="smalltext"><span ng-if="building.num >= stats['highest' + buildMeta[$index].shortName] && curCitizens > 100" class="goaltooltips">
+                                <i class="fa fa-check" style="color: #81c784">
+                                  <span>
+                                    New building record achieved!
+                                  </span>
+                                </i>
+                              </span>
+                            </span>
+                        </h2>
+                            
+                        <strong>Cycle Time:</strong> {{ calculateBuildSpeed($index, building) | formatTimer }} <span ng-if="calculateBuildSpeed($index, building) > 20">| <strong>Left</strong>: {{ ((100 - building.curPercent) / 100) * calculateBuildSpeed($index, building) | formatTimer }} </span><br/>
+                        <span ng-if="!building.auto && building.nextGoal > -1 && building.nextGoal != undefined" class="goaltooltips">Next goal: <strong>{{goalsMeta[building.nextGoal].goal}}</strong> {{ ::buildMeta[$index].shortName }}<span>{{goalsMeta[building.nextGoal].desc}}</span></span>
+                        <span ng-if="building.auto"><span ng-if="building.nextGoal > -1 && building.nextGoal != undefined" class="goaltooltips">Next goal: <strong>{{goalsMeta[building.nextGoal].goal}}</strong> {{ ::buildMeta[$index].shortName }}<span>{{goalsMeta[building.nextGoal].desc}}<br/>
+                              Required: ${{ calculateBuildingCost(building, $index, goalsMeta[building.nextGoal].goal - building.num) | megaNumber:powerNames:settings.scientificNumbers }}</span> | </span>{{ building.curRevenue | number:0 }}% of revenue</span>
+                        <br/>
+                        <strong>Cost: ${{ calculateBuildingCost(building, $index, 1) | megaNumber:powerNames:settings.scientificNumbers }}</strong> <br/>
+                      </span>
+                    </div>
+                    
+                    <div class="cardbuttons">
+                        <!--<p class="tutorialtip" ng-if="$index == 0 && curMoney >= 4 && building.num == 1 && stats.resets < 3">
+                          <span style="margin-top:75px;margin-left: 15px; width: 300px">Now, click here to buy more<br/>roads to increase your profit.</span>
+                        </p>-->
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                          
+                          <div class="btn-group tooltips" role="group">
+                          
+                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney < calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 1, $event)">Buy 1</button>
+                            <span class="smalltext">${{ calculateBuildingCost(building, $index, 1) | megaNumber:powerNames:settings.scientificNumbers }}<br/>
+                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= (buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p>-->
+                            </span>
+                            
+                          </div>
+                          <div class="btn-group tooltips" role="group">
+                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney < calculateBuildingCost(building, $index, 10)" ng-click="buyBuilding(building, $index, 10, $event)">10</button>
+                            <span class="smalltext">${{ calculateBuildingCost(building, $index, 10) | megaNumber:powerNames:settings.scientificNumbers }}</span><br/>
+                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
+                          </div>
+                          <div class="btn-group tooltips" role="group">
+                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney < calculateBuildingCost(building, $index, 25)" ng-click="buyBuilding(building, $index, 25, $event)">25</button>
+                            <span class="smalltext">${{ calculateBuildingCost(building, $index, 25) | megaNumber:powerNames:settings.scientificNumbers }}</span><br/>
+                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 10)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
+                          </div>
+                          <div class="btn-group tooltips" role="group">
+                            <button type="button" class="btn btn-default luckiest" ng-disabled="curMoney < calculateBuildingCost(building, $index, 100)" ng-click="buyBuilding(building, $index, 100, $event)">100</button>
+                            <span class="smalltext">${{ calculateBuildingCost(building, $index, 100) | megaNumber:powerNames:settings.scientificNumbers }}</span><br/>
+                            <!--<p ng-if="totalMoneyPerSecond()">{{ Math.round((curMoney >= ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num)) * (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment)) ? '' : ((buildMeta[$index].cost * Math.pow(buildMeta[$index].increment, building.num))* (1 - Math.pow(buildMeta[$index].increment, 100)) / (1 - buildMeta[$index].increment) -curMoney)) / totalMoneyPerSecond()) | formatTimer }}</p></span>-->
+                          </div>
+                          <div class="btn-group tooltips" role="group">
+                            <button type="button" class="btn btn-default luckiest" ng-if="settings.OCDMode" ng-disabled="curMoney < calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)">
+                              <buytext ng-if="calculateMaxAmount(building, $index) < 10">{{ calculateMaxAmount(building, $index) }}</buytext>
+                              <buytext ng-if="calculateMaxAmount(building, $index) >= 10 && (Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num < 100">{{ (Math.floor(calculateMaxAmount(building, $index, true) / 10) * 10) - building.num }}</buytext>
+                              <buytext ng-if="(Math.floor(calculateMaxAmount(building, $index, true)  / 100) * 100) - building.num >= 100">{{ (Math.floor(calculateMaxAmount(building, $index, true) / 100) * 100) - building.num }}</buytext>
+                            </button>
+                            <button type="button" class="btn btn-default luckiest" ng-if="!settings.OCDMode" ng-disabled="curMoney < calculateBuildingCost(building, $index, 1)" ng-click="buyBuilding(building, $index, 0, $event)">
+                              {{ calculateMaxAmount(building, $index) }}
+                            </button>
+                            <span class="smalltext">You can afford <strong>{{ calculateMaxAmount(building, $index) }}</strong> {{ ::buildMeta[$index].shortName }}</span>
+                          </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                  
+              </div>
+                
+            
+        </div>
+        <div class="col-sm-12">
+        <h4 class="text-center white opensans produceText" ng-if="settings.goalsAll > -1 && settings.goalsAll != undefined && !over3000()"><div class="tooltips" style="z-index: 10">Next goal: {{goalsMeta[settings.goalsAll].goal}} of all buildings<span class="smalltext" style="top: 40px;">{{goalsMeta[settings.goalsAll].desc}}</span></div></h4>
+        <h4 class="text-center white opensans produceText" ng-if="build[0].auto">Producing ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }} per second</h4>
+        <h4 class="text-center green opensans produceText" ng-if="stats.newRevenueRecord && curCitizens > 100"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <i>New revenue record!</i></h4>
+        </div>
+    </div>
+</div>

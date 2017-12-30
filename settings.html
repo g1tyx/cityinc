@@ -1,0 +1,150 @@
+<div class="container" >
+  
+    <div class="col-md-12 text-center">
+      
+      <h1 class="white text-center">Settings</h1>
+      
+      <div ng-if="isDev()">
+      <h3 class="white">Development Settings</h3>
+      <hr/>
+      <h4 class="white opensans">This is some awesome development settings. You should NOT see this if you are not the developers, or part of the test team.</h4>
+      
+      <br/>
+      <input type="text" name="devCash" ng-model="devCash" style="width:50%"> <button class="btn" ng-click="devChange(devCash, 'cash')">Change cash</button>
+      
+      <br/><br/>
+      
+      <input type="text" name="devCitizens" ng-model="devCitizens" style="width:50%"> <button class="btn" ng-click="devChange(devCitizens, 'citizens')">Change citizens</button>
+      
+      <br/><br/>
+      
+      <input type="text" name="devCoins" ng-model="devCoins" style="width:50%"> <button class="btn" ng-click="devChange(devCoins, 'coins')">Change coins</button>
+      </div>
+      
+      <br/><br/>
+      <h3 class="white">Layout</h3>
+      <hr/>
+      <div class="row">
+        <div class="col-sm-6">
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.OCDMode"> Buy Max button OCD Mode<br/>
+          <span class="white smalltext opensans"><i>- Even out bought buildings to the closest 100th.</i></span></label></h4>
+          
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.maximizeLayout"> Maximize layout<br/>
+          <span class="white smalltext opensans"><i>- Bigger icons on the build page.</i></span></label></h4>
+          
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.scientificNumbers"> Use Scientific Numbers<br/>
+          <span class="white smalltext opensans"><i>- Display 1e+22 instead of 1 sextillion, etc, for all numbers.</i></span></label></h4>
+
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.renderFireworks"> Show Fireworks<br/>
+          <span class="white smalltext opensans"><i>- Show fireworks on events, when you get get to a new goal.</i></span></label></h4>
+        </div>
+        
+        <div class="col-sm-6">
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.showRevenueCycle"> Show profits per cycle<br/>
+          <span class="white smalltext opensans"><i>- Show profits per cycle instead of profits per second on build page.</i></span></label></h4>
+          
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.showChat"> Display Chat<br/>
+          <span class="white smalltext opensans"><i>- Display the chat on all pages.</i></span></label></h4>
+          
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.goToBuildPageAfterReset"> Go to build page after restart<br/>
+          <span class="white smalltext opensans"><i>- Automatically switch to the build page after you start a new city.</i></span></label></h4>
+        </div>
+      </div>
+      
+      
+      <br/>
+      <div>
+      <script>
+        new Clipboard('.copythis');
+      </script>
+      
+      <h3 class="white">Export Game</h3>
+      <hr/>
+      <h4 class="white opensans">To use the export feature, just copy the export code and paste it in below on another computer.</h4>
+      <br/>
+      <!--<button class="btn" ng-click="export()">Export</button><br/><br/>-->
+      <textarea rows="4" cols="50" id="exportText">{{ exportstring.value }}</textarea>
+      <br/>
+      <button class="btn copythis" data-clipboard-target="#exportText">Copy Export Code to Clipboard</button>
+      </div>
+      
+      <br/><br/>
+      <h3 class="white">Import Game</h3>
+      <hr/>
+      <h4 class="white opensans">Paste the import code below, and press the import button. <br/>Remember that this will overwrite any existing progress.</h4>
+      <input type="text" name="importText" ng-model="importrutan" style="width:50%"><br/><button data-toggle="modal" data-target="#importModal" class="btn">Import</button>
+      
+      <div ng-if="exportstring.error" style="color: #FF0000; font-size: 20px"><strong>ERROR! Something went wrong when importing. Try again.</strong></div>
+      <div ng-if="exportstring.imported" style="color: #118205; font-size: 20px"><strong>Success! Import was completed successfully.</strong></div>
+      
+      <!-- Import Modal -->
+      <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Import</h4>
+            </div>
+            <div class="modal-body">
+              <strong>WARNING!</strong> This will overwrite any existing progress.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="importera(importrutan)">Confirm Import</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <br/><br/>
+      <h3 class="white">Restart Game</h3>
+    <hr/>
+    <h4 class="white opensans">Do a complete reset of your game, and start from the beginning. <br/>Note: Your "times completed CityInc"-statistics will not reset.</h4>
+    <button data-toggle="modal" data-target="#hardResettModal" class="btn btn-danger">Restart Game</button><br/> <strong></strong>
+    <br/><br/>
+    <!-- Reset Modal -->
+    <div class="modal fade" id="hardResettModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Restart Game</h4>
+          </div>
+          <div class="modal-body">
+            <strong>WARNING!</strong> RESTARTING YOUR GAME WILL RESET YOUR PROGRESS. The only thing that will follow is your completed statistics, and how many times you completed CityInc.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger luckiest" data-dismiss="modal" ng-click="hardReset()">Confirm Restart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <br/><br/><br/><br/>
+    <h3 class="white">Completely wipe game</h3>
+    <hr/>
+    <h4 class="white opensans">Completely wipe your save game, and really start from the beginning with no history. <br/>Note: EVERYTHING will reset. DO NOT use this if you do not know what you are doing.</h4>
+    <button data-toggle="modal" data-target="#superHardResettModal" class="btn btn-danger" style="background-color: red">Erase all game data</button><br/> <strong></strong>
+    <br/><br/>
+    <!-- Reset Modal -->
+    <div class="modal fade" id="superHardResettModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Completely wipe game</h4>
+          </div>
+          <div class="modal-body">
+            <strong>WARNING!</strong> HARD RESET CANNOT BE REVERSED AND WILL DELETE ALL YOUR PROGRESS. Everything will be gone. Forever.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger luckiest" data-dismiss="modal" style="background-color: red" ng-click="superHardReset()">Confirm Hard Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+</div>
