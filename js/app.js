@@ -2554,7 +2554,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
         var local = angular.copy($localStorage);
         local = JSON.stringify(local);
         
-        $scope.exportstring.value = window.btoa(local);
+        $scope.exportstring.value = window.btoa(encodeURIComponent(local));
     };
       
     $scope.importera = function(importen) {
