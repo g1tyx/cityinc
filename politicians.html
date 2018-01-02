@@ -49,7 +49,7 @@
       
       <div class="row">
         <div class="col-xs-12" style="padding-bottom: 50px">
-          <h2 class="white text-center">Strategy</h2>
+          <h2 class="white text-center">策略</h2>
           <hr/>
           <h4 class="white opensans text-center">These are upgrades that are a bit more complicated. They are permanent, so you will only get to pick these once. And choose wisely, because you can only get one of the options presented to you.
           <br/>The upgrades do follow you over to a new city.</h4>
@@ -62,9 +62,9 @@
           <div class="progress" ng-if="settings.level == 16">
                 <div 
                 class="progress-bar progress-bar-info progress-bar-striped"
-                style="width: {{ 100 - ((goalsMeta.length - goals.length)/13)*100 }}%"><span class="show">Only {{ goalsMeta.length - goals.length }} goals left until you win the game!</span></div>
+                style="width: {{ 100 - ((goalsMeta.length - goals.length)/13)*100 }}%"><span class="show">还有 {{ goalsMeta.length - goals.length }} 目标，您就能通关游戏!</span></div>
           </div>
-          <h4 class="white text-center">City Level {{ settings.level }}</h4>
+          <h4 class="white text-center">城市等级 {{ settings.level }}</h4>
           <h5 class="white opensans text-center">
             The City level is based on your highest goal achieved in the game.<br/>
             Highest goal: {{ stats.goalHighest }}/{{ goalsMeta.length }} | Current goal: {{goals.length}}/{{goalsMeta.length}}
@@ -132,14 +132,14 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Commit to Strategy</h4>
+              <h4 class="modal-title" id="myModalLabel">选择战略</h4>
             </div>
             <div class="modal-body">
-              <strong>WARNING!</strong> The strategy choices you make are <strong>PERMANENT</strong> but can be changed later for a <strong>very</strong> high cost. Are you sure you want to proceed with your choice?
+              <strong>警告!</strong> 你所做的战略选择是 <strong>永久的</strong> 但是以后可以通过 <strong>非常</strong> 高的价格去改变。你确定要继续你的选择吗?
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="getStrategyUpgrade()">Get this Strategy Upgrade</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="getStrategyUpgrade()">升级这个策略</button>
             </div>
           </div>
         </div>
@@ -152,13 +152,13 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Reset strategy choice</h4>
+              <h4 class="modal-title" id="myModalLabel">重置策略选择</h4>
             </div>
             <div class="modal-body" ng-if="curCitizens >= citizenExtraHelp.citizenCurrentMax * 0.45">
-              <strong>WARNING!</strong> This will cost you 50% of all your citizens. <br/>That's a total of {{ curCitizens < citizenExtraHelp.citizenCurrentMax ? citizenExtraHelp.citizenCurrentMax * 0.45 : curCitizens * 0.45 | megaNumber:powerNames:settings.scientificNumbers }} citizens. Are you sure you want to reset this choice?
+              <strong>警告!</strong> 这样做你消耗你 50% 的公民。 <br/>That's a total of {{ curCitizens < citizenExtraHelp.citizenCurrentMax ? citizenExtraHelp.citizenCurrentMax * 0.45 : curCitizens * 0.45 | megaNumber:powerNames:settings.scientificNumbers }} citizens. Are you sure you want to reset this choice?
             </div>
             <div class="modal-body" ng-if="curCitizens < citizenExtraHelp.citizenCurrentMax * 0.45">
-              <strong>WARNING!</strong> You cannot afford to reset this choice. <br/>The cost for a reset is {{ curCitizens < citizenExtraHelp.citizenCurrentMax ? citizenExtraHelp.citizenCurrentMax * 0.45 : curCitizens * 0.45 | megaNumber:powerNames:settings.scientificNumbers }} citizens.
+              <strong>警告!</strong> You cannot afford to reset this choice. <br/>The cost for a reset is {{ curCitizens < citizenExtraHelp.citizenCurrentMax ? citizenExtraHelp.citizenCurrentMax * 0.45 : curCitizens * 0.45 | megaNumber:powerNames:settings.scientificNumbers }} citizens.
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -51,7 +51,7 @@
                             {{ ::buildMeta[$index].shortName }} |
                             <span>
                               {{goalsMeta[building.nextGoal].desc}}<br/>
-                              Required: ${{ calculateBuildingCost(building, $index, goalsMeta[building.nextGoal].goal - building.num) | megaNumber:powerNames:settings.scientificNumbers }}
+                              需要: ${{ calculateBuildingCost(building, $index, goalsMeta[building.nextGoal].goal - building.num) | megaNumber:powerNames:settings.scientificNumbers }}
                             </span>
                           </span>
                           {{ building.curRevenue | number:2 }}% 的收入

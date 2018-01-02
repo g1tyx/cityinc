@@ -154,8 +154,8 @@
         <div class="card">
           <div class="content-block">
             <div class="cardtext">
-              <h2 class="text-center">Current Coins: {{ coins.value | megaNumber:powerNames:settings.scientificNumbers }}</h2>
-                <span>You'll earn coins by purchasing buildings. One building is equal to one coin. Oh, and you keep all your current coins when starting a new city. Bought upgrades do not follow you.</span><br/><br/>
+              <h2 class="text-center">当前硬币: {{ coins.value | megaNumber:powerNames:settings.scientificNumbers }}</h2>
+                <span>你可以通过购买建筑来赚取硬币。一幢建筑等于一枚硬币。哦，当你开始一个新的城市时，你保留你所有的硬币。购买的升级不会跟随你。</span><br/><br/>
             </div>
           </div>
         </div>
@@ -184,7 +184,7 @@
                 
                   <div class="btn-group btn-group-justified" role="group" >
                     <div class="btn-group" role="group">
-                      <button type="button" class="btn btn-default luckiest tooltips" ng-disabled="coins.value < coinUpgrade.cost || (coinUpgrade.id == 17 && completedGames > 0)"  ng-click="getCoinUpgrade(coinUpgrade)">Purchase Coin Upgrade
+                      <button type="button" class="btn btn-default luckiest tooltips" ng-disabled="coins.value < coinUpgrade.cost || (coinUpgrade.id == 17 && completedGames > 0)"  ng-click="getCoinUpgrade(coinUpgrade)">购买硬币升级
                         <span style="height: 60px; width:450px; left: 28%;" ng-if="coinUpgrade.type == 2 && coins.value > coinUpgrade.cost">
                           <strong>购买前:</strong> ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }}/秒<br/>
                           <strong>购买后:</strong> ${{ totalMoneyPerSecond() * coinUpgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers }}/秒
