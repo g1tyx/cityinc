@@ -2495,10 +2495,10 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
         }
         
         if($scope.notificationController.length > 0) {
-          $window.document.title = "(!) CityInc";
+          $window.document.title = "(!) 城市公司";
         }
         else {
-          $window.document.title = "CityInc";
+          $window.document.title = "城市公司";
         }
     };
       

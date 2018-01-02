@@ -51,8 +51,8 @@
         <div class="col-xs-12" style="padding-bottom: 50px">
           <h2 class="white text-center">策略</h2>
           <hr/>
-          <h4 class="white opensans text-center">These are upgrades that are a bit more complicated. They are permanent, so you will only get to pick these once. And choose wisely, because you can only get one of the options presented to you.
-          <br/>The upgrades do follow you over to a new city.</h4>
+          <h4 class="white opensans text-center">这些升级更复杂一些。它们是永久的，所以你只能选择它们一次。明智地选择，因为您只能获得其中之一。
+          <br/>升级后，它将会跟随你到下一个新的城市。</h4>
           <br/><br/>
           <div class="progress" ng-if="settings.level < 16">
               <div 
@@ -66,8 +66,8 @@
           </div>
           <h4 class="white text-center">城市等级 {{ settings.level }}</h4>
           <h5 class="white opensans text-center">
-            The City level is based on your highest goal achieved in the game.<br/>
-            Highest goal: {{ stats.goalHighest }}/{{ goalsMeta.length }} | Current goal: {{goals.length}}/{{goalsMeta.length}}
+            城市等级是基于你在游戏中达到的最高目标数量。<br/>
+            最高目标数量: {{ stats.goalHighest }}/{{ goalsMeta.length }} | Current goal: {{goals.length}}/{{goalsMeta.length}}
           </h5>
           
           <br/><br/>
@@ -80,7 +80,7 @@
                   <i class="fa faicon fa-signal" ng-class="settings.level < strategyUpgrade.cost ? 'icon-disabled' : ''" ng-if="!isInArray(strategyUpgrades, strategyUpgrade.id)"></i>
                   <i class="fa faicon fa-check" ng-if="isInArray(strategyUpgrades, strategyUpgrade.id)"></i>
                   <p>
-                    <h4 class="white">Level {{ strategyUpgrade.cost }}</h4>
+                    <h4 class="white">等级 {{ strategyUpgrade.cost }}</h4>
                   </p>
                 </div>
                 <div class="content-block">
@@ -172,11 +172,11 @@
       
     <div class="row">
       <div class="col-xs-12" style="margin-top: 30px">
-          <h2 class="white text-center">Advanced strategy</h2>
+          <h2 class="white text-center">高级策略</h2>
           <hr/>
           <h4 class="white opensans text-center">
-          This section is only available after you have completed CityInc at least once.<br/>
-          These are the same as the strategy upgrades, but will be generated depending on how you play the game.</h4>
+          此部分仅在您通关城市公司至少一次之后才可用。<br/>
+          这些和战略升级一样，但会根据你玩游戏的方式而产生。</h4>
           <br/><br/>
           
           <div class="col-md-12" ng-if="advancedStrategy.level < 17">
@@ -186,15 +186,15 @@
                   
                   <i class="fa faicon fa-map-signs" ng-class="settings.level < advancedStrategy.level ? 'icon-disabled' : ''"></i>
                   <p>
-                    <h4 class="white">Level {{ advancedStrategy.level }}</h4>
+                    <h4 class="white">等级 {{ advancedStrategy.level }}</h4>
                   </p>
                 </div>
                 <div class="content-block">
                    
                     <div class="cardtext">
-                        <h2>Choose your advanced strategy</h2>
-                        Like the strategy upgrades above, you can only make these profit upgrades once, but they do follow you over to a new city. So make it count!<br/>
-                        What will it be?<br/><br/>
+                        <h2>选择你的高级策略</h2>
+                        就像上面的策略升级一样，你只能做一次升级，但他们会跟随你到一个新的城市。所以，好好珍惜!<br/>
+                        将会是什么样的状况呢?<br/><br/>
                         
                     </div>
                     
@@ -211,15 +211,15 @@
             </div>
           </div>
           <div class="col-md-12" ng-if="advancedStrategy.level >= 17">
-            <h4 class="white text-center">No more advanced strategies to choose from.</h4>
+            <h4 class="white text-center">没有更先进的策略可供选择。</h4>
             <br/><br/>
           </div>
           
           <div class="row" ng-if="advancedStrategy.chosenObjects.length">
             <div class="col-xs-12">
-              <h4 class="white text-center">Current advanced strategy</h4>
+              <h4 class="white text-center">目前的高级战略</h4>
               <h4 class="white opensans text-center" ng-repeat="chosenStrategy in advancedStrategy.chosenObjects">
-                <strong>Level {{ $index + 1 }}</strong>: {{ chosenStrategy.multiplier }}x {{ buildMeta[chosenStrategy.refIndex].shortName }}
+                <strong>等级 {{ $index + 1 }}</strong>: {{ chosenStrategy.multiplier }}x {{ buildMeta[chosenStrategy.refIndex].shortName }}
               </h4>
             </div>
           </div>
@@ -234,14 +234,14 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Commit to Advanced Strategy</h4>
+              <h4 class="modal-title" id="myModalLabel">提交高级策略</h4>
             </div>
             <div class="modal-body">
-              <strong>WARNING!</strong> The advanced strategy choices you make are <strong>PERMANENT</strong> but can <strong>NOT</strong> be changed later.  Are you sure you want to proceed with your choice?
+              <strong>警告!</strong> 你制定的高级策略是 <strong>永久的</strong> 并且 <strong>不能</strong> 在后面改变。你确定要继续你的选择吗?
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="getAdvanceStrategyUpgrade()">Get this Advanced Strategy Upgrade</button>
+              <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="getAdvanceStrategyUpgrade()">进行高级战略升级</button>
             </div>
           </div>
         </div>
@@ -251,14 +251,14 @@
     <br/><br/><br/>
 
      <div class="row">
-     <h2 class="white text-center">Political Debates</h2>
+     <h2 class="white text-center">政治辩论</h2>
         <hr/>
-        <h4 class="white opensans">There are a maximum of 210 votes in the debates. If you go over that number, you will automatically lose the debate. You can halt your debate at any time, and your opposing party will have the chance to beat you. Read more about debates in the <a href="#/guide">Game Guide.</a></h4><br/>
+        <h4 class="white opensans">辩论中最多有210张选票。如果你超过这个数字，你就会自动输掉这场辩论。你可以随时停止你的辩论，你的对手也有机会打败你。阅读更多关于辩论的内容请千万 <a href="#/guide">游戏指南</a></h4><br/>
         
         <div class="text-center">
           <div class="row">
             <div class="col-md-2 white text-right">
-              My party
+              我的党派
             </div>
             <div class="col-md-8">
               <div class="progress">
@@ -274,7 +274,7 @@
           </div>
           <div class="row">
             <div class="col-md-2 white text-right">
-              Opposing party
+              对立党派
               </div>
             <div class="col-md-8">
               <div class="progress">
@@ -292,24 +292,24 @@
           <div ng-show="!debateStarted">
             <div class="row white">
               <div ng-if="party.gameState == 1">
-                <h3 class="text-center">Congratulations, You won the debate!</h3>
-                <h4 ng-if="wager.prev != 0 && party.myParty < 200">You just made another ${{ Math.round(wager.prev * 1.5) | megaNumber:powerNames:settings.scientificNumbers }}!</h4>
-                <h4 ng-if="wager.prev != 0 && party.myParty >= 200">You just won ${{ Math.round(wager.prev * 2) | megaNumber:powerNames:settings.scientificNumbers }}! That's ${{ wager.prev * 0.5 | megaNumber:powerNames:settings.scientificNumbers }} extra because you won with a vote over 200.</h4>
+                <h3 class="text-center">祝贺你，你赢得了辩论</h3>
+                <h4 ng-if="wager.prev != 0 && party.myParty < 200">你只是做了一个另一个 ${{ Math.round(wager.prev * 1.5) | megaNumber:powerNames:settings.scientificNumbers }}!</h4>
+                <h4 ng-if="wager.prev != 0 && party.myParty >= 200">你赢了 ${{ Math.round(wager.prev * 2) | megaNumber:powerNames:settings.scientificNumbers }}! 你获得了额外的 ${{ wager.prev * 0.5 | megaNumber:powerNames:settings.scientificNumbers }} 因为你赢得了200票。</h4>
               </div>
               <div ng-if="party.gameState == 2">
-                <h3 class="text-center">You lost the debate</h3>
-                <h4 ng-if="wager.prev != 0">Sorry, you lost ${{ wager.prev | megaNumber:powerNames:settings.scientificNumbers }}.</h4>
+                <h3 class="text-center">你输了这场辩论</h3>
+                <h4 ng-if="wager.prev != 0">对不起,你失去了 ${{ wager.prev | megaNumber:powerNames:settings.scientificNumbers }}.</h4>
               </div>
               <div ng-if="party.gameState == 3">
-                <h3 class="text-center">The debate was a draw</h3>
-                <h4 ng-if="wager.prev != 0">You got your bet of ${{ wager.prev | megaNumber:powerNames:settings.scientificNumbers }} back.</h4>
+                <h3 class="text-center">这场辩论是平局</h3>
+                <h4 ng-if="wager.prev != 0">你赌赢了 ${{ wager.prev | megaNumber:powerNames:settings.scientificNumbers }} 退回。</h4>
               </div>
               
               <hr ng-if="party.gameState != 0"/>
-              <h4>Start new debate</h4>
+              <h4>开始新的辩论</h4>
               <div>Your maximum bet is <strong>1%</strong> of your current money.</div><br/>
               <div class="col-md-4 white text-right luckiest">
-                Select your wager:
+                选择您的赌注:
               </div>
               <div class="col-md-4 white text-center">
                 <input type="range" max="{{ wager.max }}" min="0" step="1" class="slider" name="debateWagerSlider" ng-model="wager.val"/>
@@ -319,17 +319,17 @@
               </div>
             </div>
             <br/>
-            <button class="btn" ng-click="doDebate()" ng-if="party.gameState == 0">Start Debate</button>
-            <button class="btn" ng-click="doDebate()" ng-if="party.gameState != 0">Start Another Debate</button>
+            <button class="btn" ng-click="doDebate()" ng-if="party.gameState == 0">开始辩论</button>
+            <button class="btn" ng-click="doDebate()" ng-if="party.gameState != 0">开始另一场辩论</button>
           </div>
           
           <div ng-show="debateStarted">
             <div class="row">
-              <h4 class="white">Choose your argument</h4>
+              <h4 class="white">选择你的论点</h4>
               <div class="col-xs-4 col-sm-4" ng-class="{transparent: !playerTurn && !argument.transportSpin}">
                 <p class="spin white pull-right" ng-click="doDebate('transport')" ng-class="{spinner: argument.transportSpin}">
                   <strong>
-                    <span ng-if="!argument.transportSpin">Transport<br/>(30-90)</span>
+                    <span ng-if="!argument.transportSpin">运输<br/>(30-90)</span>
                     <span ng-if="argument.transportSpin" class="spinspan">+{{argument.transport}}</span>
                   </strong>
                 </p>
@@ -337,7 +337,7 @@
               <div class="col-xs-4 col-sm-4" ng-class="{transparent: !playerTurn && !argument.civilianSpin}">
                 <p class="spin text-center white center-block" ng-click="doDebate('civilian')" ng-class="{spinner: argument.civilianSpin}">
                   <strong>
-                    <span ng-if="!argument.civilianSpin">Civilian<br/>(1-110)</span>
+                    <span ng-if="!argument.civilianSpin">平民<br/>(1-110)</span>
                     <span ng-if="argument.civilianSpin" class="spinspan">+{{argument.civilian}}</span>
                   </strong>
                 </p>
@@ -345,21 +345,21 @@
               <div class="col-xs-4 col-sm-4" ng-class="{transparent: !playerTurn && !argument.businessSpin}">
                 <p class="spin text-center white pull-left wait" ng-click="doDebate('business')" ng-class="{spinner: argument.businessSpin}">
                   <strong>
-                    <span ng-if="!argument.businessSpin">Business<br/>(50-150)</span>
+                    <span ng-if="!argument.businessSpin">商业<br/>(50-150)</span>
                     <span ng-if="argument.businessSpin" class="spinspan">+{{argument.business}}</span>
                   </strong>
                 </p>
               </div>
             </div>
           
-            <h4 class="white">or...</h4>
-            <button class="btn" ng-click="holdDebate()" ng-if="debateStarted" ng-class="{transparent: !playerTurn}">Rest the case</button>
+            <h4 class="white">或者...</h4>
+            <button class="btn" ng-click="holdDebate()" ng-if="debateStarted" ng-class="{transparent: !playerTurn}">停止</button>
 
             </div>
             <br/>
             <span class="white">
-              <strong>Wins:</strong> {{ stats.debatesWin }} | <strong>Losses:</strong> {{ stats.debatesLoss }}<br/>
-              <strong>Total Profits:</strong> ${{ stats.debatesProfit | megaNumber:powerNames:settings.scientificNumbers }}
+              <strong>胜利:</strong> {{ stats.debatesWin }} | <strong>失败:</strong> {{ stats.debatesLoss }}<br/>
+              <strong>总利润:</strong> ${{ stats.debatesProfit | megaNumber:powerNames:settings.scientificNumbers }}
             </span>
           </div>
         
