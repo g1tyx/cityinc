@@ -2648,7 +2648,7 @@ var upgradesMeta = [
         },
         {
           id: 291,
-          name: 'Marble Floors',
+          name: '大理石地板',
           description: '公寓利润 x3',
           multiplier: 3,
           buildingRef: 1,
@@ -2656,7 +2656,7 @@ var upgradesMeta = [
         },
         {
           id: 292,
-          name: 'Golden office chairs',
+          name: '金色的办公椅',
           description: '办公室利润 x3',
           multiplier: 3,
           buildingRef: 2,
@@ -2664,7 +2664,7 @@ var upgradesMeta = [
         },
         {
           id: 293,
-          name: 'Platina Uniforms',
+          name: '白金制服',
           description: '本地运输利润 x3',
           multiplier: 3,
           buildingRef: 3,
@@ -2672,7 +2672,7 @@ var upgradesMeta = [
         },
         {
           id: 294,
-          name: 'Silver pens',
+          name: '银色的笔',
           description: '教育利润 x3',
           multiplier: 3,
           buildingRef: 4,
@@ -2680,7 +2680,7 @@ var upgradesMeta = [
         },
         {
           id: 295,
-          name: 'Golden Taxis',
+          name: '金色的出租车',
           description: '出租车服务利润 x10',
           multiplier: 10,
           buildingRef: 5,
@@ -2688,7 +2688,7 @@ var upgradesMeta = [
         },
         {
           id: 296,
-          name: 'Supersize the tankers',
+          name: '超大的油轮',
           description: '码头利润 x3',
           multiplier: 3,
           buildingRef: 6,
@@ -2696,7 +2696,7 @@ var upgradesMeta = [
         },
         {
           id: 297,
-          name: 'Silk Sheets',
+          name: '丝绸床单',
           description: '医疗保健利润 x3',
           multiplier: 3,
           buildingRef: 7,
@@ -2704,7 +2704,7 @@ var upgradesMeta = [
         },
         {
           id: 298,
-          name: 'Automatic Checkout',
+          name: '自动检查',
           description: '购物利润 x3',
           multiplier: 3,
           buildingRef: 8,
@@ -2712,7 +2712,7 @@ var upgradesMeta = [
         },
         {
           id: 299,
-          name: 'Bailout',
+          name: '紧急援助',
           description: '银行业利润 x2',
           multiplier: 2,
           buildingRef: 9,
@@ -2720,7 +2720,7 @@ var upgradesMeta = [
         },
         {
           id: 300,
-          name: 'Boom Baby!',
+          name: '小宝贝!',
           description: '全部利润 x20',
           multiplier: 20,
           buildingRef: 666,
@@ -2739,7 +2739,7 @@ var citizensUpgradesMeta = [
         },*/
         {
           id: 1,
-          name: 'For the good of all',
+          name: '为了所有的好处',
           desc: '全部利润 x3',
           cost: 1e+4,
           reference: 1, 
@@ -2747,7 +2747,7 @@ var citizensUpgradesMeta = [
         },
         {
           id: 2,
-          name: '6 hour work day',
+          name: '6小时工作日',
           desc: '公民效率 +2%',
           cost: 1e+5,
           reference: 2,
@@ -2766,7 +2766,7 @@ var citizensUpgradesMeta = [
         },*/
         {
           id: 3,
-          name: 'Mandatory After Work',
+          name: '强制性的工作后',
           desc: '公民效率 +2%',
           cost: 1e+8,
           reference: 2,
@@ -2774,7 +2774,7 @@ var citizensUpgradesMeta = [
         },
         {
           id: 4,
-          name: 'Supercharge your city',
+          name: '给你的城市增压',
           desc: '全部利润 x11',
           cost: 1e+12,
           reference: 1,
@@ -2782,7 +2782,7 @@ var citizensUpgradesMeta = [
         },
         {
           id: 5,
-          name: 'Party starter!',
+          name: '派对动机!',
           desc: '全部利润 x30, 但是速度降低 x10',
           cost: 1e+16,
           reference: 3,
@@ -2790,15 +2790,15 @@ var citizensUpgradesMeta = [
         },
         {
           id: 6,
-          name: 'Rally all the citizens',
-          desc: 'For every 4000 buildings gain +1% 公民效用',
+          name: '召集所有公民',
+          desc: '每4000建筑给予 +1% 公民效率',
           cost: 1e+20,
           reference: 4,
           data: { }
         },
         {
           id: 7,
-          name: 'Insane Mode',
+          name: '疯狂模式',
           desc: '全部利润 x50, 但是速度降低 x10',
           cost: 1e+24,
           reference: 3,
@@ -2806,8 +2806,8 @@ var citizensUpgradesMeta = [
         },
         {
           id: 9,
-          name: 'Allow Quick restart',
-          desc: 'Allow you to start a new city even if you don\'t have enough citizens',
+          name: '允许快速启动',
+          desc: '即使你没有足够的公民，也可以让你开始一个新的城市',
           cost: 1e+70,
           reference: 6,
           data: { }
@@ -6277,272 +6277,272 @@ var strategyMeta = [
   {
     id: 3,
     name: '运输和平民',
-    description: '所有运输建筑数量翻倍，所有平民建筑数量翻倍。',
+    description: '所有运输建筑利润翻倍，所有平民建筑利润翻倍。',
     choices: [
       {
         id: 0,
         type: 4,
         value: 2,
         reference: 1,
-        text: "2x 运输"
+        text: "2x 运输利润"
       },
       {
         id: 1,
         type: 4,
         value: 2,
         reference: 2,
-        text: "2x 平民"
+        text: "2x 平民利润"
       },
     ],
     cost: 4,
   },
   {
     id: 4,
-    name: 'Percentages vs multiplications',
-    description: '2x for all buildings, OR Citizen +0.5% 效用',
+    name: '百分比与乘法',
+    description: '所有建筑物利润翻倍，或公民效率 + 0.5％',
     choices: [
       {
         id: 0,
         type: 5,
         value: 2,
-        text: "2x 全部利润"
+        text: "2x 所有建筑物利润"
       },
       {
         id: 1,
         type: 6,
         value: 0.5,
-        text: "+0.5% 公民"
+        text: "+0.5% 公民效率"
       },
     ],
     cost: 5,
   },
   {
     id: 5,
-    name: 'Business vs Civilian',
-    description: '1.5x for all Business buildings, OR 3x for all Civilian buildings',
+    name: '商业和平民',
+    description: '所有商业建筑利润 x1.5, 或者所有平民建筑利润 x3 ',
     choices: [
       {
         id: 0,
         type: 4,
         value: 1.5,
         reference: 3,
-        text: "1.5x Business"
+        text: "商业建筑利润 x1.5"
       },
       {
         id: 1,
         type: 4,
         value: 4,
         reference: 2,
-        text: "3x Civilian"
+        text: "平民建筑利润 x3"
       },
     ],
     cost: 6,
   },
   {
     id: 6,
-    name: 'Banks or everyone',
-    description: '2x for all buildings except Bank Sector, OR 1.5x for Bank Sector',
+    name: '银行建筑或其它所有建筑',
+    description: '除银行部门以外的所有建筑物利润 x2，或银行部门建筑利润 x1.5。',
     choices: [
       {
         id: 0,
         type: 9,
         value: 2,
         reference: 9,
-        text: "2x all, except banks"
+        text: "2x 所有建筑利润, 除了银行"
       },
       {
         id: 1,
         type: 7,
         value: 1.5,
         reference: 9,
-        text: "1.5x banks"
+        text: "1.5x 银行利润"
       },
     ],
     cost: 7,
   },
   {
     id: 7,
-    name: 'Taxi home',
-    description: '3x profits for taxi service, OR 8x profits for apartments',
+    name: '出租车之家',
+    description: '3倍的出租车利润，或者是8倍的公寓利润',
     choices: [
       {
         id: 0,
         type: 7,
         value: 3,
         reference: 5,
-        text: "3x taxi service"
+        text: "3倍的出租车利润"
       },
       {
         id: 1,
         type: 7,
         value: 8,
         reference: 1,
-        text: "8x apartments"
+        text: "8倍的公寓利润"
       },
     ],
     cost: 8,
   },
   {
     id: 8,
-    name: 'Raise the calculations',
-    description: 'Raise the citizen gain rate by 0.5% OR add 0.5% citizen 效用',
+    name: '提高计算能力',
+    description: '提高公民获得率0.5%或添加0.5%公民效率',
     choices: [
       {
         id: 0,
         type: 10,
         value: 0.005,
-        text: "+0.5% more citizens"
+        text: "+0.5% 公民获得率"
       },
       {
         id: 1,
         type: 6,
         value: 0.5,
-        text: "+0.5% citizen effectiveness"
+        text: "+0.5% 公民效率"
       },
     ],
     cost: 9,
   },
   {
     id: 9,
-    name: 'Auto Politics',
-    description: 'Auto buy all politics with no charge after each restart',
+    name: '自动政治',
+    description: '在每次重新启动后，自动购买所有的政治',
     choices: [
       {
         id: 0,
         type: 11,
-        text: "Auto buy politicians"
+        text: "自动购买政治家"
       }
     ],
     cost: 10,
   },
   {
     id: 10,
-    name: 'Profits or Profits',
-    description: '1.5x all buildings OR +0.5% citizen 效用',
+    name: '利润或利润',
+    description: '所有建筑的利润x1.5，或者公民效率 +0.5%',
     choices: [
       {
         id: 0,
         type: 5,
         value: 1.5,
-        text: "1.5x all buildings"
+        text: "所有建筑的利润x1.5"
       },
       {
         id: 1,
         type: 6,
         value: 0.5,
-        text: "+0.5% citizen"
+        text: "公民效率 +0.5%"
       },
     ],
     cost: 11,
   },
   {
     id: 11,
-    name: 'Every road leads to Rome',
-    description: 'Give you a 1000 roads OR 100 of each building (except apartments)',
+    name: '条条大路通罗马',
+    description: '给你1000条公路，或各种建筑物各100个(公寓除外)',
     choices: [
       {
         id: 0,
         type: 12,
         value: 1000,
         reference: 0,
-        text: "1000 roads"
+        text: "1000 公路"
       },
       {
         id: 1,
         type: 13,
         value: 100,
         reference: 1,
-        text: "100 of everything"
+        text: "100 个各种建筑"
       },
     ],
     cost: 12,
   },
   {
     id: 12,
-    name: 'The civilians approve',
-    description: '2x profits for Civilian buildings OR add 10% to Approval Rating profits bonus',
+    name: '平民的批准',
+    description: '平民建筑利润x2,或增加10%的支持率利润奖励',
     choices: [
       {
         id: 0,
         type: 4,
         value: 2,
         reference: 2,
-        text: "2x civilian profits"
+        text: "平民建筑利润x2"
       },
       {
         id: 1,
         type: 14,
         value: 0.1,
-        text: "10% approval rating bonus"
+        text: "10% 支持率利润奖励"
       },
     ],
     cost: 13,
   },
   {
     id: 13,
-    name: 'Energizer',
-    description: 'Add 0.5% to citizen effectiveness OR gain 1% more citizens',
+    name: '激励器',
+    description: '增加0.5%的公民效率，或增加1%的公民。',
     choices: [
       {
         id: 0,
         type: 6,
         value: 0.5,
-        text: "+0.5% citizen effectiveness"
+        text: "+0.5% 公民效率"
       },
       {
         id: 1,
         type: 10,
         value: 0.01,
-        text: "+1% more citizens"
+        text: "+1% 公民"
       },
     ],
     cost: 14,
   },
   {
     id: 14,
-    name: 'True Choice',
-    description: 'x2 profits for Transport OR x2 profits for civilian OR x1.5 profits for business',
+    name: '真正的选择',
+    description: '运输建筑利润x2，或者平民建筑利润x2，或者商业建筑利润x1.5',
     choices: [
       {
         id: 0,
         type: 4,
         value: 2,
         reference: 1,
-        text: "x2 Transport"
+        text: "运输建筑利润x2"
       },
       {
         id: 1,
         type: 4,
         value: 2,
         reference: 2,
-        text: "x2 Civilian"
+        text: "平民建筑利润x2"
       },
       {
         id: 2,
         type: 4,
         value: 1.5,
         reference: 3,
-        text: "x1.5 Business"
+        text: "商业建筑利润x1.5"
       },
     ],
     cost: 15,
   },
   {
     id: 15,
-    name: 'Coin it out',
-    description: 'Gain twice as many coins per purchase OR 2x Local Transport and 银行业利润',
+    name: '抛硬币决定',
+    description: '每次购买获得两倍的硬币,或者本地交通和银行业利润x2',
     choices: [
       {
         id: 0,
         type: 15,
         value: 1,
-        text: "Get 2 coins for every building"
+        text: "购买每个建筑可以获得2硬币"
       },
       {
         id: 1,
         type: 16,
         value: 2,
-        text: "2x local transport and banks"
+        text: "2x 本地运输及银行利润"
       },
     ],
     cost: 16,

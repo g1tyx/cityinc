@@ -1457,8 +1457,8 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
           $scope.argument.civilian = generateDebate(110, 1);
           $scope.argument.business = generateDebate(150, 50);
           
-          $scope.party.myState = "Votes left: " + calculateVotes();
-          $scope.party.enemyState = "Awaiting player";
+          $scope.party.myState = "剩余选票: " + calculateVotes();
+          $scope.party.enemyState = "等待选手";
         }
         else if ($scope.debateStarted == true && $scope.party.myParty <= 210) {
           
@@ -1468,7 +1468,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
             else if (myArgument == "civilian") { $scope.argument.civilianSpin = true; }
             else if (myArgument == "business") { $scope.argument.businessSpin = true; }
            
-            $scope.party.myState = "Votes left: " + calculateVotes();
+            $scope.party.myState = "剩余选票: " + calculateVotes();
             $scope.playerTurn = false;
             // Start timer, to increase the players excitement
             argumentTimer = $timeout(function () {
@@ -1483,8 +1483,8 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
               }
               $timeout.cancel(argumentTimer);
               
-              $scope.party.myState = "Waiting";
-              $scope.party.enemyState = "Debating";
+              $scope.party.myState = "等待";
+              $scope.party.enemyState = "辩论";
               
               if($scope.party.myParty > 210) {
                 checkDebate();
@@ -1507,7 +1507,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
             else {
               enemyTimer = $timeout(function () {
                 $timeout.cancel(enemyTimer);
-                $scope.party.enemyState = "Holding argument";
+                $scope.party.enemyState = "继续辩论";
                 checkDebate();
               }, 2000);
             }
@@ -1526,10 +1526,10 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
           playerRested = true;
           $scope.playerTurn = false;
           
-          $scope.party.myState = "Holding argument";
+          $scope.party.myState = "继续辩论";
           
           if ($scope.debateStarted && playerRested) {  
-            $scope.party.enemyState = "Debating";
+            $scope.party.enemyState = "辩论";
             enemyHoldTimer = $timeout(function () {
               $timeout.cancel(enemyHoldTimer);
               
@@ -1557,10 +1557,10 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
             endDebate(true);
           }
           else {
-            $scope.party.myState = "Votes left: " + calculateVotes();
+            $scope.party.myState = "剩余选票: " + calculateVotes();
             
             if($scope.party.enemyParty > 170) {
-              $scope.party.enemyState = "Case rested";
+              $scope.party.enemyState = "病例休息";
               enemyRested = true;
               
               if(playerRested && $scope.party.myParty >= $scope.party.enemyParty) {
@@ -1576,7 +1576,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
               }
             }
             else {
-              $scope.party.enemyState = "Gained " + $scope.wager.enemyPrev + " votes";
+              $scope.party.enemyState = "获得 " + $scope.wager.enemyPrev + " 选票";
             }
           }
           
@@ -1599,7 +1599,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
           }
           else {
             $scope.party.gameState = 1;
-            $scope.party.myState = "You won!";
+            $scope.party.myState = "你赢了!";
             $scope.party.enemyState = "";
             $scope.stats.debatesWin++;
             $scope.curMoney += Math.round($scope.wager.val);
@@ -1624,8 +1624,8 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
         }
         else if (!state) {
           $scope.party.gameState = 2;
-          $scope.party.myState = "Loser";
-          $scope.party.enemyState = "Winner";
+          $scope.party.myState = "失败者";
+          $scope.party.enemyState = "胜利者";
           $scope.stats.debatesLoss++;
           $scope.stats.debatesProfit -= Math.round($scope.wager.val);
           /*
