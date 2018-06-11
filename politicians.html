@@ -57,7 +57,7 @@
           <div class="progress" ng-if="settings.level < 16">
               <div 
               class="progress-bar progress-bar-info progress-bar-striped"
-              style="width: {{ 100 - (((20 *(settings.level + 1)) - stats.goalHighest)/20)*100 }}%"><span class="show">{{ (20 * (settings.level + 1)) - stats.goalHighest }} goals left until level {{ settings.level + 1 }}</span></div>
+              style="width: {{ 100 - (((20 *(settings.level + 1)) - stats.goalHighest)/20)*100 }}%"><span class="show">还有 {{ (20 * (settings.level + 1)) - stats.goalHighest }} 目标，您就能到达等级 {{ settings.level + 1 }}</span></div>
               </div>
           <div class="progress" ng-if="settings.level == 16">
                 <div 
