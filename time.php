@@ -6,7 +6,8 @@ $white_list = array(
     'http://likexia.gitee.io',
 	'https://likexia.gitee.io',
 	'http://zhaolinxu.github.io',
-    'https://zhaolinxu.github.io'
+    'https://zhaolinxu.github.io',
+    'http://gityx.com'
 );
 if(in_array($origin_source, $white_list)){    
     header("Access-Control-Allow-Origin:{$origin_source}");    
