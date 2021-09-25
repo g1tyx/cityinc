@@ -7,6 +7,7 @@ $white_list = array(
 	'https://likexia.gitee.io',
 	'http://zhaolinxu.github.io',
     'https://zhaolinxu.github.io',
+    'https://yx.g8hh.com',
     'http://gityx.com'
 );
 if(in_array($origin_source, $white_list)){    

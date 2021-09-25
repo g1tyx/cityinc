@@ -1778,7 +1778,7 @@ app.controller('gameController', ['$scope', '$interval', '$timeout', '$localStor
 
         $http({
           method: 'GET',
-          url: 'http://gityx.com/game/time.php'
+          url: './time.php'
         }).then(function successCallback(response) {
             passedSaveTime = parseInt(response.data) - parseInt($localStorage.timestamp);
             newSaveTimestamp = parseInt(response.data);
