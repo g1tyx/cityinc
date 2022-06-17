@@ -1,0 +1,138 @@
+<div class="container" >
+  
+    <div class="col-md-12 text-center">
+      
+      <h2 class="white text-center">升级</h2>
+      <hr/>
+      
+      <h4 class="white text-center">已购买 斯德哥尔摩 {{upgrades.length}}/{{upgradesMeta.length}} 个升级</h4>
+      <div class="progress">
+            <div 
+            class="progress-bar progress-bar-info progress-bar-striped"
+            
+            style="width: {{ Math.round((upgrades.length/upgradesMeta.length)*100) }}%"><span class="show">{{ Math.round((upgrades.length/upgradesMeta.length)*100) }}%</span></div>
+      </div>
+      
+      <br/><br/>
+      <button class="btn" ng-click="getAllUpgrades()" ng-if="curCitizens > 100 && upgrades.length < upgradesMeta.length">购买你能负担得起的所有升级</button>
+      <br/>
+      <br/>
+    </div>
+        <div class="col-md-12" ng-repeat="upgrade in upgradesMeta | limitTo: settings.upgradeQuantity + upgrades.length" ng-hide="upgrade.buildingRef == 999 && curCitizens == 0" ng-if="!isInArray(upgrades, upgrade.id)">
+            <div class="card-wrapper">
+              <!--<div class="card-wrapper" ng-if="upgrades[$index].owned == false">-->
+              <div class="card">
+                <div class="icon-block text-center icon-block-pol normalcursor bgcolor-{{buildMeta[upgrade.buildingRef].icon}}">
+                    
+                    <i class="fa faicon {{ upgrade.buildingRef > 500 ? 'fa-users' : buildMeta[upgrade.buildingRef].icon }}" ng-class="curMoney < upgrade.cost ? 'icon-disabled' : ''" ng-if="upgrade.buildingRef < 1000"></i>
+                    <i class="fa faicon {{ upgrade.buildingRef.subint(3,3) > 500 ? 'fa-users' : buildMeta[upgrade.buildingRef.subint(3,3)].icon }}" ng-class="curMoney < upgrade.cost ? 'icon-disabled' : ''" ng-if="upgrade.buildingRef > 1000"></i>
+                    
+                </div>
+                <div class="content-block">
+                    <div class="ribbonupgrade" ng-if="upgrade.buildingRef > 1000"><span>SPEEDBOOST</span></div>
+                    
+                    <div class="cardtext">
+                        <h3>{{ upgrade.name }}</h3>
+                        {{ upgrade.description }}
+                        <h4>花费: ${{ upgrade.cost | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                    </div>
+                    
+                    <div class="cardbuttons">
+                    
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                          <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default luckiest tooltips" ng-disabled="curMoney < upgrade.cost" ng-click="getUpgrade(upgrade)">购买升级
+                            
+                            <span style="height: 60px; width:450px; left: 28%;" ng-if="upgrade.buildingRef >= 0 && upgrade.buildingRef <= 9 && curMoney > upgrade.cost">
+                              <pryl ng-if="build[upgrade.buildingRef].auto">
+                                <pryl ng-if="!settings.showRevenueCycle">
+                                  <strong>Now:</strong> ${{ calculateRevenue(upgrade.buildingRef, build[upgrade.buildingRef], true) | megaNumber:powerNames:settings.scientificNumbers:1 }}/秒<br/>
+                                  <strong>After:</strong> ${{ calculateRevenue(upgrade.buildingRef, build[upgrade.buildingRef], true) * upgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers:1 }}/秒
+                                </pryl>
+                                <pryl ng-if="settings.showRevenueCycle">
+                                  <strong>Now:</strong> <pryl ng-if="calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef]) < 0.25">${{ calculateRevenue(upgrade.buildingRef, build[upgrade.buildingRef]) / (0.25 / calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef])) | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</pryl><pryl ng-if="calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef]) >= 0.25">${{ calculateRevenue(upgrade.buildingRef, build[upgrade.buildingRef]) | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</pryl><br/>
+                                  <strong>After:</strong> <pryl ng-if="calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef]) < 0.25">${{ calculateRevenue(upgrade.buildingRef, build[upgrade.buildingRef]) / (0.25 / calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef])) * upgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</pryl><pryl ng-if="calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef]) >= 0.25">${{ calculateRevenue(upgrade.buildingRef, build[upgrade.buildingRef]) * upgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</pryl>
+                                </pryl>
+                              </pryl>
+                              <pryl ng-if="!build[upgrade.buildingRef].auto">
+                                <strong>Now:</strong> <pryl ng-if="calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef]) < 0.25">${{ calculateRevenue(upgrade.buildingRef, build[upgrade.buildingRef]) / (0.25 / calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef])) | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</pryl><pryl ng-if="calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef]) >= 0.25">${{ calculateRevenue(upgrade.buildingRef, build[upgrade.buildingRef]) | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</pryl><br/>
+                                <strong>After:</strong> <pryl ng-if="calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef]) < 0.25">${{ calculateRevenue(upgrade.buildingRef, build[upgrade.buildingRef]) / (0.25 / calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef])) * upgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</pryl><pryl ng-if="calculateBuildSpeed(upgrade.buildingRef, build[upgrade.buildingRef]) >= 0.25">${{ calculateRevenue(upgrade.buildingRef, build[upgrade.buildingRef]) * upgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers:1 }}/轮</pryl>
+                              </pryl>
+                            </span>
+                            
+                            <span style="height: 60px; width:450px; left: 28%;" ng-if="upgrade.buildingRef == 666 && curMoney > upgrade.cost">
+                              <strong>Now:</strong> ${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }}/秒<br/>
+                              <strong>After:</strong> ${{ totalMoneyPerSecond() * upgrade.multiplier | megaNumber:powerNames:settings.scientificNumbers }}/秒
+                            </span>
+                            
+                            <!--<span ng-if="curMoney <= upgrade.cost"> in {{ Math.round((curMoney >= upgrade.cost ? '' : (upgrade.cost-curMoney)) / totalMoneyPerSecond()) | formatTimer }}</span>-->
+                            </button>
+                          </div>
+                          
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      <div class="col-md-12 text-center" ng-if="upgrades.length < upgradesMeta.length">
+        <h4 class="white" ng-if="upgradesMeta.length - (settings.upgradeQuantity + upgrades.length) > 0">...和 {{ upgradesMeta.length - (settings.upgradeQuantity + upgrades.length) }} more</h4>
+        <br/>
+        <h4 class="white opensans"><i>显示升级数量 (显示 {{settings.upgradeQuantity}})</i></h4>
+        <div class="center-block">
+          <div class="btn-group" role="group">
+            <button class="btn" ng-click="settings.upgradeQuantity = 1">1</button>
+            <button class="btn" ng-click="settings.upgradeQuantity = 2">2</button>
+            <button class="btn" ng-click="settings.upgradeQuantity = 5">5</button>
+            <button class="btn" ng-click="settings.upgradeQuantity = 10">10</button>
+            <button class="btn" ng-click="settings.upgradeQuantity = 25">25</button>
+            <button class="btn" ng-click="settings.upgradeQuantity = 50">50</button>
+            <button class="btn" ng-click="settings.upgradeQuantity = 100">100</button>
+            <button class="btn" ng-click="settings.upgradeQuantity = upgradesMeta.length">所有</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-12 text-center">
+      <br/><br/>
+      <h2 class="white text-center">已购买升级</h2>
+      <hr/>
+      <h4 class="white opensans">这是您以前购买的所有升级。</h4>
+
+      <h4 class="text-center white"><label>显示已购买升级: <input type="checkbox" class="md-checkbox" ng-model="settings.showUpgrades"></label></h4>
+      <br/>
+      <br/>
+    </div>
+      <div ng-if="settings.showUpgrades">
+        <div class="col-md-12" ng-repeat="upgrade in upgradesMeta" ng-hide="upgrade.buildingRef == 999 && curCitizens == 0" ng-if="isInArray(upgrades, upgrade.id)">
+            <div class="card-wrapper">
+              <div class="card">
+                <div class="icon-block text-center icon-block-pol normalcursor">
+                    
+                    <i class="fa faicon {{ upgrade.buildingRef === 999 || upgrade.buildingRef === 666 ? 'fa-users' : buildMeta[upgrade.buildingRef].icon }}"></i>
+
+                </div>
+                <div class="content-block">
+                   
+                    
+                    <div class="cardtext">
+                        <h3>{{ upgrade.name }}</h3>
+                        {{ upgrade.description }}
+                        <h4>花费: ${{ upgrade.cost | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                    </div>
+                    
+                    <div class="cardbuttons">
+                    
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                          <div class="btn-group" role="group">
+                             <button type="button" class="btn btn-default luckiest" disabled>已购买</button>
+                          </div>
+                          
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,683 @@
+<div class="container">
+
+  <div class="col-md-12">
+    <h2 class="white text-center">关于城市公司</h2>
+    <hr/>
+    <div class="text-center">
+      <img src="images/logo_big.png" >
+    </div><br/><br/>
+    <h4 class="white opensans">感谢你玩城市公司(或者叫城市放置, 如果你想)。老实说，这是受到了最好的增量游戏的影响，它是 <strong><a href="http://www.kongregate.com/games/HyperHippoGames/adventure-capitalist">冒险资本家</a></strong>。 我开始研究这个是因为我想学习Angular，而学习别人是我学习的最好方式。这就是结果。所以,享受吧!</h4>
+    <h4 class="white opensans">如果你有什么建议，可以找个bug或者有一个很好的想法。请与我联系：martinj83@gmail.com。 或者在Twitter上找到我 - <a href="https://twitter.com/CagesideGames/" target="_blank"><strong>@CagesideGames</strong></a>, 或者通过论坛 <strong><a href="http://reddit.com/r/cityinc/" target="_blank">reddit.com/r/cityinc/</a></strong></h4>
+    <br/>
+    <h4 class="white opensans">别忘了试一试我的另一款游戏 - <strong><a href="https://play.google.com/store/apps/details?id=se.cageside.rainbowbash" target="_blank">安卓游戏：Rainbow Bash </a></strong>, 或者直接查看我的网站： <strong><a href="http://cageside.se/" target="_blank">Cageside.se</a></strong></h4>
+    <br/>
+    
+
+    <div class="card-wrapper" >
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">当前版本 {{ version }}</h4>
+            <ul class="opensans">
+              <li><strong>Launched 2017-10-14</strong></li>
+              <li>Spellcheck for the about page has been done (Huge thank you to /u/Schuckman for this)</li>
+              <li>Design now works (better) for mobile. Still very much recommended to play on a desktop.</li>
+              <li>Fixed the bug where won games and statistics didn't follow over after a reset. (thanks to /u/Ruffletuft, /u/Jake__F, /u/SKyletoft, /u/ABausG and a bunch of people who where kind enough to report this bug)</li>
+              <li>Nerfed the Strategy bonuses a bit.</li>
+              <li>Banks are now on their own, in their own separate category!</li>
+              <li>Added an awesome effect when you hit the goals, you can turn that off in the settings if you think it takes up too much processing power.</li>
+              <li>Aligned the tooltips a bit better, for a nicer look in the build page.</li>
+              <li>Fixed Level 12 strategy (Thanks to /u/the_terran for the bug report)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br/><br/>
+    <h2 class="white text-center">更新历史</h2>
+    <hr/>
+    
+    <div class="card-wrapper" >
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">版本号 1.0.1</h4>
+            <ul class="opensans">
+              <li><strong>Launched 2017-02-07</strong></li>
+              <li>The "buy 10" has been replaced with "buy 25" (thanks to /u/AggnogPOE for the idea)</li>
+              <li>A bug made some offline from 'sleep mode' count quadruple, or more because of a miss-spelled variable. (Thank you to /u/Virus610, /u/Numendil, /u/UncleHardon, /u/nonexcludable, /u/AggnogPOE and /u/alanisproo for helping me debug this)</li>
+              <li>Fixed a typo on the taxi service for the strategy upgrades. (Thanks to /u/targoon for the tip)</li>
+              <li>Fixed a grammar issue on one instructions for the strategy upgrades (Thanks to /u/wikro)</li>
+              <li>The 'reset button'/'restart game button' broke when implementing 1.0, fixed now. (Thanks to /u/SKyletoft and /u/MyClitBiggerThanUrD for the bug report.)</li>
+              <li>I apparently broke the specialization part when upgrading to 1.0, thanks to /u/JoeKOL for pointing it out!</li>
+              <li>The game guide had a small issue with where it said 2 cents instead of 20. (Thanks to /u/ensiferous for finding the issue)</li>
+              <li>You had access to the "Advanced strategy" right after you completed the game, and didn't do a restart yet. (Thanks to Elin for finding the bug.)</li>
+              <li>If you get all the levels on the advanced strategy, the choices will no longer display. (Thanks to Elin for reporting the issue.)</li>
+              <li>Fixed a small issue when importing old codes into the new ones. Some settings were left behind. Thanks to /u/-Infality for noticing it)</li>
+              <li>You can from now on only get cash if the timer has been pinged from the online server.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-wrapper" >
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">Version 1.0</h4>
+            <ul class="opensans">
+              <li><strong>Launched 2017-02-02</strong></li>
+              <li>The upgrade "Free ride for drunks" had the wrong price. Thanks to /u/oddaree for noticing it.</li>
+              <li>Fixed a bug where the "next goal" for all buildings stayed even if you had more than 3000 buildings for all.</li>
+              <li>Health care now has a new icon.</li>
+              <li>The offline revenue calculations now work if you put the computer in sleep mode as well. (Thanks to all people bringing this to my attention)</li>
+              <li>Fixed an upgrade typo. (Thanks /u/Onioner for pointing it out)</li>
+              <li>Added a round to the number on "goals per day" on the stats page. (Thanks to /u/webchimp32)</li>
+              <li>Fixed some upgrade typos (Thanks to /u/Roastar, /u/JoeKOL and /u/SweCracker for pointing them out) </li>
+              <li>Revenue percentages now have two decimals. (Thanks to /u/oddaree for the idea)</li>
+              <li>Fixed a bug where the highest goals didn't update properly when you hit multiple goals. Thanks to DarkJarris for the bug report!</li>
+              <li>Thanks to /u/Schuckman the About page has now been spell-checked. I'll probably make more spelling mistakes in the future though. So if you find any, get in contact with me on the subreddit or by mail.</li>
+              <li>Added an indication on how much it will cost you to get to the next goal. (Thanks to /u/AnthonyS621 and /u/webchimp32 for the great suggestion)</li>
+              <li>Changed the Approval Rating percentages to points instead, to avoid confusion. (Thanks to /u/tedofgork for the idea!)</li>
+              <li>Fixed a day counting issue when you win the game. (Thanks to /u/Schuckman and /u/webchimp32 for pointing out the issue)</li>
+              <li>There is now a prestige system for when you have completed the game. You'll start with 1% more citizen effectiveness per win, and 100 citizens extra per win. You will also be able to choose your own advanced strategy.</li>
+              <li>Removed the numbered lists for the city upgrades and coins.</li>
+              <li>Added historical statistics, that will follow you if you decide to restart your game.</li>
+              <li>There is now a "completely wipe game" option in the settings, for those who would like to really start from the beginning.</li>
+              <li>Added an option to stay on the citizen page after you start a new city. (Thanks to DarkJarris for the idea!)</li>
+              <li>Cleaned up the settings tab a bit, looks much nicer now.</li>
+              <li>The citizen update "Allow Quick restart" now has a higher price.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-wrapper" >
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.9</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-10-30</strong></li>
+              <li>Added a new progress bar under the goals tab, showing the highest goal achieved.</li>
+              <li>Fixed a display bug for when you complete the game. (Thanks to /u/MyClitBiggerThanUrD)</li>
+              <li>Added a "Goals per day" statistics.</li>
+              <li>Added some standard names for your city instead of "Your City".</li>
+              <li>OCD Mode added in the settings, if you turn it off the "buy max" button will no longer buy to the closest 100th.</li>
+              <li>The "Buy max" button now show how many you will actually buy when clicking it. If you have OCD Mode started, it will show how many it will have to buy to even out the number to the closest 100th.</li>
+              <li>Shopping Center has now been renamed to "Shopping".</li>
+              <li>Shopping has a new icon, that is much more even than the last one. It was driving me nuts.</li>
+              <li>When starting a new city, the page will now go to the build tab automatically.</li>
+              <li>Last revenue record is now in the statistics, if you currently are on a record streak. If it's not, it will display what your last revenue was. (Thanks to /u/flogen for the suggestion)</li>
+              <li>Another late game upgrade balance for the upgrades.</li>
+              <li>Each building now has it's own record you can beat. The building that has a new record has a little green checkmark next to it. (Thanks to /u/flogen for the suggestion)</li>
+              <li>The description for what the next goal does, now shows in the maximized layout. (Thanks to /u/Dorten2nd and /u/Rarefriemel for reporting the bug and helping me figure out how to fix it)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+        <div class="card-wrapper" >
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.8.9</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-10-13</strong></li>
+              <li>Added a notification on the browser tab if an upgrade is ready to be bought. You'll know by the (!) in the tab name. Thanks to /u/kenlarock for the idea!</li>
+              <li>Fixed two typos on the game guide. Thanks to /u/AmIARedditorNow and /u/fortressstorm for pointing them out!</li>
+              <li>Hovering a goal on the build page now displays what the upcoming goal does. (Thanks to /u/webchimp32 and /u/TheSevadus, @Sevadus for the idea)</li>
+              <li>Added "Goal for all" at the bottom of the front page, and a nice hover tooltip thing.</li>
+              <li>The "political ideology" has been moved to the citizen tab. It's also only available when you restart your city.</li>
+              <li>The cursor when hovering buildings that are in auto produce have now been removed. It's now the default cursor for that.</li>
+              <li>Added a small note on how many upgrades that are hidden, on the bottom of every upgrade list. </li>
+              <li>The city bar now shows highest goal and your current goal. Just to clarify on</li>
+              <li>The maximum cost of "invest in the citizens" on the approval ratings is how much you make in half an hour, instead of an hour.</li>
+              <li>Added an explanation for the different tiers of percentage the Approval Ratings are at.</li>
+              <li>You can now rename your city! Click the little pen thingy next to "Your city" on the City tab.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <div class="card-wrapper" >
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.8.8</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-10-11</strong></li>
+              <li>Added a progress bar to show when your city will level up.</li>
+              <li>Added scientific numbers under the debates, that I forgot about before. (Thanks to Omlarsson for the tip)</li>
+              <li>Added a progress bar for the upgrade page. Thanks to /u/webchimp32 for the idea.</li>
+              <li>Fixed the revenue upgrade "20% faster per 1000 roads each" again. Last time I fixed it I forgot to save, sorry about that. (Thanks to /u/robstad and /u/flogen for pointing it out)</li>
+              <li>Added a percentage how many upcoming citizens you have of your current citizens.</li>
+              <li>Limited the amount of upgrades that are shown to 10 at a start. You can choose how many upgrades are shown after you gain 100 citizens. (Thanks to /u/AFrawg for the idea)</li>
+              <li>Buildings now display how much they will give you per cycle, even if you don't own any of them. (Thanks to /u/AFrawg for the idea)</li>
+              <li>Added a notification about why you should restart your city if you have never done it before, when reaching 10 citizens.</li>
+              <li>Switched around the menu a bit, to move the upgrade page closer to the build page.</li>
+              <li>Rebuilt the goal page, and fixed the 'new row bug' that was there since, well, beta 0.1.</li>
+              <li>Removed that annoying pointer cursor, that did nothing on upgrades/policitians/goals and stuff. (Thanks to /u/AFrawg)</li>
+              <li>The ability to restart has been changed to 50% of your current citizens. Well, or the citizen upgrade.</li>
+              <li>The indicated for "times completed CityInc" can now only be triggered once every time you win. (Thanks to /u/Tain101 for pointing it out)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <div class="card-wrapper" >
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.8.7</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-10-09</strong></li>
+              <li>The "buy max" button now displays how many of the specific building you can afford. A HUGE thank you to /u/Smakis for coming up with the equation for this.</li>
+              <li>The tutorial tips now only show up during the first 3 restarts. So you don't have to see it again for the 100th time.</li>
+              <li>The gameguide has been rewritten and updated, thank you /u/AcePilot5 for all the help!</li>
+              <li>The number guide is now in reverse order, should be easier to read. It now also has information about citizens.</li>
+              <li>Added a "display chat" under the chat window, so you can easily remove it if you'd like.</li>
+              <li>Increased the size for the cards on statistics page and about page.</li>
+              <li>The upgrade "20% faster per 1000 roads each", had a calculation bug in it after the last version. This was fixed, and thank you /u/robstad for pointing it out.</li>
+              <li>Late stage upgrades have been balanced out, and I've added another 11 upgrades.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+     <div class="card-wrapper" >
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.8.6</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-10-05</strong></li>
+              <li>Completely rebuilt the progress bars on the first page. This should reduce CPU load on the page significantly.</li>
+              <li>There was an issue with cycle calculation for cycle times under 1 seconds. It's been fixed now! This was only an issue with what was displayed, and not the actual profits. Thanks to /u/Smakis for bringing it up!</li>
+              <li>The revenue per building is now calculated with every purchase, to ease off the load a bit on the build tab.</li>
+              <li>The issue with the goals on the build page pointing wrong after you do a reset has been fixed.</li>
+              <li>Balanced out some of the upgrades in the late game, and added another 11 upgrades.</li>
+              <li>Color coded the buildings, and all the upgrades.</li>
+              <li>A revenue record statistic has now been implemented. After you have 100 citizens, it will also show up on the build page if you have a new revenue record. (Thanks to /u/harald705 for the idea!)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card-wrapper" >
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.8.5</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-10-02</strong></li>
+              <li>Fixed a pretty serious calculation error when the "Rally the citizen" was bought. Now, it calculates correctly thanks to /u/Jukervic !</li>
+              <li>Added an indicator on how much everything is producing under the statistics.</li>
+              <li>Fixed a typo on the new citizen upgrade</li>
+              <li>Lowered the revenue display text by one point on the progress bars on the build page. And turned off the wrapping. Should be a bit more nice now.</li>
+              <li>You can now toggle "profits per cycle" and "profits per second" by clicking on the progress bar on the build page.</li>
+              <li>Percentage on how much each building is producing has been added to the build info.</li>
+              <li>An indicater for when the next goal is has been added to the build page.</li>
+              <li>Fixed an issue where in game time was added every time a save was issuesd. Now it should calculate the in game time correctly.</li>
+              <li>Because I had to add another row, the icons on the build page are now slightly bigger.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card-wrapper" >
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.8.4</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-10-01</strong></li>
+              <li>Added a citizen upgrade to open the possibility to do a reset ahead of time, even if you haven't reached 15% of your citizens yet. It's priced at 1 novendecillion citizens because it's intended for late game use. (Thank you guys for all the feedback, and PNP for the idea)</li>
+              <li>Fixed two typos in the upgrade section (thanks /u/RsFan23)</li>
+              <li>A game chat has been added! It's a IRC client, that will connect to Quakenet and the channel #CityInc. If you want to chat along even when you are not playing, use an IRC client and connect to irc.quakenet.org and the channel #CityInc. (Thanks to /u/Kaargo for the idea)</li>
+              <li>The "producing xxx per second" has been changed slightly to make it more readable. (Thank you /u/fabbe134 for bringing it to my attention)</li>
+              <li>Fixed a grammatical error on the politics page, where it said "less citizens" and not "Fewer citizens" (Thanks to /u/bumtar for the catch!)</li>
+              <li>Added a "All profits" upgrade after all the speedboost to balance out your profits.</li>
+              <li>Removed the "get improvement with coins"-coin upgrade, since it just bugged out everything. Will do some troubleshooting here to get it working properly.</li>
+              <li>Balanced out some of the upgrades, so that local transport and roads get's back on track with the others.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+    <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.8.3</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-09-24</strong></li>
+              <li>Fixed two typos in the coin upgrade section (thanks /u/Chringo)</li>
+              <li>The game now remembers City Specialization between resets. However you need to get the upgrade "open the parliment" for it to follow over. Thanks to /u/HighPriestofShiloh for the suggestion.</li>
+              <li>Total money per second is now displayed on the front page after you bought the road politician. (Thanks to /u/harald705, /u/reddjt, /u/KBKWilliamsson, Bill and a bunch of other awesome people for the suggestion)</li>
+              <li>Balanced out some of the cost for coin upgrades.</li>
+              <li>The "Citizen confidence in you" have now been renamed to "Approval Rating" (Thanks to /u/nwayve for the suggestion)</li>
+              <li>Color change on the "invest in the citizens" and "Current citizens helping out" cards. This to make it a bit more distinguishable from upgrades.</li>
+              <li>Changed up the coin upgrades, and balanced out some of the prices.</li>
+              <li>"Soft resets" aka "Start New City" only available when you can gain more citizens than before.</li>
+              <li>Removed "Your city layout will be backed up" text on the citizens page. (Thanks to /u/mangekc for pointing it out)</li>
+              <li>A timer since last reset has been added to the statistics page. (Thanks to /u/Kaargo for the suggestion)</li>
+              <li>A countdown timer for how long the cycle has left for all buildings that has a cycle longer than 20 seconds. (Thanks to /u/ettredditnamn, /u/Farbror_Frej, /u/engelMaybe and everyone who I unfortunately forgot, who suggested it)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.8.2</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-09-21</strong></li>
+              <li>Added a new currency - Coins! These little suckers can be traded for various services, like extra confidence or free upgrades. You earn them by buying buildings and you keep them between resets.</li>
+              <li>Removed the debates for citizen confidence. (Thanks everyone for the feedback!)</li>
+              <li>Added the ability to turn on Scientific Notations in the settings, thanks /u/MyClitBiggerThanUrD for the suggestion</li>
+              <li>Changed some of the specialization, the +20% business now gives -15% transport and -15% civilian.</li>
+              <li>Fixed a spelling error on the upgrade "Education about light speed" (Thanks /u/MyClitBiggerThanUrD)</li>
+              <li>Fixed another spellning error on the upgrade "Hire door greeters" (Thanks /u/webchimp32)</li>
+              <li>Removed the happiness indicator on the header.</li>
+              <li>Added a nice litte "logo"-thing.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.8.1</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-09-08</strong></li>
+              <li>An upgrade was in the wrong order. Thanks to /u/webchimp32</li>
+              <li>Ironically the update "Remove all bugs", had a bug in it. It gave x3 money for all, instead of x13. Thanks to /u/borthelcash for bringing it to my attention.</li>
+              <li>The citizens now have "confidence" in you. The confidence will steadily drop over a few hours, and will eventually get down to 0. You can add more confidence by debating it (the old political debates)</li>
+              <li>Almost all upgrades under "city" has been recalulcated to match the new citizen confidence system.</li>
+              <li>Reddit user /u/AutomaticHourglass pointed out that you can spoof the political Ideology, so you now require to set it in order to use it. It resets after every city restart so you can set it again.</li>
+              <li>22 new upgrades added!</li>
+              <li>Another CSS fix for the tutorial bars.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.8</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-09-05</strong></li>
+              <li>Fixed some spelling errors, thanks to /u/richardr3581 and /u/thearchduke</li>
+              <li>Fixed an issue with the political slider. (Thanks to (/u/metrion, /u/WouldCommentAgain, /u/webchimp32, /u/richardr3581 and /u/kokobo88)</li>
+              <li>Completely removed the city building section, and added designed citys that evolve the more you play. (thanks to /u/jim808, /u/jjwolfe69, /u/MonnehMaker, /u/sdfsdfghghgh, /u/PickledWhispers, /u/KnockoutMouse420, /u/Rarylith, /u/UnUserr and /u/HighPriestofShiloh for all the feedback!)</li>
+              <li>Added about 30 upgrades, and speed boost thingys.</li>
+              <li>Fixed up some of the CSS in the top bar, and added an image of  the city next to the "logo".</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.7.4</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-06-17</strong></li>
+              <li>Added "Specialization" that you choose when going to a new city. It gives bonuses to one category, but removes cashflow for others.</li>
+              <li>Restructured the code a bit, and rewrote the game loop. Should fix the issue some people have with the 4000buildings/+1% effectiveness.</li>
+              <li>Added an error screen when shit hits the fan.</li>
+              <li>Added a congratulations screen when completing the game.</li>
+              <li>The game now counts how many times it's been completed.</li>
+              <li>Minimized the front build screen, and added an ability to return to the old style.</li>
+              <li>Changed the "CityInc" in the menu, to just "Menu".</li>
+              <li>A calculation issue was detected for the "money per seconds", and the "offline revenue", that is now fixed.</li>
+              <li>Added graphics and names for the template buildings.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.7.3</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-06-16</strong></li>
+              <li>55 new upgrades added!</li>
+              <li>10 buildings added, temporary arts right now though.</li>
+              <li>Added a Buy Max button. It rounds up to the closest available whole number on the first click. Second click it's to the closest 10th, and third click it's to the closets 1. So, a 100/10/1 max button, depending on how much cash you have. (Thanks to /u/Rippsy for the idea)</li>
+              <li>Fixed an upgrade bug for "Darker Suits" (Thanks to /u/Sunrazor and /u/bpg609 for the tip)</li>
+              <li>Added a "Numbers Guide" page, to visualize how much progress you have made.</li>
+              <li>Fixed some of the performance issues on the main build page. Should be a "bit" better, but not perfect. Yet.</li>
+              <li>Fixed an issue with the timer filter, that did not show times that where under 0.01 seconds.</li>
+              <li>Removed the animated part on the CSS that bogged down the performance a lot.</li>
+              <li>Removed cycle information if the timer is under 0.1 seconds.</li>
+              <li>The "Rally all the citizens" citizen upgrade now gives 1% citizen effectiveness every 4000 buildings you own.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <div class="card-wrapper">
+      <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.7.2</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-06-07</strong></li>
+              <li>Did a major overhaul of the upgrades, and added around 60 new upgrades.</li>
+              <li>Did another major overhaul of the Citizen Upgrades. Now, with some more exciting ones that is not "+10 buildings"-types of upgrades.</li>
+              <li>When you are using politicians, the decimals are now only showing one number.</li>
+              <li>Mistakenly added two goals for all at 1300, now removed. (Thanks /r/majavic)</li>
+              <li>Added "Days played" and registered the date that the player started. Note, if you started playing before 2016-06-01 this will not be correct for you.</li>
+              <li>Rewrote the "build time" calculator filter. No front-end changes, but it's much better now.</li>
+              <li>Compressed the front page slightly, by removing the description.</li>
+              <li>A "date started" has been added to the statistics. Beware, that if you started your game before the release date of patch 0.7.2, the day count is only up to that point.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.7.1</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-06-01</strong></li>
+              <li>Spelling error found on stats page. (Thanks /r/stennett)</li>
+              <li>174 goals added, now a grand total of 333 goals.</li>
+              <li>Upgrade Bug (Revolving doors & New cat scanner) fixed (thanks /r/magicpresto)</li>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.7</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-04-20</strong></li>
+              <li>Christian Paarup has joined the CityInc Team to help with some balacing!</li>
+              <li>Thank's to Christian, a new balacing has been implemented with the buildings under the city. With that, 8 new buildings has been added.</li>
+              <li>A bug was fixed where an upgrade gave the wrong bonus. (Thanks to /u/Parre92 for the find)</li>
+              <li>Already purchased buildings are now available for viewing, under the upgrade tab at the bottom.</li>
+              <li>A typo was fixed under the City Tab where an r got away on a few "purchased" words (Thanks to /u/cmiller1)</li>
+              <li>The JavaScript that fixed a timer issue was not loading correctly on CityInc.se (Thanks to /u/sevaor for spotting this)</li>
+              <li>Spelling error found on stats page. (Thanks /r/stennett)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+     <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.6.3</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-03-28</strong></li>
+              <li>Holy Shit! An import/export function has been added!</li>
+              <li>A new settings page has been added, currently containing import/export and hard reset.</li>
+              <li>Another 20 upgrades have been added, to balance the game out a bit around 700-800.</li>
+              <li>Fixed a bug from 0.6.2 where only 3 of the new buildings showed. (Thank's to /u/Jim808)</li>
+              <li>There was no recalculation for happiness when loading a saved city, fixed now though.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+            <div class="cardtext">
+              <br/>
+              <h4 class="text-center">Version 0.6.2</h4>
+              <ul class="opensans">
+              <li><strong>Launched 2016-03-27</strong></li>
+              <li>5 new buildings are now available.</li>
+              <li>About 30 upgrades have now been added. Finally, right? ;)</li>
+              <li>Fixed spelling of Quattuordecillion. A U was lost, but now it's found!</li>
+              <li>Another typo was fixed on the politicians page. (Thank's to /u/brrrandiZZLe)</li>
+              <li>A third typo was fixed (damn, I cannot spell for shit!) on the stats page. (Thank you /u/webchimp32)</li>
+              <li>A percentage text on the citizens page has been fixed. (Thanks Justin Zagar)</li>
+              <li>The debates has been changed to money instead of citizens. Previously gambled citizens, can still be picked up if you restart the city though. Thank you all in /r/CityInc/ for the feedback!</li>
+              <li>The about page got a nice overhaul, so you can actually read the text now.</li>
+              <li>A bug that made the buildings not display their respective categories has been fixed.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <div class="card-wrapper">
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">Version 0.6.1</h4>
+            <ul class="opensans">
+            <li><strong>Launched 2016-03-16</strong></li>
+            <li>The political debates has been nerfed, because they where too powerful. Your maximum win is now 1.5 times the wager. You can also wager up to 1% of your current citizens, and the citizens won't join you until you start a new city. (Thank you /u/Daxidol for the idea, and all other on /r/CityInc for the amazing feedback)</li>
+            <li>Fixed a bug where the debates hanged when it was a tie and the user didn't hold the debate. (Thanks /u/IAmARedditorAMAA and /u/Rippsy)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-wrapper">
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">Version 0.6</h4>
+            <ul class="opensans">
+            <li><strong>Launched 2016-03-13</strong></li>
+            <li>Political Debates have now been implemented. With this you can gain a few extra citizens, without having to restart. But, beware. You can lose them if you don't get your arguments right!</li>
+            <li>The upgrades "Every cab is now yellow" and "Robotic teachers" had the same ID, so when you bought any of those, the other one dissapeard from the list. (Thanks to /u/dinkum_thinkum)</li>
+            <li>The indicators in the city tile now turns red to indicate if you have too many of that kind. </li>
+            <li>You can now manually save your city layout.</li>
+            <li>The "Start New City"-tab now has the correct bonus information when resetting a game.</li>
+            <li>Some of the suffixes was too long to show up on the tooltips. This has been fixed by expanding the tooltip room. (Thanks /u/cmiller1)</li>
+            <li>"Help" tab has changed name to "CityInc".</li>
+            <li>"Goals" have now been moved to "CityInc" tab.</li>
+            <li>A statistics page has been implemented with a bunch of cool stats.</li>
+            <li>Current money per second is now available! In the stats page.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card-wrapper">
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">Version 0.5.2</h4>
+            <ul class="opensans">
+            <li><strong>Launched 2016-03-02</strong></li>
+            <li>Fixed a massive bug where every building that has their cycle below 0.1 seconds didn't give you enough money. The revenue should sort of skyrocket for you guys who has more than a few sub 0.1 second buildings. (Thanks to /u/SnoopBeaver, /u/Knappe8 and /u/iemroot)</li>
+            <li>Another massive improvement has been implemented, that fixes the issue with the game slowing down significantly when not in an active tab. (Thanks /u/SirStompsalot for the tips about <a href="https://github.com/turuslan/HackTimer" target="_blank">HackTimer</a>)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-wrapper">
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">Version 0.5.1</h4>
+            <ul class="opensans">
+            <li><strong>Launched 2016-02-25</strong></li>
+            <li>Sorry guys, I had to add some ads in the game. You guys are expensive with all the bandwidth going through here. I love that you visit and play though, so don't stop playing just because of the small ads. :)</li>
+            <li>A Game Guide has been added. More questions and answers will also be added in the future.</li>
+            <li>To actually be able to fit the Game Guide, the menu has been revamped with a dropdown menu.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-wrapper">
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">Version 0.5</h4>
+            <ul class="opensans">
+            <li><strong>Launched 2016-02-20</strong></li>
+            <li>The "F5-bug/feature" - A bug where you could refresh the page to gain back the offline earned money has been fixed. Another refresh-bug where you could get back your money after you have bought an upgrade has also been fixed. (Thank you /u/Catfish017 and /u/bagdja)</li>
+            <li>A Political Ideology slider has been implemented that affects the way the game is played. This is available as soon as you have hired all available politicians. If you go to the right, you will get bigger profits but fewer citizens. At the same time, if you go to the left there will be more available citizens but less profits. (Thanks /u/Splitzy for the idea)</li>    
+            <li>The planning of your city now affects how the game is played. Depending on how you actually plan out your city. The citizens will tell their needs, on the top and it's up to you to match them. You can also buy the tiles to create the city, and you gain more the more tiles you have. (Thank you /u/featherwinglove)</li>
+          	<li>A "clear city layout" has been added in the city building tab.</li>
+          	<li>You have to buy all the available tiles from now on.</li>
+            <li>A bug where the counters started automatically when you had alot of citizens, even though a politician has not been purchased, has been fixed. (Thanks Wesley, /u/Kealka, /u/Catfish017 and /u/Jim808)</li>
+            <li>The Scroll Lock between tabs has been removed. (Thanks /u/IloveblinkingIdo)</li>
+            <li>Some cooler looking buildings have been added.</li>
+            <li>Added a "Restore backup" for the city building, so you don't have to do the same layouts over and over again if you find something you like. The backups will be taken when you start a new city, and gain the available citizens. (Thanks /u/FlorianPicasso)</li>
+            <li>After you have 100 citizens, you will have the option to bulk buy upgrades, politicians and city tiles.</li>
+        	  <li>The category is now presented in the Build tab on each building.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card-wrapper">
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">Version 0.3.1</h4>
+            <ul class="opensans">
+            <li><strong>Launched 2016-02-10</strong></li>
+            <li>A bunch new upgrades have been added.</li>
+            <li>Changed the name for the politicians. (Thanks /u/viktorvauhgn)</li>
+            <li>Your citizens are now correctly calculated as soon as you load your game/page.</li>
+            <li>The div tag has been updated in the upgrade and politician tab. So all upgrades are placed at the correct position. (Thanks /u/TotomInc)</li>
+            <li>The bug where the goals don't register if you buy apartments with citizens has been fixed. (Thanks /u/Catfish017 and /u/TheRealNullsig)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-wrapper">
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">Version 0.3</h4>
+            <ul class="opensans">
+            <li><strong>Launched 2016-02-03</strong></li>
+            <li>An offline progress system has been implemented! Including a nice popup saying how much you have received from last time.</li>
+        	  <li>You will now get profits per second instead of profit per cycle after a politician has been purchased.</li>
+        	  <li>Fixed a calculation error where upgrades didn't give proper return.</li>
+        	  <li>Fixed a few more typos.</li>
+        	  <li>Updated the description for Citizens (Thanks /u/xysyx_).</li>
+        	  <li>Specific upgrades that are for citizens are not visible if you don't have any active citizens. (Thanks /u/Jim808)</li>
+        	  <li>The text selection has been disabled on the build page, so unintentional text-selection while clicking doesn't occur. (Thanks /u/hexaust)</li>
+        	  <li>Numbers below 1 million dollars are now correctly formated. (Thanks /u/mattymck for the heads up)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-wrapper">
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">Version 0.2</h4>
+            <ul class="opensans">
+              <li><strong>Launched 2016-01-23</strong></li>
+              <li>Fixed some typos. (Thank's guys!)</li>
+              <li>Buying in bulk no longer gives you massive amounts of discount, and is calculated accordingly.</li>
+              <li>Fixed an issue where the goals did not complete properly.</li>
+              <li>The Taxi Service had the wrong starting revenue, fixed now.</li>
+              <li>A warning dialog has been added when restarting your city.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-wrapper">
+      <div class="card bigcard">
+        <div class="content-block">
+          <div class="cardtext">
+            <br/>
+            <h4 class="text-center">Version 0.1</h4>
+            <ul class="opensans">
+              <li><strong>Launched 2016-01-22</strong></li>
+              <li>First prototype!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+
+  </div>
+</div>

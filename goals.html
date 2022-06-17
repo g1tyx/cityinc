@@ -1,0 +1,90 @@
+<div class="container" >
+  
+    <div class="col-md-12">
+      
+      <h1 class="white text-center">目标</h1>
+      <hr/>
+      <h4 class="white text-center">当前已完成: {{goals.length}}/{{goalsMeta.length}} 目标</h4>
+      
+      <div class="progress">
+            <div 
+            class="progress-bar progress-bar-info progress-bar-striped"
+            
+            style="width: {{ Math.round((goals.length/goalsMeta.length)*100) }}%"><span class="show">{{ Math.round((goals.length/goalsMeta.length)*100) }}%</span></div>
+      </div>
+      
+      <h4 class="white text-center">最高达到: {{stats.goalHighest}}/{{goalsMeta.length}} goals</h4>
+      
+      <div class="progress">
+            <div 
+            class="progress-bar progress-bar-info progress-bar-striped"
+            
+            style="width: {{ Math.round((stats.goalHighest/goalsMeta.length)*100) }}%"><span class="show">{{ Math.round((stats.goalHighest/goalsMeta.length)*100) }}%</span></div>
+      </div>
+      
+      <!-- Because "all goals" is different from the rest, it has to have it's own repeat.. -->
+      
+
+            <br/><br/>
+            <h1 class="white text-center">全部建筑</h1>
+            <hr>
+            
+          <div class="row">
+            <div ng-repeat="goal in goalsMeta" ng-if="goal.buildingRef == 10">
+            <div class="col-sm-2" >
+                <div class="clearfix card-wrapper">
+                  <div class="card goalcard" ng-class="isInArray(goals, goal.id) ? '' : 'icon-disabled'">
+                    <div class="icon-block text-center icon-block-pol normalcursor">
+                      
+                      <i class="fa faicon fa-users" style="padding: 13px 5px 5px 5px; font-size: 30px;"></i>
+                      <i class="fa fa-check goalComplete" ng-if="isInArray(goals, goal.id)"></i>
+                        
+                    </div>
+                    <div class="content-block">
+                       
+                      <div class="cardtext text-center">
+                        <h4 style="padding-top: 5px; padding-bottom: 0px; margin-bottom: 0px;">{{ goal.goal }}</h4>
+                        <span class="smalltext">{{ goal.desc }}</span>
+                      </div>
+                        
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+          </div>
+      </div>
+      
+      <div class="row">
+        <div ng-repeat="building in buildMeta" class="col-md-12">
+              
+              <h1 class="white text-center">{{building.name}}</h1>
+              <hr>
+              
+              <div class="col-md-2" ng-repeat="goal in goalsMeta" ng-if="goal.buildingRef == building.id">
+                  <div class="clearfix card-wrapper" >
+                    <div class="card goalcard"  ng-class="isInArray(goals, goal.id) ? '' : 'icon-disabled'">
+                      <div class="icon-block text-center icon-block-pol normalcursor" style="width: 50px;">
+                        
+                        <i ng-if="building.id == 1" class="fa faicon {{ goal.multiplier == 0 && goal.speed == 0 ? buildMeta[goal.otherGoal.ref].icon : building.icon }}" style="padding: 13px 5px 5px 5px; font-size: 30px;"></i>
+                        <i ng-if="building.id != 1" class="fa faicon {{ building.icon }}" style="padding: 13px 5px 5px 5px; font-size: 30px;"></i>
+                        <i class="fa fa-check goalComplete" ng-if="isInArray(goals, goal.id)"></i>
+                          
+                      </div>
+                      <div class="content-block">
+                         
+                        <div class="cardtext text-center">
+                          <h4 style="padding-top: 5px; padding-bottom: 0px; margin-bottom: 0px;">{{ goal.goal }}</h4>
+                          <span class="smalltext">{{ goal.desc }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          <br/><br/>
+        </div>
+      </div>
+
+      
+    </div>
+</div>

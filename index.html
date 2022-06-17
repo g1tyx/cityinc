@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html ng-app="gameApp">
+
+<head >
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="description" content="Incremental">
+    <meta name="author" content="Martin Johansson">
+    <link rel="icon" href="favicon.png">
+    
+    <title>城市公司 - CityInc</title>
+    
+    <script src="js/HackTimer.silent.min.js?0504"></script>
+    <script src="js/HackTimerWorker.min.js?0504"></script>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <script src="js/ngStorage.min.js"></script>
+    <script src="js/clipboard.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="js/bootstrap.min.css" >
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="js/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js" ></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="js/style.css?hash=1101">
+    <script src="js/app.js?hash=1102"></script>
+    <script src="js/data.js?hash=1101"></script>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-72714749-1', 'auto');
+      //ga('send', 'pageview');
+    </script>
+    
+</head>
+
+<body ng-controller="gameController as game" ng-init="load(true)">
+    <canvas class="fireworks"></canvas>
+    <nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand navbar-brand-map" href="#/city"><img ng-src="{{cityLayouts[settings.level].image[settings.cityLayout].url}}"></a>
+          <a class="navbar-brand navbar-brand-logo white luckiest" href="#"><img src="images/logo.png"></a>
+          
+          <ul class="nav navbar-text">
+            <li class="white luckiest tooltips">
+              <strong>${{ curMoney | megaNumber:powerNames:settings.scientificNumbers }}</strong>
+              <span class="smalltext" style="height: 80px; font-size: 16px; width: 350px; margin-top: 15px;">
+                <p class="smalltext" style="line-height: 12px"><strong>{{ settings.cityName }}</strong></p>
+                <p class="smalltext" style="line-height: 12px">{{ curCitizens | megaNumber:powerNames:settings.scientificNumbers }} 公民</p>
+                <p class="smalltext" style="line-height: 12px">{{ coins.value | megaNumber:powerNames:settings.scientificNumbers }} 硬币</p>
+              </span>
+            </li>
+          </ul>
+          
+        </div>
+    
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+
+          <ul class="nav navbar-nav navbar-right white luckiest masthead-nav">
+            <li ui-sref-active="active"><a href="#/" ui-sref="build">建筑</a></li>
+            <li ui-sref-active="active"><a href="#/upgrade" ui-sref="upgrade">升级<span class="badge badge-notify opensans" ng-if="checkNotice(upgradesMeta, upgrades, 'upgrades')">!</span></a></li>
+            <li ui-sref-active="active"><a href="#/city" ui-sref="city">城市<span class="badge badge-notify opensans" ng-if="checkNotice(tilesMeta, tiles, 'tiles') && totalBuildings() > 100">!</span></a></li>
+            <li ui-sref-active="active"><a href="#/citizens" ui-sref="citizens">公民<span class="badge badge-notify opensans" ng-if="curCitizens == 0 && availableCitizens >= 50">!</span></a></li>
+            <li ui-sref-active="active"><a href="#/politicians" ui-sref="politicians">政治<span class="badge badge-notify opensans" ng-if="checkPolitician()">!</span></a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/goals">目标</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/stats">统计</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/chat" ng-click="toggleChat(true)">聊天</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/guide">游戏指南</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/numberguide">数字指南</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="http://reddit.com/r/cityinc/" target="_blank">访问 Subreddit</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="http://cageside.se" target="_blank">访问 Cageside.se</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/settings">设置</a></li>
+            <li ui-sref-active="active" class="nav-small"><a href="#/about">关于</a></li>
+            
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                菜单 <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#/goals">目标</a></li>
+                <li><a href="#/stats">统计</a></li>
+                <li><a href="#/chat" ng-click="toggleChat(true)">聊天</a></li>
+                <li><a href="#/guide">游戏指南</a></li>
+                <li><a href="#/numberguide">数字指南</a></li>
+                <li><a href="http://reddit.com/r/cityinc/" target="_blank">访问 Subreddit</a></li>
+                <li><a href="http://cageside.se" target="_blank">访问 Cageside.se</a></li>
+                <li><a href="#/settings">设置</a></li>
+                <li><a href="#/about">关于</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+        
+    <div class="site-wrap">
+        <div ng-if="inIframe" class="container text-center white">
+          <strong>注:如果你玩这个游戏，你的游戏体验会更好 <a href="http://cityinc.se">CityInc.se</a>.</strong>
+        </div>
+        <div ui-view></div>
+        
+        <!-- Ads. Yeah, sorry I had to. You guys are expensive and taking up a lot of bandwidth. :( -->
+        <div class="container" style="margin-top: 10px">
+        <div class="col-md-12" style="height: 100px">
+<!--          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+          <!-- CityInc -->
+<!--
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5025509781553097"
+               data-ad-slot="2680737359"
+               data-ad-format="auto"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+-->
+        </div>
+        <!--<div ng-if="adblock" class="container text-center white col-xs-12">
+          <strong>If you like CityInc, please consider disabling your adblocker to support further development.<br/>
+          We won't force you, but it would be kind of nice of you. Thank you in advance! :)</strong>
+        </div>-->
+        </div>
+        
+        <div class="container" ng-if="settings.showChat">
+          <div id="chat" class="text-center">
+<!--            <iframe src="http://webchat.quakenet.org/?channels=CityInc" style="border:0; width:100%; height:500px;"></iframe>-->
+            <span class="text-center white opensans"><label>Display Chat: <input type="checkbox" class="md-checkbox" ng-model="settings.showChat"></label></span>
+          </div>
+        </div>
+    </div>
+
+    <div class="alert alert-success fade in" ng-if="showNotification">
+      <div class="row">
+        <div class="col-sm-4 text-center">
+          <i class="fa faicon {{ notificationIcon }} " ></i>
+        </div>
+        <div class="col-sm-8">
+          <a class="close" data-dismiss="alert" aria-label="close" ng-click="resetNotification()">&times;</a>
+          <h4>目标达成!</h4>
+          {{ notificationText }}
+        </div>
+      </div>
+    </div>
+    
+<!-- Modal -->
+<div class="modal fade in" id="welcomemodal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal" style="display:block;" ng-hide="offlineCash == 0">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span >&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">欢迎回来!</h4>
+      </div>
+      <div class="modal-body">
+        <strong>欢迎回来，市长!</strong> 在你离开的时候，你的城市产生了 <strong>${{ offlineCash | megaNumber:powerNames:settings.scientificNumbers }}</strong> 的收入!现在去好好利用这笔钱吧。
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="offlineCash = 0">太棒了,谢谢!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade in" id="winmodal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal" style="display:block;" ng-show="goals.length >= goalsMeta.length && settings.showFireworks">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span >&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">祝贺你!</h4>
+      </div>
+      <div class="modal-body">
+        <strong>太棒了!!</strong> 你已经通关了城市公司，用了 {{ daysBetween(stats.dateStarted, theDate()) }} 天时间! 你通关了城市公司 {{ completedGames + 1 }} 次。要重新开始的话，请单击设置下的 “重新启动游戏” 按钮。
+        查看统计页面下的所有统计数据，不要忘记在 <a href="http://reddit.com/r/cityinc" target="_blank">Reddit.com/r/CityInc/</a>吹嘘自己的成就。做得很好，<strong>祝贺你!!</strong>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="completeGame()">吼吼!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade " id="errormodal" tabindex="-1" role="dialog" aria-labelledby="welcomeModal" style="display:block;" ng-hide="1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span >&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">哦，该死!</h4>
+      </div>
+      <div class="modal-body">
+        <strong>发生了一些可怕的错误!</strong> 首先，尝试用CTRL + F5重新加载网站(MAC用户按 CMD + F5)。
+        <br/><br/>然后，如果您有任何错误，请用F12检查控制台。还有，截图，因为那些总是有用的！<br/><br/>
+        如果这不能解决问题，请前往 <strong><a href="http://reddit.com/r/cityinc" target="_blank">Reddit.com/r/CityInc/</a></strong> 发帖说明您如何获得此错误以及任何控制台错误和屏幕截图。
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/anime.min.js?hash=1101"></script>
+<script src="js/fireworks.js?hash=1101"></script>
+<!--客服 开始-->
+<link rel="stylesheet" href="//g8hh.com/static/css/kf.css" type="text/css" media="screen" charset="utf-8">
+<script src="//g8hh.com/static/js/kf.js"></script>
+<!-- 客服 结束 -->
+<!--站长统计--> 
+<div style="display: none">
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?028b1b5f659ed138230f4cafd7ad0dfc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    </div>
+</body>
+
+</html>

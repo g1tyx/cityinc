@@ -1,0 +1,188 @@
+<div class="container" >
+  
+    <div class="col-md-12 text-center">
+      
+      <h2 class="white text-center">游戏统计</h2>
+      <hr/>
+      <h4 class="white opensans">在这个游戏中有很多数字。这里有一些有趣的统计数据。</h4>
+      
+      <br/>
+      <h3 class="white text-center">收入分配</h3>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success bgcolor-{{buildMeta[$index].icon}}" style="width: {{ (calculateRevenue($index, building, true) / totalMoneyPerSecond() ) * 100 }}%" ng-repeat="building in build" ng-if="building.auto == true">
+          {{ (calculateRevenue($index, building, true) / totalMoneyPerSecond() ) * 100 | number:0 }}%
+        </div>
+      </div>
+      
+      <div class="row ">
+        <div class="col-xs-1 tooltips" ng-class="$index == 0 ? 'col-xs-offset-1' : ''" ng-repeat="building in build" ng-if="building.auto == true">
+          <i class="fa faicon smallicon {{ buildMeta[$index].icon }} color-{{buildMeta[$index].icon}} tooltips"></i>
+          <p class="luckiest white">{{ (calculateRevenue($index, building, true) / totalMoneyPerSecond() ) * 100 | number:2 }}%</p>
+          <span style="margin-top: 30px">{{ buildMeta[$index].name }}</span>
+        </div>
+      </div>
+      
+      <br/>
+      <br/>
+      <div class="card-wrapper">
+        <div class="card bigcard">
+          <div class="content-block">
+              <div class="cardtext">
+                  <br/>
+                  
+                  <h4 class="text-left opensans"><strong>累计赚的钱:</strong> ${{ stats.totalMoney + sessionMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>本次会议赚的钱:</strong> ${{ sessionMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>离线赚的钱:</strong> ${{ stats.offlineMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>累计花掉的钱:</strong> ${{ stats.buildingsTotalMoney + stats.upgradesTotalMoney + stats.politiciansTotalMoney + stats.tilesTotalMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>当前每秒赚的钱:</strong> <span>${{ totalMoneyPerSecond() | megaNumber:powerNames:settings.scientificNumbers }}/s</span></h4>
+                  <h4 class="text-left opensans"><strong>收入记录:</strong> <span>${{ stats.highestRevenue | megaNumber:powerNames:settings.scientificNumbers }}/s</span></h4>
+                  <h4 class="text-left opensans" ng-if="stats.highestRevenue != stats.lastRevenueRecord"><strong>上次游戏收入记录:</strong> <span>${{ stats.lastRevenueRecord | megaNumber:powerNames:settings.scientificNumbers }}/s</span></h4>
+                  <h4 class="text-left opensans" ng-if="stats.highestRevenue == stats.lastRevenueRecord"><strong>重新开始前的最后收入:</strong> <span>${{ stats.lastRevenue | megaNumber:powerNames:settings.scientificNumbers }}/s</span></h4>
+                  
+                  
+                  <br/>
+                  
+                  <h4 class="text-left opensans"><strong>花费在建筑上的钱:</strong> ${{ stats.buildingsTotalMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>花费在升级上的钱:</strong> ${{ stats.upgradesTotalMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>花费在政客身上的钱:</strong> ${{ stats.politiciansTotalMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  
+                  <br/>
+                  
+                  <h4 class="text-left">最高金额达到</h4>
+                  <h4 class="text-left opensans"><strong>公路:</strong> {{ stats.highestRoads }}</h4>
+                  <h4 class="text-left opensans"><strong>公寓:</strong> {{ stats.highestApartments }}</h4>
+                  <h4 class="text-left opensans"><strong>办公室:</strong> {{ stats.highestOffices }}</h4>
+                  <h4 class="text-left opensans"><strong>本地运输:</strong> {{ stats.highestTransport }}</h4>
+                  <h4 class="text-left opensans"><strong>教育:</strong> {{ stats.highestEducation }}</h4>
+                  <h4 class="text-left opensans"><strong>出租车服务:</strong> {{ stats.highestTaxis }}</h4>
+                  <h4 class="text-left opensans"><strong>码头:</strong> {{ stats.highestDocks }}</h4>
+                  <h4 class="text-left opensans"><strong>医疗保健:</strong> {{ stats.highestHealth }}</h4>
+                  <h4 class="text-left opensans"><strong>购物:</strong> {{ stats.highestShopping }}</h4>
+                  <h4 class="text-left opensans"><strong>银行业:</strong> {{ stats.highestBanks }}</h4>
+                  
+                  <br/>
+                  
+                  <h4 class="text-left opensans"><strong>当前目标:</strong> {{goals.length}}/{{goalsMeta.length}}</h4>
+                  <h4 class="text-left opensans"><strong>最高目标命中:</strong> {{ stats.goalHighest }}</h4>
+                  <h4 class="text-left opensans"><strong>目标/天:</strong> {{ Math.round(stats.goalHighest / daysBetween(stats.dateStarted, theDate())) }}</h4>
+                  <h4 class="text-left opensans"><strong>累计目标命中总数:</strong> {{ stats.goalsHit }}</h4>
+                  <h4 class="text-left opensans"><strong>当前建筑数量:</strong> {{ totalBuildings() }}</h4>
+                  <h4 class="text-left opensans"><strong>购买的建筑数量:</strong> {{ stats.buildingsBought }}</h4>
+                  <h4 class="text-left opensans"><strong>购买的升级数量:</strong> {{ stats.upgradesBought }}</h4>
+                  <h4 class="text-left opensans"><strong>雇佣的政客数量:</strong> {{ stats.politiciansHired }}</h4>
+                  <br/>
+                  
+                  <h4 class="text-left opensans"><strong>重置次数:</strong> {{ stats.resets | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>距离上次重置过去的时间:</strong> <span ng-if="stats.timeSinceLastReset">大约 {{ timeSinceLastReset() | formatTimer }}</span><span ng-if="!stats.timeSinceLastReset">无信息</span></h4>
+                  <h4 class="text-left opensans"><strong>通过重置获得的总公民数量:</strong> {{ stats.totalCitizens | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>在1次重置中获得的最高公民数量:</strong> {{ stats.maxGainedCitizens | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>公民升级购买:</strong> {{ stats.citizenUpgrades }}</h4>
+                  <h4 class="text-left opensans"><strong>为升级而牺牲的公民:</strong> {{ stats.sacrifizedCitizens | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <br/>
+                  
+                  <h4 class="text-left opensans"><strong>累计获得硬币:</strong> {{ stats.totalCoins | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>硬币花费:</strong> {{ stats.spentCoins | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <h4 class="text-left opensans"><strong>硬币升级购买数量:</strong> {{ stats.coinUpgradesBought | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <br/>
+                  
+                  <h4 class="text-left opensans"><strong>辩论开始:</strong> {{ stats.debatesWin + stats.debatesLoss | number }}</h4>
+                  <h4 class="text-left opensans"><strong>辩论获胜:</strong> {{ stats.debatesWin | number }}</h4>
+                  <h4 class="text-left opensans"><strong>辩论失败:</strong> {{ stats.debatesLoss | number }}</h4>
+                  <h4 class="text-left opensans"><strong>辩论利润:</strong> ${{ stats.debatesProfit | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                  <br/>
+                  
+                  <h4 class="text-left opensans"><strong>游戏中花费的时间:</strong> {{ stats.onlineTime | formatTimer }}</h4>
+                  <h4 class="text-left opensans"><strong>开始玩的日期:</strong> {{ stats.dateStarted | date }}</h4>
+                  <h4 class="text-left opensans"><strong>玩游戏天数:</strong> {{ daysBetween(stats.dateStarted, theDate()) }} 天</h4>
+                  <br/>
+                  
+                  <h4 class="text-left opensans"><strong>通关游戏次数:</strong> {{ completedGames }} 次</h4>
+                  
+                  <span><i>注意:“开始玩的日期”从2016年6月7日才开始统计。因此，如果你在那个日期之前开始玩本游戏，那么之前的游戏只能计算到那个点。</i></span>
+              </div>
+          </div>
+        </div>
+      </div>
+      
+      <br/><br/>
+      <h2 class="white text-center">历史统计信息</h2>
+      <hr/>
+      <h4 class="white opensans">这些是之前的统计数据，你已经通关了城市公司。</h4>
+      
+      <div class="row">
+        <div class="col-xs-12 white" ng-if="completeStats.length == 0 || completeStats == null">
+          <h4>未检测到之前的游戏的统计数据。</h4>
+        </div>
+        <div class="col-md-6" ng-repeat="historyStats in completeStats">
+          <div class="card-wrapper">
+            <div class="card bigcard">
+              <div class="content-block">
+                  <div class="cardtext">
+                      <br/>
+                      
+                      <h2 class="text-center">玩游戏次数 {{ $index + 1 }}</h2>
+                      
+                      <h4 class="text-left opensans fontsize14"><strong>累计获得的金钱:</strong> ${{ historyStats.totalMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>离线获得的金钱:</strong> ${{ historyStats.offlineMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>累计花费的金钱:</strong> ${{ historyStats.totalMoneySpent | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>收入记录:</strong> <span>${{ historyStats.revenueRecord | megaNumber:powerNames:settings.scientificNumbers }}/s</span></h4>
+                      
+                      <br/>
+                      
+                      <h4 class="text-left opensans fontsize14"><strong>Money spent on buildings:</strong> ${{ historyStats.buildingsTotalMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Money spent on upgrades:</strong> ${{ historyStats.upgradesTotalMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Money spent on politicians:</strong> ${{ historyStats.politiciansTotalMoney | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      
+                      <br/>
+                      
+                      <h4 class="text-left">Highest amount achieved</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Roads:</strong> {{ historyStats.highestRoads }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Apartments:</strong> {{ historyStats.highestApartments }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Offices:</strong> {{ historyStats.highestOffices }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Local Transport:</strong> {{ historyStats.highestTransport }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Education:</strong> {{ historyStats.highestEducation }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Taxi Service:</strong> {{ historyStats.highestTaxis }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Docks:</strong> {{ historyStats.highestDocks }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Health Care:</strong> {{ historyStats.highestHealth }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Shopping:</strong> {{ historyStats.highestShopping }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Bank Sector:</strong> {{ historyStats.highestBanks }}</h4>
+                      
+                      <br/>
+                      
+                      <h4 class="text-left opensans fontsize14"><strong>Goals per day:</strong> {{ historyStats.goalsPerDay }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Total number of goals hit:</strong> {{ historyStats.goalsHit }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Buildings bought:</strong> {{ historyStats.buildingsBought }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Upgrades bought:</strong> {{ historyStats.upgradesBought }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Politicians hired:</strong> {{ historyStats.politiciansHired }}</h4>
+                      <br/>
+                      
+                      <h4 class="text-left opensans fontsize14"><strong>Number of resets:</strong> {{ historyStats.resets | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Total Citizens gained by resets:</strong> {{ historyStats.totalCitizens | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Citizen upgrades bought:</strong> {{ historyStats.citizenUpgrades }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Citizens Sacrificed for upgrades:</strong> {{ historyStats.sacrifizedCitizens | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <br/>
+                      
+                      <h4 class="text-left opensans fontsize14"><strong>Total coins earned:</strong> {{ historyStats.totalCoins | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Coins spent:</strong> {{ historyStats.spentCoins | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Coin upgrades bought:</strong> {{ historyStats.coinUpgradesBought | megaNumber:powerNames:settings.scientificNumbers }}</h4>
+                      <br/>
+                      
+                      <h4 class="text-left opensans fontsize14"><strong>Time spent in game:</strong> {{ historyStats.onlineTime | formatTimer }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Date started:</strong> {{ historyStats.dateStarted | date }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Date started:</strong> {{ historyStats.dateReset | date }}</h4>
+                      <h4 class="text-left opensans fontsize14"><strong>Days played:</strong> {{ historyStats.daysPlayed }} days</h4>
+                      <br/>
+                      
+                      <span><i>Note: The "Date Started" was not implemented until 7th of June 2016. So if you started before that date, days playing only calculates up until that point.</i></span>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    
+    </div>
+        
+</div>

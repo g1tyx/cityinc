@@ -1,0 +1,42 @@
+<div class="container" >
+  
+    <div class="col-md-12 text-center">
+      
+      <h2 class="white text-center">Number Guide</h2>
+      <hr/>
+      <h4 class="white opensans">There are a lot of numbers beeing thrown around in this game. And sometimes it's hard to keep them apart. Are "Quattuorseptuagintillion" a bigger number than "Quattuornonagintillion"? Which one is bigger than what? Well, if you check down below, you can probably get help figuring it out. The blue bar is for citizens, and the green is for cash.</h4>
+      
+      <br/>
+      <br/>
+      
+
+             <div class="card-wrapper white">
+              <div class="smallcontainer">
+                <div class="content-block">
+                      <div ng-repeat="number in powerNames | orderBy:'':true" ng-if="!$first">
+                        <div ng-if="curMoney > number.value"class="col-md-1 white" style="background: #81c784;background-size: 100%; margin: 0px 0 -35px 0;">
+                          <h4>&nbsp;</h4>
+                        </div>
+                        <div ng-if="curMoney < number.value"class="col-md-1 white" style=" background-size: 100%;">
+                          <h4>&nbsp;</h4>
+                        </div>
+                        <div ng-if="curCitizens > number.value"class="col-md-1 white" style="background: #7bdcff;background-size: 100%; margin: 0px 0 -35px 0;">
+                          <h4>&nbsp;</h4>
+                        </div>
+                        <div ng-if="curCitizens < number.value"class="col-md-1 white" style=" background-size: 100%;">
+                          <h4>&nbsp;</h4>
+                        </div>
+                        
+                        <div class="col-md-10 text-left produceText">
+                          <h4>{{number.key}} ({{number.value | exponent }} zeros)</h4>
+                        </div>
+                      </div>
+                      &nbsp;
+                      <br/><br/>
+                </div>
+              </div>
+            </div>
+            
+    </div>
+        
+</div>

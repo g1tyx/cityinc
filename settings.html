@@ -1,0 +1,151 @@
+<div class="container" >
+  
+    <div class="col-md-12 text-center">
+      
+      <h1 class="white text-center">设置</h1>
+      
+      <div ng-if="isDev()" style="display: none;">
+      <h3 class="white">开发设置</h3>
+      <hr/>
+      <h4 class="white opensans">这是一些很棒的开发设置。如果您不是开发人员，或者测试团队的一部分，您就不应该看到这种情况。</h4>
+      
+      <br/>
+      <input type="text" name="devCash" ng-model="devCash" style="width:50%"> <button class="btn" ng-click="devChange(devCash, 'cash')">修改现金</button>
+      
+      <br/><br/>
+      
+      <input type="text" name="devCitizens" ng-model="devCitizens" style="width:50%"> <button class="btn" ng-click="devChange(devCitizens, 'citizens')">修改公民</button>
+      
+      <br/><br/>
+      
+      <input type="text" name="devCoins" ng-model="devCoins" style="width:50%"> <button class="btn" ng-click="devChange(devCoins, 'coins')">修改硬币</button>
+      </div>
+      
+      <br/><br/>
+      <h3 class="white">布局</h3>
+      <hr/>
+      <div class="row">
+        <div class="col-sm-6">
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.OCDMode"> 购买最大按钮OCD模式<br/>
+          <span class="white smalltext opensans"><i>- 即使是在最接近的第100位购买建筑物。</i></span></label></h4>
+          
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.maximizeLayout"> 最大化的布局<br/>
+          <span class="white smalltext opensans"><i>- 在建筑页面上有更大的图标。</i></span></label></h4>
+          
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.scientificNumbers"> 使用科学的数字格式<br/>
+          <span class="white smalltext opensans"><i>- 显示1e+22而不是1的六乘方，等等。</i></span></label></h4>
+
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.renderFireworks"> 显示烟花<br/>
+          <span class="white smalltext opensans"><i>- 当你达成一个新的目标时，在事件上放烟花。</i></span></label></h4>
+        </div>
+        
+        <div class="col-sm-6">
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.showRevenueCycle"> 显示每个周期的利润<br/>
+          <span class="white smalltext opensans"><i>- 在建筑页面上显示每个周期的利润，而不是每秒的利润。</i></span></label></h4>
+          
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.showChat"> 显示聊天<br/>
+          <span class="white smalltext opensans"><i>- 在所有页面上显示聊天。</i></span></label></h4>
+          
+          <h4 class="text-center white"><label><input type="checkbox" class="md-checkbox" ng-model="settings.goToBuildPageAfterReset"> 重新启动后转到建立页面<br/>
+          <span class="white smalltext opensans"><i>- 开始新城市后自动切换到建筑页面。</i></span></label></h4>
+        </div>
+      </div>
+      
+      
+      <br/>
+      <div>
+      <script>
+        new Clipboard('.copythis');
+      </script>
+      
+      <h3 class="white">导出存档</h3>
+      <hr/>
+      <h4 class="white opensans">要使用导出功能，只需复制导出代码并将其粘贴备份到网盘、邮箱等其它安全的地方。</h4>
+      <br/>
+      注意：导出存档，请把文本框的滚动条拉到最下面，<font color="red">看看存档是不是2个等号（==）结尾的</font>。<br>如果不是，请先购买任意1个建筑，游戏会自动保存一次，此时存档代码就正常了。<br>中英文存档不能互通，因为汉化的原因，加了中文编码的兼容代码<br>
+      <!--<button class="btn" ng-click="export()">Export</button><br/><br/>-->
+      <textarea rows="4" cols="50" id="exportText">{{ exportstring.value }}</textarea>
+      <br/>
+      <button class="btn copythis" data-clipboard-target="#exportText">复制存档代码到剪切板</button>
+      </div>
+      
+      <br/><br/>
+      <h3 class="white">导入存档</h3>
+      <hr/>
+      <h4 class="white opensans">粘贴存档代码到下面的框里，然后按导入按钮。 <br/>请注意，这将覆盖全部现有的游戏进度。</h4>
+      <input type="text" name="importText" ng-model="importrutan" style="width:50%"><br/><button data-toggle="modal" data-target="#importModal" class="btn">导入</button>
+      
+      <div ng-if="exportstring.error" style="color: #FF0000; font-size: 20px"><strong>错误！ 导入时出错。 请再试一次。</strong></div>
+      <div ng-if="exportstring.imported" style="color: #118205; font-size: 20px"><strong>成功！ 导入已成功完成。</strong></div>
+      
+      <!-- Import Modal -->
+      <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">导入</h4>
+            </div>
+            <div class="modal-body">
+              <strong>警告!</strong> 这将覆盖所有现有的游戏进度。
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary luckiest" data-dismiss="modal" ng-click="importera(importrutan)">确定导入</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <br/><br/>
+      <h3 class="white">重新开始游戏</h3>
+    <hr/>
+    <h4 class="white opensans">彻底重置你的游戏，从头开始。<br/>注:你的“城市公司已完成”-统计数据不会重置。</h4>
+    <button data-toggle="modal" data-target="#hardResettModal" class="btn btn-danger">重新开始</button><br/> <strong></strong>
+    <br/><br/>
+    <!-- Reset Modal -->
+    <div class="modal fade" id="hardResettModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">重新开始</h4>
+          </div>
+          <div class="modal-body">
+            <strong>警告!</strong> 重新启动游戏会重置你的进度。唯一能跟随的是你完成的统计数据，以及你通关了多少次城市公司。
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-danger luckiest" data-dismiss="modal" ng-click="hardReset()">确认重置</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <br/><br/><br/><br/>
+    <h3 class="white">完全清除游戏</h3>
+    <hr/>
+    <h4 class="white opensans">彻底抹掉你的游戏存档，真正从头开始，没有历史。 <br/>注意:一切都会重置。如果你不知道自己在做什么，不要用这个。</h4>
+    <button data-toggle="modal" data-target="#superHardResettModal" class="btn btn-danger" style="background-color: red">擦除所有游戏数据</button><br/> <strong></strong>
+    <br/><br/>
+    <!-- Reset Modal -->
+    <div class="modal fade" id="superHardResettModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">完全清除游戏</h4>
+          </div>
+          <div class="modal-body">
+            <strong>警告!</strong> 硬复位无法逆转，并将删除所有游戏进度。一切都会消失。直到永远。
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-danger luckiest" data-dismiss="modal" style="background-color: red" ng-click="superHardReset()">确认并硬复位</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+  </div>
+</div>
